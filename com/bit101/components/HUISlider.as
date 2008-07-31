@@ -1,7 +1,7 @@
 /**
  * HUISlider.as
  * Keith Peters
- * version 0.94
+ * version 0.95
  * 
  * A Horizontal slider with a label and a value label.
  * 

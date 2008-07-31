@@ -1,7 +1,7 @@
 /**
  * ColorChooser.as
  * Keith Peters
- * version 0.94
+ * version 0.95
  * 
  * A bare bones Color Chooser component, allowing for textual input only.
  * 

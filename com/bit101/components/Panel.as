@@ -1,7 +1,7 @@
 /**
  * Panel.as
  * Keith Peters
- * version 0.94
+ * version 0.95
  * 
  * A rectangular panel. Can be used as a container for other components.
  * 

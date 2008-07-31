@@ -1,7 +1,7 @@
 /**
  * ProgressBar.as
  * Keith Peters
- * version 0.94
+ * version 0.95
  * 
  * A progress bar component for showing a changing value in relation to a total.
  * 
