@@ -1,7 +1,7 @@
 /**
  * ColorChooser.as
  * Keith Peters
- * version 0.93
+ * version 0.94
  * 
  * A bare bones Color Chooser component, allowing for textual input only.
  * 
@@ -98,7 +98,6 @@ package com.bit101.components
 		override public function draw():void
 		{
 			super.draw();
-			_value = parseInt("0x" + _input.text, 16);
 			_swatch.graphics.clear();
 			_swatch.graphics.beginFill(_value);
 			_swatch.graphics.drawRect(0, 0, 16, 16);
@@ -118,8 +117,11 @@ package com.bit101.components
 		 */
 		private function onChange(event:Event):void
 		{
+			event.stopImmediatePropagation();
+			_value = parseInt("0x" + _input.text, 16);
 			_input.text = _input.text.toUpperCase();
 			invalidate();
+			dispatchEvent(new Event(Event.CHANGE));
 		}
 		
 		///////////////////////////////////
@@ -137,6 +139,7 @@ package com.bit101.components
 				str = "0" + str;
 			}
 			_input.text = str;
+			_value = parseInt("0x" + _input.text, 16);
 			invalidate();
 		}
 		public function get value():uint

@@ -1,7 +1,7 @@
 /**
  * Slider.as
  * Keith Peters
- * version 0.93
+ * version 0.94
  * 
  * Abstract base slider class for HSlider and VSlider.
  * 
