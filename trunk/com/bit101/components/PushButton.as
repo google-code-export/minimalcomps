@@ -1,7 +1,7 @@
 /**
  * PushButton.as
  * Keith Peters
- * version 0.93
+ * version 0.94
  * 
  * A basic button component with a label.
  * 
@@ -126,6 +126,11 @@ package com.bit101.components
 				_label.autoSize = false;
 				_label.width = _width - 4;
 			}
+			else
+			{
+				_label.autoSize = true;
+			}
+			_label.draw();
 			_label.move(_width / 2 - _label.width / 2, _height / 2 - _label.height / 2);
 			
 		}
