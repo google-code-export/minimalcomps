@@ -1,7 +1,7 @@
 /**
  * CheckBox.as
  * Keith Peters
- * version 0.94
+ * version 0.95
  * 
  * A basic CheckBox component.
  * 
