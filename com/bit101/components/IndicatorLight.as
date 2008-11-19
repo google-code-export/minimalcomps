@@ -1,7 +1,7 @@
 /**
  * IndicatorLight.as
  * Keith Peters
- * version 0.95
+ * version 0.96
  * 
  * An indicator light that can be turned on, off, or set to flash.
  * 
@@ -87,7 +87,7 @@ package com.bit101.components
 		/**
 		 * Draw the light.
 		 */
-		private function drawLite():void
+		protected function drawLite():void
 		{
 			var colors:Array;
 			if(_lit)
@@ -117,7 +117,7 @@ package com.bit101.components
 		 * Internal timer handler.
 		 * @param event The TimerEvent passed by the system.
 		 */
-		private function onTimer(event:TimerEvent):void
+		protected function onTimer(event:TimerEvent):void
 		{
 			_lit = !_lit;
 			draw();

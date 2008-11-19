@@ -1,7 +1,7 @@
 /**
  * Meter.as
  * Keith Peters
- * version 0.95
+ * version 0.96
  * 
  * A meter component similar to a voltage meter, with a dial and a needle that indicates a value.
  * 
@@ -146,7 +146,7 @@ package com.bit101.components
 		/**
 		 * Draws the background of the component.
 		 */
-		private function drawBackground():void
+		protected function drawBackground():void
 		{
 			graphics.clear();
 			graphics.beginFill(Style.BACKGROUND);
@@ -161,7 +161,7 @@ package com.bit101.components
 		/**
 		 * Draws the dial.
 		 */
-		private function drawDial(startAngle:Number, endAngle:Number):void
+		protected function drawDial(startAngle:Number, endAngle:Number):void
 		{
 			_dial.x = _width / 2;
 			_dial.y = _height * 1.25;
@@ -191,7 +191,7 @@ package com.bit101.components
 		/**
 		 * Draws the tick marks on the dial.
 		 */
-		private function drawTicks(startAngle:Number, endAngle:Number):void
+		protected function drawTicks(startAngle:Number, endAngle:Number):void
 		{
 			var r1:Number = _height * 1.05;
 			var r2:Number = _height * 0.96;
@@ -215,7 +215,7 @@ package com.bit101.components
 		/**
 		 * Draws the needle.
 		 */
-		private function drawNeedle():void
+		protected function drawNeedle():void
 		{
 			_needle.graphics.clear();
 			_needle.graphics.beginFill(0xff0000);
@@ -231,7 +231,7 @@ package com.bit101.components
 		/**
 		 * Updates the target rotation of the needle and starts an enterframe handler to spring it to that point.
 		 */
-		private function update():void
+		protected function update():void
 		{
 			_value = Math.max(_value, _minimum);
 			_value = Math.min(_value, _maximum);
@@ -246,7 +246,7 @@ package com.bit101.components
 		/**
 		 * Handles the enterFrame event to spring the needle to the target rotation.
 		 */
-		private function onEnterFrame(event:Event):void
+		protected function onEnterFrame(event:Event):void
 		{
 			var dist:Number = _targetRotation - _needle.rotation;
 			_velocity += dist * .05;

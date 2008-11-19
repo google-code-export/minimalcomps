@@ -1,7 +1,7 @@
 /**
  * Slider.as
  * Keith Peters
- * version 0.95
+ * version 0.96
  * 
  * Abstract base slider class for HSlider and VSlider.
  * 
@@ -140,7 +140,7 @@ package com.bit101.components
 		/**
 		 * Adjusts value to be within minimum and maximum.
 		 */
-		private function correctValue():void
+		protected function correctValue():void
 		{
 			if(_max > _min)
 			{
@@ -214,7 +214,7 @@ package com.bit101.components
 		 * Handler called when user clicks the background of the slider, causing the handle to move to that point. Only active if backClick is true.
 		 * @param event The MouseEvent passed by the system.
 		 */
-		private function onBackClick(event:MouseEvent):void
+		protected function onBackClick(event:MouseEvent):void
 		{
 			if(_orientation == HORIZONTAL)
 			{

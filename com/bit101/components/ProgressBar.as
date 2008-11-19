@@ -1,7 +1,7 @@
 /**
  * ProgressBar.as
  * Keith Peters
- * version 0.95
+ * version 0.96
  * 
  * A progress bar component for showing a changing value in relation to a total.
  * 
@@ -78,7 +78,7 @@ package com.bit101.components
 		/**
 		 * Updates the size of the progress bar based on the current value.
 		 */
-		private function update():void
+		protected function update():void
 		{
 			_bar.scaleX = _value / _max;
 		}

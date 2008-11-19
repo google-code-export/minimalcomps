@@ -1,7 +1,7 @@
 /**
  * CheckBox.as
  * Keith Peters
- * version 0.95
+ * version 0.96
  * 
  * A basic CheckBox component.
  * 
@@ -128,7 +128,7 @@ package com.bit101.components
 		 * Internal click handler.
 		 * @param event The MouseEvent passed by the system.
 		 */
-		private function onClick(event:MouseEvent):void
+		protected function onClick(event:MouseEvent):void
 		{
 			_selected = !_selected;
 			_button.visible = _selected;

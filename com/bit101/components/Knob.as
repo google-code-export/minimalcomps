@@ -1,7 +1,7 @@
 /**
  * Knob.as
  * Keith Peters
- * version 0.95
+ * version 0.96
  * 
  * A knob component for choosing a numerical value.
  * 
@@ -98,7 +98,7 @@
 		 * Draw the knob at the specified radius.
 		 * @param radius The radius with which said knob will be drawn.
 		 */
-		private function drawKnob(radius:Number):void
+		protected function drawKnob(radius:Number):void
 		{
 			_knob.graphics.clear();
 			_knob.graphics.beginFill(Style.BACKGROUND);
@@ -122,7 +122,7 @@
 		/**
 		 * Updates the rotation of the knob based on the value, then formats the value label.
 		 */
-		private function updateKnob():void
+		protected function updateKnob():void
 		{
 			_knob.rotation = -225 + (_value - _min) / (_max - _min) * 270;
 			formatValueLabel();
@@ -131,7 +131,7 @@
 		/**
 		 * Adjusts value to be within minimum and maximum.
 		 */
-		private function correctValue():void
+		protected function correctValue():void
 		{
 			if(_max > _min)
 			{
@@ -206,7 +206,7 @@
 		/**
 		 * Internal handler for when user clicks on the knob. Starts tracking up/down motion of the mouse.
 		 */
-		private function onMouseDown(event:MouseEvent):void
+		protected function onMouseDown(event:MouseEvent):void
 		{
 			_startY = mouseY;
 			stage.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
@@ -216,7 +216,7 @@
 		/**
 		 * Internal handler for mouse move event. Updates value based on how far mouse has moved up or down.
 		 */
-		private function onMouseMove(event:MouseEvent):void
+		protected function onMouseMove(event:MouseEvent):void
 		{
 			var oldValue:Number = _value;
 			var diff:Number = _startY - mouseY;
@@ -235,7 +235,7 @@
 		/**
 		 * Internal handler for mouse up event. Stops mouse tracking.
 		 */
-		private function onMouseUp(event:MouseEvent):void
+		protected function onMouseUp(event:MouseEvent):void
 		{
 			stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
 			stage.removeEventListener(MouseEvent.MOUSE_UP, onMouseUp);

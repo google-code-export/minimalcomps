@@ -1,7 +1,7 @@
 /**
  * InputText.as
  * Keith Peters
- * version 0.95
+ * version 0.96
  * 
  * Copyright (c) 2008 Keith Peters
  * 
@@ -133,7 +133,7 @@ package com.bit101.components
 		 * Internal change handler.
 		 * @param event The Event passed by the system.
 		 */
-		private function onChange(event:Event):void
+		protected function onChange(event:Event):void
 		{
 			_text = _tf.text;
 		}

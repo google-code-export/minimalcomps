@@ -1,7 +1,7 @@
 /**
  * RotarySelector.as
  * Keith Peters
- * version 0.95
+ * version 0.96
  * 
  * A rotary selector component for choosing among different values.
  * 
@@ -100,7 +100,7 @@ package com.bit101.components
 		/**
 		 * Decrements the index of the current choice.
 		 */
-		private function decrement():void
+		protected function decrement():void
 		{
 			if(_choice > 0)
 			{
@@ -113,7 +113,7 @@ package com.bit101.components
 		/**
 		 * Increments the index of the current choice.
 		 */
-		private function increment():void
+		protected function increment():void
 		{
 			if(_choice < _numChoices - 1)
 			{
@@ -126,7 +126,7 @@ package com.bit101.components
 		/**
 		 * Removes old labels.
 		 */
-		private function resetLabels():void
+		protected function resetLabels():void
 		{
 			while(_labels.numChildren > 0)
 			{
@@ -140,7 +140,7 @@ package com.bit101.components
 		 * Draw the knob at the specified radius.
 		 * @param radius The radius with which said knob will be drawn.
 		 */
-		private function drawKnob(radius:Number):void
+		protected function drawKnob(radius:Number):void
 		{
 			_knob.graphics.clear();
 			_knob.graphics.beginFill(Style.BACKGROUND);
@@ -229,7 +229,7 @@ package com.bit101.components
 		 * Internal click handler.
 		 * @param event The MouseEvent passed by the system.
 		 */
-		private function onClick(event:MouseEvent):void
+		protected function onClick(event:MouseEvent):void
 		{
 			if(mouseX < _width / 2)
 			{
@@ -241,7 +241,7 @@ package com.bit101.components
 			}
 		}
 		
-		private function onLabelClick(event:Event):void
+		protected function onLabelClick(event:Event):void
 		{
 			var lab:Label = event.target as Label;
 			choice = _labels.getChildIndex(lab);
