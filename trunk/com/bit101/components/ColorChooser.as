@@ -1,7 +1,7 @@
 /**
  * ColorChooser.as
  * Keith Peters
- * version 0.95
+ * version 0.96
  * 
  * A bare bones Color Chooser component, allowing for textual input only.
  * 
@@ -115,7 +115,7 @@ package com.bit101.components
 		 * Internal change handler.
 		 * @param event The Event passed by the system.
 		 */
-		private function onChange(event:Event):void
+		protected function onChange(event:Event):void
 		{
 			event.stopImmediatePropagation();
 			_value = parseInt("0x" + _input.text, 16);

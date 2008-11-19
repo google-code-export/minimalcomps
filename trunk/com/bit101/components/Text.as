@@ -1,7 +1,7 @@
 /**
  * Label.as
  * Keith Peters
- * version 0.95
+ * version 0.96
  * 
  * A Text component for displaying multiple lines of text.
  * 
@@ -126,7 +126,7 @@ package com.bit101.components
 		// event handlers
 		///////////////////////////////////
 		
-		private function onChange(event:Event):void
+		protected function onChange(event:Event):void
 		{
 			_text = _tf.text;
 			dispatchEvent(event);

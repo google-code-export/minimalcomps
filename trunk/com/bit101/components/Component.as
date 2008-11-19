@@ -1,7 +1,7 @@
 /**
  * Component.as
  * Keith Peters
- * version 0.95
+ * version 0.96
  * 
  * Base class for all components
  * 
@@ -160,7 +160,7 @@ package com.bit101.components
 		/**
 		 * Called one frame after invalidate is called.
 		 */
-		private function onInvalidate(event:Event):void
+		protected function onInvalidate(event:Event):void
 		{
 			removeEventListener(Event.ENTER_FRAME, onInvalidate);
 			draw();

@@ -1,7 +1,7 @@
 /**
  * UISlider.as
  * Keith Peters
- * version 0.95
+ * version 0.96
  * 
  * A Slider with a label and value label. Abstract base class for VUISlider and HUISlider
  * 
@@ -148,7 +148,7 @@ package com.bit101.components
 		 * Handler called when the slider's value changes.
 		 * @param event The Event passed by the slider.
 		 */
-		private function onSliderChange(event:Event):void
+		protected function onSliderChange(event:Event):void
 		{
 			formatValueLabel();
 			dispatchEvent(new Event(Event.CHANGE));

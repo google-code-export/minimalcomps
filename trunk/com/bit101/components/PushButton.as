@@ -1,7 +1,7 @@
 /**
  * PushButton.as
  * Keith Peters
- * version 0.95
+ * version 0.96
  * 
  * A basic button component with a label.
  * 
@@ -146,7 +146,7 @@ package com.bit101.components
 		 * Internal mouseOver handler.
 		 * @param event The MouseEvent passed by the system.
 		 */
-		private function onMouseOver(event:MouseEvent):void
+		protected function onMouseOver(event:MouseEvent):void
 		{
 			_over = true;
 			addEventListener(MouseEvent.ROLL_OUT, onMouseOut);
@@ -156,7 +156,7 @@ package com.bit101.components
 		 * Internal mouseOut handler.
 		 * @param event The MouseEvent passed by the system.
 		 */
-		private function onMouseOut(event:MouseEvent):void
+		protected function onMouseOut(event:MouseEvent):void
 		{
 			_over = false;
 			if(!_down)
@@ -169,7 +169,7 @@ package com.bit101.components
 		 * Internal mouseOut handler.
 		 * @param event The MouseEvent passed by the system.
 		 */
-		private function onMouseDown(event:MouseEvent):void
+		protected function onMouseDown(event:MouseEvent):void
 		{
 			_down = true;
 			_face.filters = [getShadow(1, true)];
@@ -180,7 +180,7 @@ package com.bit101.components
 		 * Internal mouseUp handler.
 		 * @param event The MouseEvent passed by the system.
 		 */
-		private function onMouseUp(event:MouseEvent):void
+		protected function onMouseUp(event:MouseEvent):void
 		{
 			if(_toggle  && _over)
 			{

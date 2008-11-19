@@ -1,7 +1,7 @@
 /**
  * RadioButton.as
  * Keith Peters
- * version 0.95
+ * version 0.96
  * 
  * A basic radio button component, meant to be used in groups, where only one button in the group can be selected.
  * Currently only one group can be created.
@@ -165,7 +165,7 @@ package com.bit101.components
 		 * Internal click handler.
 		 * @param event The MouseEvent passed by the system.
 		 */
-		private function onClick(event:MouseEvent):void
+		protected function onClick(event:MouseEvent):void
 		{
 			selected = true;
 		}
