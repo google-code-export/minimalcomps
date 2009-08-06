@@ -29,6 +29,7 @@
 package com.bit101.components
 {
 	import flash.display.DisplayObjectContainer;
+	import flash.display.Sprite;
 	import flash.events.MouseEvent;
 
 	public class Window extends Component
@@ -40,6 +41,8 @@ package com.bit101.components
 		private var _color:int = -1;
 		private var _shadow:Boolean = true;
 		private var _draggable:Boolean = true;
+		private var _minimizeButton:Sprite;
+		private var _hasMinimizeButton:Boolean = false;
 		
 		
 		/**
@@ -73,8 +76,18 @@ package com.bit101.components
 			_titleBar.buttonMode = true;
 			_titleBar.useHandCursor = true;
 			_titleBar.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+			_titleBar.height = 20;
 			_titleLabel = new Label(_titleBar.content, 5, 1, _title);
 			_panel = new Panel(this, 0, 20);
+			
+			_minimizeButton = new Sprite();
+			_minimizeButton.graphics.beginFill(Style.BACKGROUND);
+			_minimizeButton.graphics.drawRect(5, 5, 10, 10);
+			_minimizeButton.graphics.endFill();
+			_minimizeButton.useHandCursor = true;
+			_minimizeButton.buttonMode = true;
+			_minimizeButton.addEventListener(MouseEvent.CLICK, onMinimize);
+			
 			filters = [getShadow(4, false)];
 		}
 		
@@ -94,6 +107,7 @@ package com.bit101.components
 			_titleBar.color = _color;
 			_panel.color = _color;
 			_titleBar.width = width;
+			_titleLabel.x = _hasMinimizeButton ? 20 : 5;
 			_panel.setSize(_width, _height - 20);
 		}
 
@@ -121,6 +135,11 @@ package com.bit101.components
 		{
 			this.stopDrag();
 			stage.removeEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+		}
+		
+		protected function onMinimize(event:MouseEvent):void
+		{
+			_panel.visible = !_panel.visible;
 		}
 		
 		///////////////////////////////////
@@ -197,6 +216,28 @@ package com.bit101.components
 			{
 				_titleBar.removeEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
 			}
+		}
+		public function get draggable():Boolean
+		{
+			return _draggable;
+		}
+		
+		public function set hasMinimizeButton(b:Boolean):void
+		{
+			_hasMinimizeButton = b;
+			if(_hasMinimizeButton)
+			{
+				addChild(_minimizeButton);
+			}
+			else if(contains(_minimizeButton))
+			{
+				removeChild(_minimizeButton);
+			}
+			invalidate();
+		}
+		public function get hasMinimizeButton():Boolean
+		{
+			return _hasMinimizeButton;
 		}
 	}
 }

@@ -57,7 +57,7 @@ package com.bit101.components
 		 * @param xpos The x position to place this component.
 		 * @param ypos The y position to place this component.
 		 */
-		public function Component(parent:DisplayObjectContainer = null, xpos:Number = 0, ypos:Number =  0):void
+		public function Component(parent:DisplayObjectContainer = null, xpos:Number = 0, ypos:Number =  0)
 		{
 			move(xpos, ypos);
 			if(parent != null)
