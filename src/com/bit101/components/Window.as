@@ -128,7 +128,7 @@ package com.bit101.components
 		///////////////////////////////////
 		
 		/**
-		 * Gets / sets whether or not this Panel will have an inner shadow.
+		 * Gets / sets whether or not this Window will have a drop shadow.
 		 */
 		public function set shadow(b:Boolean):void
 		{
