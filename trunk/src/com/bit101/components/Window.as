@@ -1,11 +1,11 @@
 /**
- * Panel.as
+ * Window.as
  * Keith Peters
  * version 0.96
  * 
- * A rectangular panel. Can be used as a container for other components.
+ * A draggable window. Can be used as a container for other components.
  * 
- * Copyright (c) 2008 Keith Peters
+ * Copyright (c) 2009 Keith Peters
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,21 +29,16 @@
 package com.bit101.components
 {
 	import flash.display.DisplayObjectContainer;
-	import flash.display.Shape;
-	import flash.display.Sprite;
-	
-	public class Panel extends Component
+	import flash.events.MouseEvent;
+
+	public class Window extends Component
 	{
-		private var _mask:Sprite;
-		private var _background:Shape;
+		private var _title:String;
+		private var _titleBar:Panel;
+		private var _titleLabel:Label;
+		private var _panel:Panel;
 		private var _color:int = -1;
 		private var _shadow:Boolean = true;
-		
-		
-		/**
-		 * Container for content added to this panel. This is masked, so best to add children to content, rather than directly to the panel.
-		 */
-		public var content:Sprite;
 		
 		
 		/**
@@ -51,12 +46,13 @@ package com.bit101.components
 		 * @param parent The parent DisplayObjectContainer on which to add this Panel.
 		 * @param xpos The x position to place this component.
 		 * @param ypos The y position to place this component.
+		 * @param title The string to display in the title bar.
 		 */
-		public function Panel(parent:DisplayObjectContainer = null, xpos:Number = 0, ypos:Number =  0)
+		public function Window(parent:DisplayObjectContainer=null, xpos:Number=0, ypos:Number=0, title:String="Window")
 		{
+			_title = title;
 			super(parent, xpos, ypos);
 		}
-		
 		
 		/**
 		 * Initializes the component.
@@ -72,18 +68,13 @@ package com.bit101.components
 		 */
 		override protected function addChildren():void
 		{
-			_background = new Shape();
-			addChild(_background);
-			
-			_mask = new Sprite();
-			_mask.mouseEnabled = false;
-			addChild(_mask);
-			
-			content = new Sprite();
-			addChild(content);
-			content.mask = _mask;
-			
-			filters = [getShadow(2, true)];
+			_titleBar = new Panel(this);
+			_titleBar.buttonMode = true;
+			_titleBar.useHandCursor = true;
+			_titleBar.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+			_titleLabel = new Label(_titleBar.content, 5, 1, _title);
+			_panel = new Panel(this, 0, 20);
+			filters = [getShadow(4, false)];
 		}
 		
 		
@@ -99,30 +90,37 @@ package com.bit101.components
 		override public function draw():void
 		{
 			super.draw();
-			_background.graphics.clear();
-			if(_color == -1)
-			{
-				_background.graphics.beginFill(Style.PANEL);
-			}
-			else
-			{
-				_background.graphics.beginFill(_color);
-			}
-			_background.graphics.drawRect(0, 0, _width, _height);
-			_background.graphics.endFill();
-			
-			_mask.graphics.clear();
-			_mask.graphics.beginFill(0xff0000);
-			_mask.graphics.drawRect(0, 0, _width, _height);
-			_mask.graphics.endFill();
+			_titleBar.color = _color;
+			_panel.color = _color;
+			_titleBar.width = width;
+			_panel.setSize(_width, _height - 20);
 		}
-		
-		
-		
-		
+
+
 		///////////////////////////////////
 		// event handlers
 		///////////////////////////////////
+		
+		/**
+		 * Internal mouseDown handler. Starts a drag.
+		 * @param event The MouseEvent passed by the system.
+		 */
+		protected function onMouseDown(event:MouseEvent):void
+		{
+			this.startDrag();
+			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+			parent.addChild(this);
+		}
+		
+		/**
+		 * Internal mouseUp handler. Stops the drag.
+		 * @param event The MouseEvent passed by the system.
+		 */
+		protected function onMouseUp(event:MouseEvent):void
+		{
+			this.stopDrag();
+			stage.removeEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+		}
 		
 		///////////////////////////////////
 		// getter/setters
@@ -134,9 +132,11 @@ package com.bit101.components
 		public function set shadow(b:Boolean):void
 		{
 			_shadow = b;
+			_titleBar.shadow = _shadow;
+			_panel.shadow = _shadow;
 			if(_shadow)
 			{
-				filters = [getShadow(2, true)];
+				filters = [getShadow(4, false)];
 			}
 			else
 			{
@@ -159,6 +159,27 @@ package com.bit101.components
 		public function get color():int
 		{
 			return _color;
+		}
+		
+		/**
+		 * Gets / sets the title shown in the title bar.
+		 */
+		public function set title(t:String):void
+		{
+			_title = t;
+			_titleLabel.text = _title;
+		}
+		public function get title():String
+		{
+			return _title;
+		}
+		
+		/**
+		 * Container for content added to this panel. This is just a reference to the content of the internal Panel, which is masked, so best to add children to content, rather than directly to the window.
+		 */
+		public function get content():DisplayObjectContainer
+		{
+			return _panel.content;
 		}
 	}
 }
