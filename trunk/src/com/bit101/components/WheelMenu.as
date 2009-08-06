@@ -1,11 +1,11 @@
 /**
  * WheelMenu.as
  * Keith Peters
- * version 0.96
+ * version 0.97
  * 
  * A radial menu that pops up around the mouse.
  * 
- * Copyright (c) 2008 Keith Peters
+ * Copyright (c) 2009 Keith Peters
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
