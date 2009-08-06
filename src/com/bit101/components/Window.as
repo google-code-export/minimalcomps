@@ -39,6 +39,7 @@ package com.bit101.components
 		private var _panel:Panel;
 		private var _color:int = -1;
 		private var _shadow:Boolean = true;
+		private var _draggable:Boolean = true;
 		
 		
 		/**
@@ -132,8 +133,6 @@ package com.bit101.components
 		public function set shadow(b:Boolean):void
 		{
 			_shadow = b;
-			_titleBar.shadow = _shadow;
-			_panel.shadow = _shadow;
 			if(_shadow)
 			{
 				filters = [getShadow(4, false)];
@@ -149,7 +148,7 @@ package com.bit101.components
 		}
 		
 		/**
-		 * Gets / sets the backgrond color of this panel.
+		 * Gets / sets the background color of this panel.
 		 */
 		public function set color(c:int):void
 		{
@@ -180,6 +179,24 @@ package com.bit101.components
 		public function get content():DisplayObjectContainer
 		{
 			return _panel.content;
+		}
+		
+		/**
+		 * Sets / gets whether or not the window will be draggable by the title bar.
+		 */
+		public function set draggable(b:Boolean):void
+		{
+			_draggable = b;
+			_titleBar.buttonMode = _draggable;
+			_titleBar.useHandCursor = _draggable;
+			if(_draggable)
+			{
+				_titleBar.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+			}
+			else
+			{
+				_titleBar.removeEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+			}
 		}
 	}
 }
