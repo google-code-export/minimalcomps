@@ -43,6 +43,7 @@ package com.bit101.components
 		protected var _max:Number = 100;
 		protected var _min:Number = 0;
 		protected var _orientation:String;
+		protected var _tick:Number = 1;
 		
 		public static const HORIZONTAL:String = "horizontal";
 		public static const VERTICAL:String = "vertical";
@@ -315,7 +316,7 @@ package com.bit101.components
 		}
 		public function get value():Number
 		{
-			return _value;
+			return Math.round(_value / _tick) * _tick;
 		}
 		
 		/**
@@ -344,6 +345,18 @@ package com.bit101.components
 		public function get minimum():Number
 		{
 			return _min;
+		}
+		
+		/**
+		 * Gets / sets the tick value of this slider. This round the value to the nearest multiple of this number. 
+		 */
+		public function set tick(t:Number):void
+		{
+			_tick = t;
+		}
+		public function get tick():Number
+		{
+			return _tick;
 		}
 		
 	}

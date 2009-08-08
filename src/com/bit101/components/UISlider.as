@@ -39,6 +39,7 @@ package com.bit101.components
 		private var _precision:int = 1;
 		protected var _sliderClass:Class;
 		private var _labelText:String;
+		private var _tick:Number = 1;
 		
 		
 		/**
@@ -199,7 +200,7 @@ package com.bit101.components
 		}
 		
 		/**
-		 * Gets / sets the number of decimals to format the value label.
+		 * Gets / sets the number of decimals to format the value label. Does not affect the actual value of the slider, just the number shown.
 		 */
 		public function set labelPrecision(decimals:int):void
 		{
@@ -223,5 +224,20 @@ package com.bit101.components
 		{
 			return _labelText;
 		}
+		
+		/**
+		 * Gets / sets the tick value of this slider. This round the value to the nearest multiple of this number. 
+		 */
+		public function set tick(t:Number):void
+		{
+			_tick = t;
+			_slider.tick = _tick;
+		}
+		public function get tick():Number
+		{
+			return _tick;
+		}
+		
+
 	}
 }
