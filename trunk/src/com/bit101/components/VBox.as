@@ -60,6 +60,9 @@ package com.bit101.components
 			return child;
 		}
 		
+		/**
+		 * Internal handler for resize event of any attached component. Will redo the layout based on new size.
+		 */
 		protected function onResize(event:Event):void
 		{
 			invalidate();

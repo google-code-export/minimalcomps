@@ -226,6 +226,9 @@ package com.bit101.components
 			return _draggable;
 		}
 		
+		/**
+		 * Gets / sets whether or not the window will show a minimize button that will toggle the window open and closed. A closed window will only show the title bar.
+		 */
 		public function set hasMinimizeButton(b:Boolean):void
 		{
 			_hasMinimizeButton = b;
@@ -244,6 +247,9 @@ package com.bit101.components
 			return _hasMinimizeButton;
 		}
 		
+		/**
+		 * Gets / sets whether the window is closed. A closed window will only show its title bar.
+		 */
 		public function set minimized(value:Boolean):void
 		{
 			_minimized = value;
@@ -255,6 +261,9 @@ package com.bit101.components
 			return _minimized;
 		}
 		
+		/**
+		 * Gets the height of the component. A minimized window's height will only be that of its title bar.
+		 */
 		override public function get height():Number
 		{
 			if(_panel.visible)
