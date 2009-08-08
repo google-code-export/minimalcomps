@@ -67,7 +67,6 @@ package com.bit101.components
 		override protected function init():void
 		{
 			super.init();
-			setSize(10, 10);
 			_timer = new Timer(500);
 			_timer.addEventListener(TimerEvent.TIMER, onTimer);
 		}
@@ -80,8 +79,8 @@ package com.bit101.components
 			_lite = new Shape();
 			addChild(_lite);
 			
-			_label = new Label();
-			addChild(_label);
+			_label = new Label(this, 0, 0, _labelText);
+			draw();
 		}
 		
 		/**
@@ -139,8 +138,9 @@ package com.bit101.components
 			drawLite();
 			
 			_label.text = _labelText;
-			_label.x = _width + 2;
-			_label.y = _height / 2 - _label.height / 2;
+			_label.x = 12;
+			_label.y = (10 - _label.height) / 2;
+			_width = _label.width + 12;
 		}
 		
 		/**

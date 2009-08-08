@@ -73,8 +73,10 @@ package com.bit101.components
 			_tf.embedFonts = true;
 			_tf.selectable = false;
 			_tf.mouseEnabled = false;
-			_tf.defaultTextFormat = new TextFormat("PF Ronda Seven", 8, Style.LABEL_TEXT);			
+			_tf.defaultTextFormat = new TextFormat("PF Ronda Seven", 8, Style.LABEL_TEXT);
+			_tf.text = _text;			
 			addChild(_tf);
+			draw();
 		}
 		
 		
