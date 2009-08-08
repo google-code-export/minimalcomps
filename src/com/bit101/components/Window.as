@@ -30,6 +30,7 @@ package com.bit101.components
 {
 	import flash.display.DisplayObjectContainer;
 	import flash.display.Sprite;
+	import flash.events.Event;
 	import flash.events.MouseEvent;
 
 	public class Window extends Component
@@ -43,6 +44,7 @@ package com.bit101.components
 		private var _draggable:Boolean = true;
 		private var _minimizeButton:Sprite;
 		private var _hasMinimizeButton:Boolean = false;
+		private var _minimized:Boolean = false;
 		
 		
 		/**
@@ -78,7 +80,9 @@ package com.bit101.components
 			_titleBar.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
 			_titleBar.height = 20;
 			_titleLabel = new Label(_titleBar.content, 5, 1, _title);
+			
 			_panel = new Panel(this, 0, 20);
+			_panel.visible = !_minimized;
 			
 			_minimizeButton = new Sprite();
 			_minimizeButton.graphics.beginFill(Style.BACKGROUND);
@@ -139,7 +143,7 @@ package com.bit101.components
 		
 		protected function onMinimize(event:MouseEvent):void
 		{
-			_panel.visible = !_panel.visible;
+			minimized = !minimized;
 		}
 		
 		///////////////////////////////////
@@ -238,6 +242,29 @@ package com.bit101.components
 		public function get hasMinimizeButton():Boolean
 		{
 			return _hasMinimizeButton;
+		}
+		
+		public function set minimized(value:Boolean):void
+		{
+			_minimized = value;
+			_panel.visible = !_minimized;
+			dispatchEvent(new Event(Event.RESIZE));
+		}
+		public function get minimized():Boolean
+		{
+			return _minimized;
+		}
+		
+		override public function get height():Number
+		{
+			if(_panel.visible)
+			{
+				return super.height;
+			}
+			else
+			{
+				return 20;
+			}
 		}
 	}
 }

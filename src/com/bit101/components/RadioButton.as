@@ -99,7 +99,6 @@ package com.bit101.components
 		override protected function init():void
 		{
 			super.init();
-			setSize(10, 10);
 			
 			buttonMode = true;
 			useHandCursor = true;
@@ -122,8 +121,8 @@ package com.bit101.components
 			_button.visible = false;
 			addChild(_button);
 			
-			_label = new Label();
-			addChild(_label);
+			_label = new Label(this, 0, 0, _labelText);
+			draw();
 			
 		}
 		
@@ -142,16 +141,17 @@ package com.bit101.components
 			super.draw();
 			_back.graphics.clear();
 			_back.graphics.beginFill(Style.BACKGROUND);
-			_back.graphics.drawCircle(_width / 2, _height / 2, _width / 2);
+			_back.graphics.drawCircle(5, 5, 5);
 			_back.graphics.endFill();
 			
 			_button.graphics.clear();
 			_button.graphics.beginFill(Style.BUTTON_FACE);
-			_button.graphics.drawCircle(_width / 2, _height / 2, _width / 2 - 2);
+			_button.graphics.drawCircle(5, 5, 3);
 			
-			_label.x = _width + 2;
-			_label.y = _height / 2 - _label.height / 2;
+			_label.x = 12;
+			_label.y = (10 - _label.height) / 2;
 			_label.text = _labelText;
+			_width = _label.width + 12;
 		}
 		
 		

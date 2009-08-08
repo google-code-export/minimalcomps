@@ -67,7 +67,6 @@ package com.bit101.components
 			super.init();
 			buttonMode = true;
 			useHandCursor = true;
-			setSize(10, 10);
 		}
 		
 		/**
@@ -84,8 +83,9 @@ package com.bit101.components
 			_button.visible = false;
 			addChild(_button);
 			
-			_label = new Label();
-			addChild(_label);
+			_label = new Label(this, 0, 0, _labelText);
+			draw();
+			trace(width);
 			
 			addEventListener(MouseEvent.CLICK, onClick);
 		}
@@ -105,16 +105,18 @@ package com.bit101.components
 			super.draw();
 			_back.graphics.clear();
 			_back.graphics.beginFill(Style.BACKGROUND);
-			_back.graphics.drawRect(0, 0, _width, _height);
+			_back.graphics.drawRect(0, 0, 10, 10);
 			_back.graphics.endFill();
 			
 			_button.graphics.clear();
 			_button.graphics.beginFill(Style.BUTTON_FACE);
-			_button.graphics.drawRect(2, 2, _width - 4, _height - 4);
+			_button.graphics.drawRect(2, 2, 6, 6);
 			
 			_label.text = _labelText;
-			_label.x = _width + 2;
-			_label.y = _height / 2 - _label.height / 2;
+			_label.x = 12;
+			_label.y = (10 - _label.height) / 2;
+			_width = _label.width + 12;
+			_height = 10;
 		}
 		
 		
