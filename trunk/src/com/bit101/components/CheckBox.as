@@ -85,7 +85,6 @@ package com.bit101.components
 			
 			_label = new Label(this, 0, 0, _labelText);
 			draw();
-			trace(width);
 			
 			addEventListener(MouseEvent.CLICK, onClick);
 		}
@@ -113,6 +112,7 @@ package com.bit101.components
 			_button.graphics.drawRect(2, 2, 6, 6);
 			
 			_label.text = _labelText;
+			_label.draw();
 			_label.x = 12;
 			_label.y = (10 - _label.height) / 2;
 			_width = _label.width + 12;

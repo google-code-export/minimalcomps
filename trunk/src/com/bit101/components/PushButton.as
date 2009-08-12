@@ -204,7 +204,6 @@ package com.bit101.components
 		public function set label(str:String):void
 		{
 			_labelText = str;
-//			invalidate();
 			draw();
 		}
 		public function get label():String
@@ -214,7 +213,10 @@ package com.bit101.components
 		
 		public function set selected(value:Boolean):void
 		{
-			if(!_toggle) return;
+			if(!_toggle)
+			{
+				value = false;
+			}
 			
 			_selected = value;
 			_down = _selected;

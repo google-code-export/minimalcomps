@@ -85,9 +85,17 @@ package com.bit101.components
 			_panel.visible = !_minimized;
 			
 			_minimizeButton = new Sprite();
-			_minimizeButton.graphics.beginFill(Style.BACKGROUND);
-			_minimizeButton.graphics.drawRect(5, 5, 10, 10);
+			_minimizeButton.graphics.beginFill(0, 0);
+			_minimizeButton.graphics.drawRect(-10, -10, 20, 20);
 			_minimizeButton.graphics.endFill();
+			_minimizeButton.graphics.beginFill(0, .35);
+			_minimizeButton.graphics.moveTo(-5, -3);
+			_minimizeButton.graphics.lineTo(5, -3);
+			_minimizeButton.graphics.lineTo(0, 4);
+			_minimizeButton.graphics.lineTo(-5, -3);
+			_minimizeButton.graphics.endFill();
+			_minimizeButton.x = 10;
+			_minimizeButton.y = 10;
 			_minimizeButton.useHandCursor = true;
 			_minimizeButton.buttonMode = true;
 			_minimizeButton.addEventListener(MouseEvent.CLICK, onMinimize);
@@ -254,6 +262,14 @@ package com.bit101.components
 		{
 			_minimized = value;
 			_panel.visible = !_minimized;
+			if(_minimized)
+			{
+				_minimizeButton.rotation = -90;
+			}
+			else
+			{
+				_minimizeButton.rotation = 0;
+			}
 			dispatchEvent(new Event(Event.RESIZE));
 		}
 		public function get minimized():Boolean

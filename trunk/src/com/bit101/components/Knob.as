@@ -42,6 +42,7 @@
 		private var _min:Number = 0;
 		private var _mouseRange:Number = 100;
 		private var _precision:int = 1;
+		private var _radius:Number = 20;
 		private var _startY:Number;
 		private var _value:Number = 0;
 		private var _valueLabel:Label;
@@ -71,7 +72,6 @@
 		override protected function init():void
 		{
 			super.init();
-			setSize(40, 40);
 		}
 		
 		/**
@@ -98,24 +98,24 @@
 		 * Draw the knob at the specified radius.
 		 * @param radius The radius with which said knob will be drawn.
 		 */
-		protected function drawKnob(radius:Number):void
+		protected function drawKnob():void
 		{
 			_knob.graphics.clear();
 			_knob.graphics.beginFill(Style.BACKGROUND);
-			_knob.graphics.drawCircle(0, 0, radius);
+			_knob.graphics.drawCircle(0, 0, _radius);
 			_knob.graphics.endFill();
 			
 			_knob.graphics.beginFill(Style.BUTTON_FACE);
-			_knob.graphics.drawCircle(0, 0, radius - 2);
+			_knob.graphics.drawCircle(0, 0, _radius - 2);
 			_knob.graphics.endFill();
 			
 			_knob.graphics.beginFill(Style.BACKGROUND);
-			var s:Number = radius * .1;
-			_knob.graphics.drawRect(radius, -s, s*1.5, s * 2);
+			var s:Number = _radius * .1;
+			_knob.graphics.drawRect(_radius, -s, s*1.5, s * 2);
 			_knob.graphics.endFill();
 			
-			_knob.x = _width / 2;
-			_knob.y = _height / 2 + 20;
+			_knob.x = _radius;
+			_knob.y = _radius + 20;
 			updateKnob();
 		}
 		
@@ -187,16 +187,19 @@
 		{
 			super.draw();
 			
-			var radius:Number = Math.min(_width, _height) / 2;
-			drawKnob(radius);
+			drawKnob();
 			
 			_label.text = _labelText;
 			_label.draw();
-			_label.x = _width / 2 - _label.width / 2;
+			_label.x = _radius - _label.width / 2;
 			_label.y = 0;
 			
 			formatValueLabel();
-			_valueLabel.y = _height + 20;
+			_valueLabel.x = _radius - _valueLabel.width / 2;
+			_valueLabel.y = _radius * 2 + 20;
+			
+			_width = _radius * 2;
+			_height = _radius * 2 + 40;
 		}
 		
 		///////////////////////////////////
