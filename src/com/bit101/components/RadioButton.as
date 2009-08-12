@@ -151,7 +151,9 @@ package com.bit101.components
 			_label.x = 12;
 			_label.y = (10 - _label.height) / 2;
 			_label.text = _labelText;
+			_label.draw();
 			_width = _label.width + 12;
+			_height = 10;
 		}
 		
 		

@@ -141,6 +141,7 @@ package com.bit101.components
 			_label.x = 12;
 			_label.y = (10 - _label.height) / 2;
 			_width = _label.width + 12;
+			_height = 10;
 		}
 		
 		/**
@@ -199,5 +200,20 @@ package com.bit101.components
 		{
 			return _timer.running;
 		}
+		
+		/**
+		 * Sets / gets the label text shown on this component.
+		 */
+		public function set label(str:String):void
+		{
+			_labelText = str;
+			draw();
+		}
+		public function get label():String
+		{
+			return _labelText;
+		}
+		
+
 	}
 }
