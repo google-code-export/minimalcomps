@@ -55,7 +55,7 @@ package com.bit101.components
 		
 		private var _usePopup:Boolean = false;
 		private var _model:DisplayObject;
-		private var _defaultModelColors:Array=[0xFF0000, 0xFFFF00, 0x00FF00, 0x00FFFF, 0x0000FF, 0xFF00FF, 0xFF0000];
+		private var _defaultModelColors:Array=[0xFF0000, 0xFFFF00, 0x00FF00, 0x00FFFF, 0x0000FF, 0xFF00FF, 0xFF0000,0xFFFFFF,0x000000];
 		private var _colors:BitmapData;
 		private var _colorsContainer:Sprite;
 		private var _popupAlign:String = BOTTOM;
@@ -114,6 +114,8 @@ package com.bit101.components
 			addChild(_swatch);
 			
 			_colorsContainer = new Sprite();
+			_colorsContainer.addEventListener(Event.ADDED_TO_STAGE, onColorsAddedToStage);
+			_colorsContainer.addEventListener(Event.REMOVED_FROM_STAGE, onColorsRemovedFromStage);
 			_model = getDefaultModel();
 			drawColors(_model);
 		}
@@ -231,11 +233,25 @@ package com.bit101.components
 		}
 		
 		/**
-		 * The color picker mode Mouse Handlers 
+		 * The color picker mode Handlers 
 		 */
+		
+		private function onColorsRemovedFromStage(e:Event):void {
+			stage.removeEventListener(MouseEvent.CLICK, onStageClick);
+		}
+		
+		private function onColorsAddedToStage(e:Event):void {
+			stage.addEventListener(MouseEvent.CLICK, onStageClick);
+		}
+		
+		private function onStageClick(e:MouseEvent):void {
+			displayColors();
+		}
+		 
 		
 		private function onSwatchClick(event:MouseEvent):void 
 		{
+			event.stopImmediatePropagation();
 			displayColors();
 		}
 		
@@ -264,23 +280,23 @@ package com.bit101.components
 		private function displayColors():void 
 		{
 			if (_colorsContainer.parent) _colorsContainer.parent.removeChild(_colorsContainer);
-			else addChild(_colorsContainer);
+			else stage.addChild(_colorsContainer);
 		}		
 		
 		private function placeColors():void{
 			switch (_popupAlign) 
 			{
 				case TOP : 
-					_colorsContainer.x = 0;
-					_colorsContainer.y = -_colorsContainer.height - 4;
+					_colorsContainer.x = x;
+					_colorsContainer.y = y-_colorsContainer.height - 4;
 				break;
 				case BOTTOM : 
-					_colorsContainer.x = 0;
-					_colorsContainer.y = 22;
+					_colorsContainer.x =x;
+					_colorsContainer.y = y+22;
 				break;
 				default: 
-					_colorsContainer.x = 0;
-					_colorsContainer.y = 22;
+					_colorsContainer.x = x;
+					_colorsContainer.y = y+22;
 				break;
 			}
 		}
