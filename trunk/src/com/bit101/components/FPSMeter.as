@@ -53,10 +53,13 @@
 		{
 			super(parent, xpos, ypos);
 			_prefix = prefix;
-			_label = new Label(this, 0, 0, _prefix + stage.frameRate.toString());
+			_label = new Label(this, 0, 0);
 			_frames = 0;
-			addEventListener(Event.ENTER_FRAME, onEnterFrame);
 			_startTime = getTimer();
+			if(stage != null)
+			{
+				addEventListener(Event.ENTER_FRAME, onEnterFrame);
+			}
 			addEventListener(Event.REMOVED_FROM_STAGE, onRemovedFromStage);
 		}
 		
