@@ -125,6 +125,7 @@ package com.bit101.components
 			_label = new Label(this, 0, 0, _labelText);
 			draw();
 			
+			mouseChildren = false;
 		}
 		
 		
