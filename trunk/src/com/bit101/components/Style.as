@@ -1,12 +1,12 @@
 /**
  * Style.as
  * Keith Peters
- * version 0.97
+ * version 0.98
  * 
  * A collection of style variables used by the components.
  * If you want to customize the colors of your components, change these values BEFORE instantiating any components.
  * 
- * Copyright (c) 2009 Keith Peters
+ * Copyright (c) 2010 Keith Peters
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
