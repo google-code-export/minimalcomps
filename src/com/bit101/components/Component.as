@@ -205,11 +205,11 @@ package com.bit101.components
 		/**
 		 * Sets/gets in integer that can identify the component.
 		 */
-		protected function set tag(value:int):void
+		public function set tag(value:int):void
 		{
 			_tag = value;
 		}
-		protected function get tag():int
+		public function get tag():int
 		{
 			return _tag;
 		}
