@@ -210,6 +210,9 @@ package com.bit101.components
 			return _labelText;
 		}
 
+		/**
+		 * Sets / gets the group name, which allows groups of RadioButtons to function seperately.
+		 */
 		public function get groupName():String
 		{
 			return _groupName;

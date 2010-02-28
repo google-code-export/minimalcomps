@@ -48,6 +48,7 @@ package com.bit101.components
 		
 		protected var _width:Number = 0;
 		protected var _height:Number = 0;
+		protected var _tag:int = -1;
 		
 		public static const DRAW:String = "draw";
 
@@ -199,6 +200,18 @@ package com.bit101.components
 		override public function get height():Number
 		{
 			return _height;
+		}
+		
+		/**
+		 * Sets/gets in integer that can identify the component.
+		 */
+		protected function set tag(value:int):void
+		{
+			_tag = value;
+		}
+		protected function get tag():int
+		{
+			return _tag;
 		}
 		
 		/**
