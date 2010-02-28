@@ -40,6 +40,7 @@ package com.bit101.components
 		private var _selected:Boolean = false;
 		private var _label:Label;
 		private var _labelText:String = "";
+		private var _groupName:String = "defaultRadioGroup";
 		
 		private static var buttons:Array;
 		
@@ -86,7 +87,7 @@ package com.bit101.components
 		{
 			for(var i:uint = 0; i < buttons.length; i++)
 			{
-				if(buttons[i] != rb)
+				if(buttons[i] != rb && buttons[i].groupName == rb.groupName)
 				{
 					buttons[i].selected = false;
 				}
@@ -208,6 +209,17 @@ package com.bit101.components
 		{
 			return _labelText;
 		}
+
+		public function get groupName():String
+		{
+			return _groupName;
+		}
+
+		public function set groupName(value:String):void
+		{
+			_groupName = value;
+		}
+
 		
 	}
 }
