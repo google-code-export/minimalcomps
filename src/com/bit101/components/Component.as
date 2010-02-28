@@ -1,11 +1,11 @@
 /**
  * Component.as
  * Keith Peters
- * version 0.97
+ * version 0.98
  * 
  * Base class for all components
  * 
- * Copyright (c) 2009 Keith Peters
+ * Copyright (c) 2010 Keith Peters
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
