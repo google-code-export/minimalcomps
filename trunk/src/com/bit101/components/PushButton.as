@@ -163,6 +163,7 @@ package com.bit101.components
 			{
 				_face.filters = [getShadow(1)];
 			}
+			removeEventListener(MouseEvent.ROLL_OUT, onMouseOut);
 		}
 		
 		/**
