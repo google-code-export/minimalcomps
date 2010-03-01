@@ -104,8 +104,8 @@ package com.bit101.components
 			_bar.graphics.clear();
 			_bar.graphics.beginFill(Style.PROGRESS_BAR);
 			_bar.graphics.drawRect(0, 0, _width - 2, _height - 2);
-			_bar.scaleX = 0;
 			_bar.graphics.endFill();
+			update();
 		}
 		
 		
