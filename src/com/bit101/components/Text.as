@@ -149,6 +149,9 @@ package com.bit101.components
 			return _text;
 		}
 		
+		/**
+		 * Returns a reference to the internal text field in the component.
+		 */
 		public function get textField():TextField
 		{
 			return _tf;
