@@ -40,6 +40,7 @@ package com.bit101.components
 		private var _text:String = "";
 		private var _editable:Boolean = true;
 		private var _panel:Panel;
+		private var _selectable:Boolean = true;
 		
 		
 		/**
@@ -113,8 +114,8 @@ package com.bit101.components
 			}
 			else
 			{
-				_tf.mouseEnabled = false;
-				_tf.selectable = false;
+				_tf.mouseEnabled = _selectable;
+				_tf.selectable = _selectable;
 				_tf.type = TextFieldType.DYNAMIC;
 			}
 		}
@@ -168,6 +169,19 @@ package com.bit101.components
 		public function get editable():Boolean
 		{
 			return _editable;
+		}
+		
+		/**
+		 * Gets / sets whether or not this text component will be selectable. Only meaningful if editable is false.
+		 */
+		public function set selectable(b:Boolean):void
+		{
+			_selectable = b;
+			invalidate();
+		}
+		public function get selectable():Boolean
+		{
+			return _selectable;
 		}
 	}
 }
