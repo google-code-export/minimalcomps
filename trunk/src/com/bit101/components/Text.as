@@ -149,6 +149,11 @@ package com.bit101.components
 			return _text;
 		}
 		
+		public function get textField():TextField
+		{
+			return _tf;
+		}
+		
 		/**
 		 * Gets / sets whether or not this text component will be editable.
 		 */
