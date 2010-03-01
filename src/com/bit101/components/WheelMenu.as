@@ -213,7 +213,7 @@ package com.bit101.components
 			_highlightColor = value;
 			for(var i:int = 0; i < _numButtons; i++)
 			{
-				_buttons[i].selectedColor = _highlightColor;
+				_buttons[i].highlightColor = _highlightColor;
 			}
 		}
 		public function get highlightColor():uint
