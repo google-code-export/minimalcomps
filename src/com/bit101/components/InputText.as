@@ -159,6 +159,14 @@ package com.bit101.components
 		}
 		
 		/**
+		 * Returns a reference to the internal text field in the component.
+		 */
+		public function get textField():TextField
+		{
+			return _tf;
+		}
+		
+		/**
 		 * Gets / sets the list of characters that are allowed in this TextInput.
 		 */
 		public function set restrict(str:String):void
