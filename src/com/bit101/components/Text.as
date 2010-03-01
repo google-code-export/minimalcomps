@@ -41,6 +41,7 @@ package com.bit101.components
 		private var _editable:Boolean = true;
 		private var _panel:Panel;
 		private var _selectable:Boolean = true;
+		private var _html:Boolean = false;
 		
 		
 		/**
@@ -105,7 +106,14 @@ package com.bit101.components
 			
 			_tf.width = _width - 4;
 			_tf.height = _height - 4;
-			_tf.text = _text;
+			if(_html)
+			{
+				_tf.htmlText = _text;
+			}
+			else
+			{
+				_tf.text = _text;
+			}
 			if(_editable)
 			{
 				_tf.mouseEnabled = true;
@@ -182,6 +190,19 @@ package com.bit101.components
 		public function get selectable():Boolean
 		{
 			return _selectable;
+		}
+		
+		/**
+		 * Gets / sets whether or not text will be rendered as HTML or plain text.
+		 */
+		public function set html(b:Boolean):void
+		{
+			_html = b;
+			invalidate();
+		}
+		public function get html():Boolean
+		{
+			return _html;
 		}
 	}
 }
