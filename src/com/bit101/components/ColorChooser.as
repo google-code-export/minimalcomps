@@ -43,6 +43,7 @@ package com.bit101.components
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.geom.Matrix;
+	import flash.geom.Point;
 	
 	public class ColorChooser extends Component
 	{
@@ -279,24 +280,27 @@ package com.bit101.components
 		
 		private function displayColors():void 
 		{
+			placeColors();
 			if (_colorsContainer.parent) _colorsContainer.parent.removeChild(_colorsContainer);
 			else stage.addChild(_colorsContainer);
 		}		
 		
 		private function placeColors():void{
-			switch (_popupAlign) 
+			var point:Point = new Point(x, y);
+			if(parent) point = parent.localToGlobal(point);
+			switch (_popupAlign)
 			{
 				case TOP : 
-					_colorsContainer.x = x;
-					_colorsContainer.y = y-_colorsContainer.height - 4;
+					_colorsContainer.x = point.x;
+					_colorsContainer.y = point.y - _colorsContainer.height - 4;
 				break;
 				case BOTTOM : 
-					_colorsContainer.x =x;
-					_colorsContainer.y = y+22;
+					_colorsContainer.x = point.x;
+					_colorsContainer.y = point.y + 22;
 				break;
 				default: 
-					_colorsContainer.x = x;
-					_colorsContainer.y = y+22;
+					_colorsContainer.x = point.x;
+					_colorsContainer.y = point.y + 22;
 				break;
 			}
 		}
