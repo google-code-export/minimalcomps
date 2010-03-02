@@ -100,6 +100,7 @@ package com.bit101.components
 		{
 			super.draw();
 			_background.graphics.clear();
+			_background.graphics.lineStyle(1, 0, 0.1);
 			if(_color == -1)
 			{
 				_background.graphics.beginFill(Style.PANEL);
