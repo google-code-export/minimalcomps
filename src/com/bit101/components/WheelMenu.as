@@ -68,6 +68,7 @@ package com.bit101.components
 			_outerRadius = outerRadius;
 			_iconRadius = iconRadius;
 			_innerRadius = innerRadius;
+			addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 			super(parent);
 			
 			if(defaultHandler != null)
@@ -90,7 +91,6 @@ package com.bit101.components
 			makeButtons();
 
 			filters = [new DropShadowFilter(4, 45, 0, 1, 4, 4, .2, 4)];
-			hide();
 		}
 		
 		/**
@@ -151,6 +151,24 @@ package com.bit101.components
 		///////////////////////////////////
 		// event handlers
 		///////////////////////////////////
+		
+		/**
+		 * Called when the component is added to the stage. Adds mouse listeners to the stage.
+		 */
+		protected function onAddedToStage(event:Event):void
+		{
+			hide();
+			addEventListener(Event.REMOVED_FROM_STAGE, onRemovedFromStage);
+		}
+		
+		/**
+		 * Called when the component is removed from the stage. Removes mouse listeners from stage.
+		 */
+		protected function onRemovedFromStage(event:Event):void
+		{
+			stage.removeEventListener(MouseEvent.MOUSE_UP, onStageMouseUp);
+			removeEventListener(Event.REMOVED_FROM_STAGE, onRemovedFromStage);
+		}
 		
 		/**
 		 * Called when one of the buttons is selected. Sets selected index and dispatches select event.
