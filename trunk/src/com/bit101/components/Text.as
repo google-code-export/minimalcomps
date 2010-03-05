@@ -1,7 +1,7 @@
 /**
  * Label.as
  * Keith Peters
- * version 0.98
+ * version 0.99
  * 
  * A Text component for displaying multiple lines of text.
  * 

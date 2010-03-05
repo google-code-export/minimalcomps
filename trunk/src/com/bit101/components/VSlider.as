@@ -1,7 +1,7 @@
 /**
  * VSlider.as
  * Keith Peters
- * version 0.98
+ * version 0.99
  * 
  * A Vertical Slider component for choosing values.
  * 

@@ -1,7 +1,7 @@
 /**
  * IndicatorLight.as
  * Keith Peters
- * version 0.98
+ * version 0.99
  * 
  * An indicator light that can be turned on, off, or set to flash.
  * 

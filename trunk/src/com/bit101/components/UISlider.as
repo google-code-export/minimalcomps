@@ -1,7 +1,7 @@
 /**
  * UISlider.as
  * Keith Peters
- * version 0.98
+ * version 0.99
  * 
  * A Slider with a label and value label. Abstract base class for VUISlider and HUISlider
  * 
