@@ -56,6 +56,7 @@ package com.bit101.components
 		protected override function init():void
 		{
 			super.init();
+			setSize(100, 120);
 		}
 		
 		/**
