@@ -1,7 +1,7 @@
 /**
  * WheelMenu.as
  * Keith Peters
- * version 0.98
+ * version 0.99
  * 
  * A radial menu that pops up around the mouse.
  * 

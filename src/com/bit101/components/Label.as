@@ -1,7 +1,7 @@
 /**
  * Label.as
  * Keith Peters
- * version 0.98
+ * version 0.99
  * 
  * A Label component for displaying a single line of text.
  * 

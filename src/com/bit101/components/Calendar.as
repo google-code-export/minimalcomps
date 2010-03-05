@@ -1,7 +1,7 @@
 /**
  * Component.as
  * Keith Peters
- * version 0.98
+ * version 0.99
  * 
  * Calendar component for showing and selecting a date.
  * 

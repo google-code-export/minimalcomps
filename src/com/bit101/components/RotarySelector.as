@@ -1,7 +1,7 @@
 /**
  * RotarySelector.as
  * Keith Peters
- * version 0.98
+ * version 0.99
  * 
  * A rotary selector component for choosing among different values.
  * 

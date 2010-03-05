@@ -1,7 +1,7 @@
 /**
  * PushButton.as
  * Keith Peters
- * version 0.98
+ * version 0.99
  * 
  * A basic button component with a label.
  * 
