@@ -1,7 +1,7 @@
 /**
  * InputText.as
  * Keith Peters
- * version 0.99
+ * version 0.101
  * 
  * Copyright (c) 2010 Keith Peters
  * 
