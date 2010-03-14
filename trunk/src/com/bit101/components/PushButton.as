@@ -1,7 +1,7 @@
 /**
  * PushButton.as
  * Keith Peters
- * version 0.99
+ * version 0.101
  * 
  * A basic button component with a label.
  * 
@@ -34,14 +34,14 @@ package com.bit101.components
 
 	public class PushButton extends Component
 	{
-		private var _back:Sprite;
-		private var _face:Sprite;
-		private var _label:Label;
-		private var _labelText:String = "";
-		private var _over:Boolean = false;
-		private var _down:Boolean = false;
-		private var _selected:Boolean = false;
-		private var _toggle:Boolean = false;
+		protected var _back:Sprite;
+		protected var _face:Sprite;
+		protected var _label:Label;
+		protected var _labelText:String = "";
+		protected var _over:Boolean = false;
+		protected var _down:Boolean = false;
+		protected var _selected:Boolean = false;
+		protected var _toggle:Boolean = false;
 		
 		/**
 		 * Constructor

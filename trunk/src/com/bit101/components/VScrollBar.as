@@ -1,9 +1,9 @@
 /**
- * VSlider.as
+ * VScrollBar.as
  * Keith Peters
  * version 0.101
  * 
- * A Vertical Slider component for choosing values.
+ * A vertical scroll bar for use in other components. 
  * 
  * Copyright (c) 2010 Keith Peters
  * 
@@ -25,21 +25,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
- 
+
 package com.bit101.components
 {
 	import flash.display.DisplayObjectContainer;
-
-	public class VSlider extends Slider
+	
+	public class VScrollBar extends ScrollBar
 	{
 		/**
 		 * Constructor
-		 * @param parent The parent DisplayObjectContainer on which to add this Slider.
+		 * @param parent The parent DisplayObjectContainer on which to add this ScrollBar.
 		 * @param xpos The x position to place this component.
 		 * @param ypos The y position to place this component.
-		 * @param defaultHandler The event handling function to handle the default event for this component.
+		 * @param defaultHandler The event handling function to handle the default event for this component (change in this case).
 		 */
-		public function VSlider(parent:DisplayObjectContainer=null, xpos:Number=0, ypos:Number=0, defaultHandler:Function = null)
+		public function VScrollBar(parent:DisplayObjectContainer=null, xpos:Number=0, ypos:Number=0, defaultHandler:Function=null)
 		{
 			super(Slider.VERTICAL, parent, xpos, ypos, defaultHandler);
 		}

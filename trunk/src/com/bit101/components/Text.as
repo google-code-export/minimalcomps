@@ -1,7 +1,7 @@
 /**
- * Label.as
+ * Text.as
  * Keith Peters
- * version 0.99
+ * version 0.101
  * 
  * A Text component for displaying multiple lines of text.
  * 
@@ -36,12 +36,12 @@ package com.bit101.components
 	
 	public class Text extends Component
 	{
-		private var _tf:TextField;
-		private var _text:String = "";
-		private var _editable:Boolean = true;
-		private var _panel:Panel;
-		private var _selectable:Boolean = true;
-		private var _html:Boolean = false;
+		protected var _tf:TextField;
+		protected var _text:String = "";
+		protected var _editable:Boolean = true;
+		protected var _panel:Panel;
+		protected var _selectable:Boolean = true;
+		protected var _html:Boolean = false;
 		
 		
 		/**
@@ -135,6 +135,9 @@ package com.bit101.components
 		// event handlers
 		///////////////////////////////////
 		
+		/**
+		 * Called when the text in the text field is manually changed.
+		 */
 		protected function onChange(event:Event):void
 		{
 			_text = _tf.text;
