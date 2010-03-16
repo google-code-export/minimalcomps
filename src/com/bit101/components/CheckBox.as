@@ -67,6 +67,7 @@ package com.bit101.components
 			super.init();
 			buttonMode = true;
 			useHandCursor = true;
+			mouseChildren = false;
 		}
 		
 		/**
@@ -167,6 +168,15 @@ package com.bit101.components
 		public function get selected():Boolean
 		{
 			return _selected;
+		}
+
+		/**
+		 * Sets/gets whether this component will be enabled or not.
+		 */
+		public override function set enabled(value:Boolean):void
+		{
+			super.enabled = value;
+			mouseChildren = false;
 		}
 
 	}

@@ -49,6 +49,7 @@ package com.bit101.components
 		protected var _width:Number = 0;
 		protected var _height:Number = 0;
 		protected var _tag:int = -1;
+		protected var _enabled:Boolean = true;
 		
 		public static const DRAW:String = "draw";
 
@@ -229,5 +230,20 @@ package com.bit101.components
 		{
 			super.y = Math.round(value);
 		}
+
+		/**
+		 * Sets/gets whether this component is enabled or not.
+		 */
+		public function set enabled(value:Boolean):void
+		{
+			_enabled = value;
+			mouseEnabled = mouseChildren = _enabled;
+			alpha = _enabled ? 1.0 : 0.5;
+		}
+		public function get enabled():Boolean
+		{
+			return _enabled;
+		}
+
 	}
 }
