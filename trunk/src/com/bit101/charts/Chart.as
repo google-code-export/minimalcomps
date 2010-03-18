@@ -29,13 +29,14 @@
 package com.bit101.charts
 {
 	
+	import com.bit101.components.Component;
 	import com.bit101.components.Label;
 	import com.bit101.components.Panel;
 	
 	import flash.display.DisplayObjectContainer;
 	import flash.display.Shape;
 	
-	public class Chart extends Panel
+	public class Chart extends Component
 	{
 		protected var _data:Array;
 		protected var _chartHolder:Shape;
@@ -46,6 +47,7 @@ package com.bit101.charts
 		protected var _minLabel:Label;
 		protected var _showScaleLabels:Boolean = false;
 		protected var _labelPrecision:int = 0;
+		protected var _panel:Panel;
 		
 		/**
 		 * Constructor
@@ -75,8 +77,10 @@ package com.bit101.charts
 		protected override function addChildren() : void
 		{
 			super.addChildren();
+			_panel = new Panel(this);
+			
 			_chartHolder = new Shape();
-			content.addChild(_chartHolder);
+			_panel.content.addChild(_chartHolder);
 			
 			_maxLabel = new Label();
 			_minLabel = new Label();
@@ -133,6 +137,7 @@ package com.bit101.charts
 		public override function draw() : void
 		{
 			super.draw();
+			_panel.setSize(width, height);
 			_chartHolder.graphics.clear();
 			if(_data != null)
 			{
