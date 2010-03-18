@@ -48,7 +48,7 @@ package com.bit101.charts
 		}
 		
 		/**
-		 * Graphs the numeric data in the chart. Override in subclasses.
+		 * Graphs the numeric data in the chart.
 		 */
 		protected override function drawChart():void
 		{
