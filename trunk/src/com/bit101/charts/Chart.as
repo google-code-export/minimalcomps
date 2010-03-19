@@ -142,19 +142,20 @@ package com.bit101.charts
 			if(_data != null)
 			{
 				drawChart();
+			
+				var mult:Number = Math.pow(10, _labelPrecision);
+				var maxVal:Number = Math.round(maximum * mult) / mult;
+				_maxLabel.text = maxVal.toString();
+				_maxLabel.draw();
+				_maxLabel.x = -_maxLabel.width - 5;
+				_maxLabel.y = -_maxLabel.height * 0.5; 
+				
+				var minVal:Number = Math.round(minimum * mult) / mult;
+				_minLabel.text = minVal.toString();
+				_minLabel.draw();
+				_minLabel.x = -_minLabel.width - 5;
+				_minLabel.y = height - _minLabel.height * 0.5;
 			}
-			
-			var mult:Number = Math.pow(10, _labelPrecision);
-			var maxVal:Number = Math.round(maximum * mult) / mult;
-			_maxLabel.text = maxVal.toString();
-			_maxLabel.draw();
-			_maxLabel.x = -_maxLabel.width - 5;
-			
-			var minVal:Number = Math.round(minimum * mult) / mult;
-			_minLabel.text = minVal.toString();
-			_minLabel.draw();
-			_minLabel.x = -_minLabel.width - 5;
-			_minLabel.y = height - _minLabel.height;
 		}
 		
 		///////////////////////////////////
