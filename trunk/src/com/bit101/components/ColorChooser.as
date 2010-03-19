@@ -1,7 +1,7 @@
 /**
  * ColorChooser.as
  * Keith Peters
- * version 0.101
+ * version 0.102
  * 
  * A Color Chooser component, allowing textual input, a default gradient, or custom image.
  * 
