@@ -1,7 +1,7 @@
 /**
  * Text.as
  * Keith Peters
- * version 0.102
+ * version 0.9
  * 
  * A Text component for displaying multiple lines of text.
  * 

@@ -1,7 +1,7 @@
 /**
  * TextArea.as
  * Keith Peters
- * version 0.102
+ * version 0.9
  * 
  * A Text component for displaying multiple lines of text with a scrollbar.
  * 
@@ -66,6 +66,7 @@ package com.bit101.components
 			var percent:Number = visibleLines / _tf.numLines;
 			_scrollbar.setSliderParams(1, _tf.maxScrollV, _tf.scrollV);
 			_scrollbar.setThumbPercent(percent);
+			_scrollbar.pageSize = visibleLines;
 		}
 		
 		
