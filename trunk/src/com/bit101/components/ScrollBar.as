@@ -1,7 +1,7 @@
 /**
  * ScrollBar.as
  * Keith Peters
- * version 0.102
+ * version 0.9
  * 
  * Base class for HScrollBar and VScrollBar
  * 
@@ -38,6 +38,7 @@ package com.bit101.components
 		protected var _downButton:PushButton;
 		protected var _scrollSlider:ScrollSlider;
 		protected var _orientation:String;
+		protected var _lineSize:int = 1;
 		
 		/**
 		 * Constructor
@@ -69,6 +70,9 @@ package com.bit101.components
 			_downButton.setSize(10, 10);
 		}
 		
+		/**
+		 * Initializes the component.
+		 */
 		protected override function init():void
 		{
 			super.init();
@@ -153,6 +157,32 @@ package com.bit101.components
 			return _scrollSlider.value;
 		}
 		
+		/**
+		 * Sets / gets the amount the value will change when up or down buttons are pressed.
+		 */
+		public function set lineSize(value:int):void
+		{
+			_lineSize = value;
+		}
+		public function get lineSize():int
+		{
+			return _lineSize;
+		}
+		
+		/**
+		 * Sets / gets the amount the value will change when the back is clicked.
+		 */
+		public function set pageSize(value:int):void
+		{
+			_scrollSlider.pageSize = value;
+			invalidate();
+		}
+		public function get pageSize():int
+		{
+			return _scrollSlider.pageSize;
+		}
+		
+
 		
 		
 		
@@ -163,13 +193,13 @@ package com.bit101.components
 		
 		protected function onUpClick(event:MouseEvent):void
 		{
-			_scrollSlider.value--;
+			_scrollSlider.value -= _lineSize;
 			dispatchEvent(new Event(Event.CHANGE));
 		}
 		
 		protected function onDownClick(event:MouseEvent):void
 		{
-			_scrollSlider.value++;
+			_scrollSlider.value += _lineSize;
 			dispatchEvent(new Event(Event.CHANGE));
 		}
 		
@@ -177,6 +207,9 @@ package com.bit101.components
 		{
 			dispatchEvent(event);
 		}
+
+
+
 	}
 }
 
@@ -186,8 +219,8 @@ import flash.display.DisplayObjectContainer;
 import flash.events.Event;
 import flash.events.MouseEvent;
 import flash.geom.Rectangle;
-import com.bit101.components.Style;
 import com.bit101.components.Slider;
+import com.bit101.components.Style;
 
 /**
  * Helper class for the slider portion of the scroll bar.
@@ -195,6 +228,7 @@ import com.bit101.components.Slider;
 class ScrollSlider extends Slider
 {
 	protected var _thumbPercent:Number = 1.0;
+	private var _pageSize:int = 1;
 	
 	/**
 	 * Constructor
@@ -228,23 +262,27 @@ class ScrollSlider extends Slider
 	 */
 	override protected function drawHandle() : void
 	{
+		var size:Number;
 		_handle.graphics.clear();
 		if(_orientation == HORIZONTAL)
 		{
+			size = Math.round(_height * _thumbPercent);
+			size = Math.max(_width, size);
 			_handle.graphics.beginFill(0, 0);
-			_handle.graphics.drawRect(0, 0, _width * _thumbPercent, _height);
+			_handle.graphics.drawRect(0, 0, size, _height);
 			_handle.graphics.endFill();
 			_handle.graphics.beginFill(Style.BUTTON_FACE);
-			_handle.graphics.drawRect(1, 1, _width * _thumbPercent - 2, _height - 2);
-			
+			_handle.graphics.drawRect(1, 1, size - 2, _height - 2);
 		}
 		else
 		{
+			size = Math.round(_height * _thumbPercent);
+			size = Math.max(_width, size);
 			_handle.graphics.beginFill(0, 0);
-			_handle.graphics.drawRect(0, 0, _width  - 2, _height * _thumbPercent);
+			_handle.graphics.drawRect(0, 0, _width  - 2, size);
 			_handle.graphics.endFill();
 			_handle.graphics.beginFill(Style.BUTTON_FACE);
-			_handle.graphics.drawRect(1, 1, _width - 2, _height * _thumbPercent - 2);
+			_handle.graphics.drawRect(1, 1, _width - 2, size - 2);
 		}
 		_handle.graphics.endFill();
 		positionHandle();
@@ -280,15 +318,7 @@ class ScrollSlider extends Slider
 	 */
 	public function setThumbPercent(value:Number):void
 	{
-		_thumbPercent = value;
-		if(_orientation == HORIZONTAL && _thumbPercent * _width < _height)
-		{
-			_thumbPercent = _height / _width;
-		}
-		else if(_orientation == VERTICAL && _thumbPercent * _height < _width)
-		{
-			_thumbPercent = _width / _height;
-		}
+		_thumbPercent = Math.min(value, 1.0);
 		invalidate();
 	}
 	
@@ -324,15 +354,29 @@ class ScrollSlider extends Slider
 		{
 			if(mouseY < _handle.y)
 			{
-				_handle.y -= (_handle.height - 2);
+				if(_max > _min)
+				{
+					_value -= _pageSize;
+				}
+				else
+				{
+					_value += _pageSize;
+				}
+				correctValue();
 			}
 			else
 			{
-				_handle.y += (_handle.height - 2);
+				if(_max > _min)
+				{
+					_value += _pageSize;
+				}
+				else
+				{
+					_value -= _pageSize;
+				}
+				correctValue();
 			}
-			_handle.y = Math.max(_handle.y, 0);
-			_handle.y = Math.min(_handle.y, height - _handle.height);
-			_value = _handle.y / (height - _handle.height) * (_max - _min) + _min;
+			positionHandle();
 		}
 		dispatchEvent(new Event(Event.CHANGE));
 		
@@ -348,11 +392,11 @@ class ScrollSlider extends Slider
 		stage.addEventListener(MouseEvent.MOUSE_MOVE, onSlide);
 		if(_orientation == HORIZONTAL)
 		{
-			_handle.startDrag(false, new Rectangle(0, 0, width - width * _thumbPercent, 0));
+			_handle.startDrag(false, new Rectangle(0, 0, _width - _handle.width, 0));
 		}
 		else
 		{
-			_handle.startDrag(false, new Rectangle(0, 0, 0, height - height * _thumbPercent));
+			_handle.startDrag(false, new Rectangle(0, 0, 0, _height - _handle.height));
 		}
 	}
 	
@@ -365,11 +409,11 @@ class ScrollSlider extends Slider
 		var oldValue:Number = _value;
 		if(_orientation == HORIZONTAL)
 		{
-			_value = _handle.x / (width - _width * _thumbPercent) * (_max - _min) + _min;
+			_value = _handle.x / (_width - _handle.width) * (_max - _min) + _min;
 		}
 		else
 		{
-			_value = _handle.y / (height - height * _thumbPercent) * (_max - _min) + _min;
+			_value = _handle.y / (_height - _handle.height) * (_max - _min) + _min;
 		}
 		if(_value != oldValue)
 		{
@@ -377,4 +421,24 @@ class ScrollSlider extends Slider
 		}
 	}
 	
+	
+	
+	
+	
+	///////////////////////////////////
+	// getter/setters
+	///////////////////////////////////
+		
+	/**
+	 * Sets / gets the amount the value will change when the back is clicked.
+	 */
+	public function set pageSize(value:int):void
+	{
+		_pageSize = value;
+		invalidate();
+	}
+	public function get pageSize():int
+	{
+		return _pageSize;
+	}
 }
