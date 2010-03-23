@@ -1,7 +1,7 @@
 /**
  * RadioButton.as
  * Keith Peters
- * version 0.9
+ * version 0.9.0
  * 
  * A basic radio button component, meant to be used in groups, where only one button in the group can be selected.
  * Currently only one group can be created.
