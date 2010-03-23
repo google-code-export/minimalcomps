@@ -35,7 +35,7 @@ package com.bit101.components
 	
 	public class List extends Component
 	{
-		protected var _items:Array = new Array();
+		protected var _items:Array;
 		protected var _itemHolder:Sprite;
 		protected var _panel:Panel;
 		protected var _listItemHeight:Number = 20;
@@ -54,7 +54,14 @@ package com.bit101.components
 		 */
 		public function List(parent:DisplayObjectContainer=null, xpos:Number=0, ypos:Number=0, items:Array=null)
 		{
-			_items = items;
+			if(_items != null)
+			{
+				_items = items;
+			}
+			else
+			{
+				_items = new Array();
+			}
 			super(parent, xpos, ypos);
 		}
 		
