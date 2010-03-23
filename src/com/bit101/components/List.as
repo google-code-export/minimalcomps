@@ -159,9 +159,9 @@ package com.bit101.components
 			_scrollbar.x = _width - 10;
 			var contentHeight:Number = _items.length * _listItemHeight;
 			_scrollbar.setThumbPercent(_height / contentHeight); 
-			_scrollbar.setSliderParams(0, Math.min(0, _height - contentHeight), _itemHolder.y);
-			_scrollbar.lineSize = -_listItemHeight;
-			_scrollbar.pageSize = Math.floor(_height / _listItemHeight) * _listItemHeight;
+			var pageSize:Number = _height / _listItemHeight;
+			_scrollbar.setSliderParams(0, Math.max(0, _items.length - pageSize), _itemHolder.y / _listItemHeight);
+			_scrollbar.pageSize = pageSize;
 			_scrollbar.height = _height;
 		}
 		
@@ -245,7 +245,7 @@ package com.bit101.components
 		 */
 		protected function onScroll(event:Event):void
 		{
-			_itemHolder.y = _scrollbar.value;
+			_itemHolder.y = -_scrollbar.value * _listItemHeight;
 		}
 		
 		///////////////////////////////////

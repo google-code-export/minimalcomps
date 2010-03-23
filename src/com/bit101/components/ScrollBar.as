@@ -340,15 +340,29 @@ class ScrollSlider extends Slider
 		{
 			if(mouseX < _handle.x)
 			{
-				_handle.x -= (_handle.width - 0);
+				if(_max > _min)
+				{
+					_value -= _pageSize;
+				}
+				else
+				{
+					_value += _pageSize;
+				}
+				correctValue();
 			}
 			else
 			{
-				_handle.x += (_handle.width - 0);
+				if(_max > _min)
+				{
+					_value += _pageSize;
+				}
+				else
+				{
+					_value -= _pageSize;
+				}
+				correctValue();
 			}
-			_handle.x = Math.max(_handle.x, 0);
-			_handle.x = Math.min(_handle.x, width - _handle.width);
-			_value = _handle.x / (width - _handle.width) * (_max - _min) + _min;
+			positionHandle();
 		}
 		else
 		{
