@@ -1,7 +1,7 @@
 /**
  * List.as
  * Keith Peters
- * version 0.9.0
+ * version 0.9.1
  * 
  * A scrolling list of selectable items. 
  * 
@@ -50,7 +50,7 @@ package com.bit101.components
 		 * @param parent The parent DisplayObjectContainer on which to add this List.
 		 * @param xpos The x position to place this component.
 		 * @param ypos The y position to place this component.
-		 * @param label The text to show in this item.
+		 * @param items An array of items to display in the list. Either strings or objects with label property.
 		 */
 		public function List(parent:DisplayObjectContainer=null, xpos:Number=0, ypos:Number=0, items:Array=null)
 		{
@@ -141,6 +141,8 @@ package com.bit101.components
 			}
 		}
 		
+		
+		
 		///////////////////////////////////
 		// public methods
 		///////////////////////////////////
@@ -161,6 +163,7 @@ package com.bit101.components
 			// panel
 			_panel.setSize(_width, _height);
 			_panel.color = _defaultColor;
+			_panel.draw();
 			
 			// scrollbar
 			_scrollbar.x = _width - 10;
@@ -170,6 +173,7 @@ package com.bit101.components
 			_scrollbar.setSliderParams(0, Math.max(0, _items.length - pageSize), _itemHolder.y / _listItemHeight);
 			_scrollbar.pageSize = pageSize;
 			_scrollbar.height = _height;
+			_scrollbar.draw();
 		}
 		
 		/**

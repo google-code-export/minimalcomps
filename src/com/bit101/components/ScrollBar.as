@@ -1,7 +1,7 @@
 /**
  * ScrollBar.as
  * Keith Peters
- * version 0.9.0
+ * version 0.9.1
  * 
  * Base class for HScrollBar and VScrollBar
  * 
@@ -135,6 +135,7 @@ package com.bit101.components
 				_downButton.x = _width - 10;
 				_downButton.y = 0;
 			}
+			_scrollSlider.draw();
 		}
 
 		
