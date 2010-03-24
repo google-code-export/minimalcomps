@@ -78,12 +78,12 @@ package com.bit101.components
 			_tf.x = 2;
 			_tf.y = 2;
 			_tf.height = _height;
-			_tf.embedFonts = true;
+			_tf.embedFonts = Style.embedFonts;
 			_tf.multiline = true;
 			_tf.wordWrap = true;
 			_tf.selectable = true;
 			_tf.type = TextFieldType.INPUT;
-			_tf.defaultTextFormat = new TextFormat("PF Ronda Seven", 8, Style.LABEL_TEXT);
+			_tf.defaultTextFormat = new TextFormat(Style.fontName, Style.fontSize, Style.LABEL_TEXT);
 			_tf.addEventListener(Event.CHANGE, onChange);			
 			addChild(_tf);
 		}

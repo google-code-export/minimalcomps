@@ -33,6 +33,7 @@ package com.bit101.components
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.geom.Point;
+	import flash.geom.Rectangle;
 	
 	public class ComboBox extends Component
 	{
@@ -132,7 +133,7 @@ package com.bit101.components
 		public override function draw():void
 		{
 			super.draw();
-			_labelButton.setSize(_width - _height, _height);
+			_labelButton.setSize(_width - _height + 1, _height);
 			_labelButton.draw();
 			
 			_dropDownButton.setSize(_height, _height);
@@ -231,7 +232,7 @@ package com.bit101.components
 		{
 			// ignore clicks within buttons or list
 			if(event.target == _dropDownButton || event.target == _labelButton) return;
-			if(_list.getBounds(stage).contains(event.stageX, event.stageY)) return;
+			if(new Rectangle(_list.x, _list.y, _list.width, _list.height).contains(event.stageX, event.stageY)) return;
 			
 			_open = false;
 			removeList();
@@ -372,6 +373,9 @@ package com.bit101.components
 			return _defaultLabel;
 		}
 
+		/**
+		 * Sets / gets the number of visible items in the drop down list. i.e. the height of the list.
+		 */
 		public function set numVisibleItems(value:int):void
 		{
 			_numVisibleItems = value;
@@ -382,6 +386,18 @@ package com.bit101.components
 			return _numVisibleItems;
 		}
 
+		/**
+		 * Sets / gets the list of items to be shown.
+		 */
+		public function set items(value:Array):void
+		{
+			_list.items = value;
+		}
+		public function get items():Array
+		{
+			return _list.items;
+		}
+		
 		
 	}
 }

@@ -77,10 +77,10 @@ package com.bit101.components
 			addChild(_back);
 			
 			_tf = new TextField();
-			_tf.embedFonts = true;
+			_tf.embedFonts = Style.embedFonts;
 			_tf.selectable = true;
 			_tf.type = TextFieldType.INPUT;
-			_tf.defaultTextFormat = new TextFormat("PF Ronda Seven", 8, Style.INPUT_TEXT);
+			_tf.defaultTextFormat = new TextFormat(Style.fontName, Style.fontSize, Style.INPUT_TEXT);
 			addChild(_tf);
 			_tf.addEventListener(Event.CHANGE, onChange);
 			
