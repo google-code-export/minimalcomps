@@ -70,10 +70,10 @@ package com.bit101.components
 			_height = 18;
 			_tf = new TextField();
 			_tf.height = _height;
-			_tf.embedFonts = true;
+			_tf.embedFonts = Style.embedFonts;
 			_tf.selectable = false;
 			_tf.mouseEnabled = false;
-			_tf.defaultTextFormat = new TextFormat("PF Ronda Seven", 8, Style.LABEL_TEXT);
+			_tf.defaultTextFormat = new TextFormat(Style.fontName, Style.fontSize, Style.LABEL_TEXT);
 			_tf.text = _text;			
 			addChild(_tf);
 			draw();

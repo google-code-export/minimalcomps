@@ -353,6 +353,18 @@ package com.bit101.components
 			return _listItemHeight;
 		}
 
+		/**
+		 * Sets / gets the list of items to be shown.
+		 */
+		public function set items(value:Array):void
+		{
+			_items = value;
+			invalidate();
+		}
+		public function get items():Array
+		{
+			return _items;
+		}
 		
 	}
 }
