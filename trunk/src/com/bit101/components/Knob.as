@@ -35,14 +35,20 @@
 	
 	public class Knob extends Component
 	{
+		public static const VERTICAL:String = "vertical";
+		public static const HORIZONTAL:String = "horizontal";
+		public static const ROTATE:String = "rotate";
+		
 		private var _knob:Sprite;
 		private var _label:Label;
 		private var _labelText:String = "";
 		private var _max:Number = 100;
 		private var _min:Number = 0;
+		private var _mode:String = VERTICAL;
 		private var _mouseRange:Number = 100;
 		private var _precision:int = 1;
 		private var _radius:Number = 20;
+		private var _startX:Number;
 		private var _startY:Number;
 		private var _value:Number = 0;
 		private var _valueLabel:Label;
@@ -211,6 +217,7 @@
 		 */
 		protected function onMouseDown(event:MouseEvent):void
 		{
+			_startX = mouseX;
 			_startY = mouseY;
 			stage.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
 			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
@@ -221,18 +228,50 @@
 		 */
 		protected function onMouseMove(event:MouseEvent):void
 		{
-			var oldValue:Number = _value;
-			var diff:Number = _startY - mouseY;
-			var range:Number = _max - _min;
-			var percent:Number = range / _mouseRange;
-			_value += percent * diff;
-			correctValue();
-			if(_value != oldValue)
+			if(_mode == ROTATE)
 			{
-				updateKnob();
-				dispatchEvent(new Event(Event.CHANGE));
+				var angle:Number = Math.atan2(mouseY - _knob.y, mouseX - _knob.x);
+				var rot:Number = angle * 180 / Math.PI - 135;
+				while(rot > 360) rot -= 360;
+				while(rot < 0) rot += 360;
+				if(rot > 270 && rot < 315) rot = 270;
+				if(rot >= 315 && rot <= 360) rot = 0;
+				_value = rot / 270 * (_max - _min) + _min;
+				
+				_knob.rotation = rot + 135;
+				formatValueLabel();
+				return;
 			}
-			_startY = mouseY;
+			else if(_mode == VERTICAL)
+			{
+				var oldValue:Number = _value;
+				var diff:Number = _startY - mouseY;
+				var range:Number = _max - _min;
+				var percent:Number = range / _mouseRange;
+				_value += percent * diff;
+				correctValue();
+				if(_value != oldValue)
+				{
+					updateKnob();
+					dispatchEvent(new Event(Event.CHANGE));
+				}
+				_startY = mouseY;
+			}
+			else if(_mode == HORIZONTAL)
+			{
+				oldValue = _value;
+				diff = _startX - mouseX;
+				range = _max - _min;
+				percent = range / _mouseRange;
+				_value -= percent * diff;
+				correctValue();
+				if(_value != oldValue)
+				{
+					updateKnob();
+					dispatchEvent(new Event(Event.CHANGE));
+				}
+				_startX = mouseX;
+			}
 		}
 		
 		/**
@@ -339,5 +378,15 @@
 		{
 			return _labelText;
 		}
+
+		public function set mode(value:String):void
+		{
+			_mode = value;
+		}
+		public function get mode():String
+		{
+			return _mode;
+		}
+
 	}
 }
