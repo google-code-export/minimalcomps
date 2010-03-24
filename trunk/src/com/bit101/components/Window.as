@@ -119,8 +119,10 @@ package com.bit101.components
 			_titleBar.color = _color;
 			_panel.color = _color;
 			_titleBar.width = width;
+			_titleBar.draw();
 			_titleLabel.x = _hasMinimizeButton ? 20 : 5;
 			_panel.setSize(_width, _height - 20);
+			_panel.draw();
 		}
 
 

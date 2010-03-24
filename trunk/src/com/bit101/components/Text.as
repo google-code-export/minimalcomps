@@ -103,6 +103,7 @@ package com.bit101.components
 			super.draw();
 			
 			_panel.setSize(_width, _height);
+			_panel.draw();
 			
 			_tf.width = _width - 4;
 			_tf.height = _height - 4;
