@@ -129,7 +129,7 @@ package com.bit101.components
 					break;
 				
 				case 1:		// feb
-					if(year % 4 == 0) return 29;
+					if((_year % 400 == 0) ||  ((_year % 100 != 0) && (_year % 4 == 0))) return 29;
 					return 28;
 					break;
 				
