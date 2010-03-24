@@ -1,6 +1,35 @@
+/**
+ * ComboBox.as
+ * Keith Peters
+ * version 0.9.1
+ * 
+ * A button that exposes a list of choices and displays the chosen item. 
+ * 
+ * Copyright (c) 2010 Keith Peters
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
 package com.bit101.components
 {
 	import flash.display.DisplayObjectContainer;
+	import flash.display.Stage;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.geom.Point;
@@ -10,42 +39,106 @@ package com.bit101.components
 		public static const TOP:String = "top";
 		public static const BOTTOM:String = "bottom";
 		
+		protected var _defaultLabel:String = "";
+		protected var _dropDownButton:PushButton;
+		protected var _items:Array;
+		protected var _labelButton:PushButton;
 		protected var _list:List;
 		protected var _numVisibleItems:int = 6;
-		protected var _labelButton:PushButton;
-		protected var _dropDownButton:PushButton;
 		protected var _open:Boolean = false;
-		protected var _openPosition:String = "top";
+		protected var _openPosition:String = BOTTOM;
+		protected var _stage:Stage;
 		
 		
-		public function ComboBox(parent:DisplayObjectContainer=null, xpos:Number=0, ypos:Number=0)
+		/**
+		 * Constructor
+		 * @param parent The parent DisplayObjectContainer on which to add this List.
+		 * @param xpos The x position to place this component.
+		 * @param ypos The y position to place this component.
+		 * @param defaultLabel The label to show when no item is selected.
+		 * @param items An array of items to display in the list. Either strings or objects with label property.
+		 */
+		public function ComboBox(parent:DisplayObjectContainer=null, xpos:Number=0, ypos:Number=0, defaultLabel:String="", items:Array = null)
 		{
+			_defaultLabel = defaultLabel;
+			_items = items;
+			addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
+			addEventListener(Event.REMOVED_FROM_STAGE, onRemovedFromStage);
 			super(parent, xpos, ypos);
 		}
 		
+		/**
+		 * Initilizes the component.
+		 */
 		protected override function init():void
 		{
 			super.init();
 			setSize(100, 20);
+			setLabelButtonLabel();
 		}
 		
+		/**
+		 * Creates and adds the child display objects of this component.
+		 */
 		protected override function addChildren():void
 		{
 			super.addChildren();
-			_list = new List();
+			_list = new List(null, 0, 0, _items);
 			_list.addEventListener(Event.SELECT, onSelect);
 			
 			_labelButton = new PushButton(this, 0, 0, "", onDropDown);
 			_dropDownButton = new PushButton(this, 0, 0, "+", onDropDown);
 		}
 		
+		/**
+		 * Determines what to use for the main button label and sets it.
+		 */
+		protected function setLabelButtonLabel():void
+		{
+			if(selectedItem == null)
+			{
+				_labelButton.label = _defaultLabel;
+			}
+			else if(selectedItem is String)
+			{
+				_labelButton.label = selectedItem as String;
+			}
+			else if(selectedItem.label is String)
+			{
+				_labelButton.label = selectedItem.label;
+			}
+			else
+			{
+				_labelButton.label = selectedItem.toString();
+			}
+		}
+		
+		/**
+		 * Removes the list from the stage.
+		 */
+		protected function removeList():void
+		{
+			if(_stage.contains(_list)) _stage.removeChild(_list);
+			_stage.removeEventListener(MouseEvent.CLICK, onStageClick);
+			_dropDownButton.label = "+";			
+		}
+		
+
+		
+		///////////////////////////////////
+		// public methods
+		///////////////////////////////////
 		
 		public override function draw():void
 		{
 			super.draw();
 			_labelButton.setSize(_width - _height, _height);
+			_labelButton.draw();
+			
 			_dropDownButton.setSize(_height, _height);
+			_dropDownButton.draw();
 			_dropDownButton.x = _width - height;
+			
 			_list.setSize(_width, _numVisibleItems * _list.listItemHeight);
 		}
 		
@@ -96,6 +189,15 @@ package com.bit101.components
 		}
 	
 		
+		
+		
+		///////////////////////////////////
+		// event handlers
+		///////////////////////////////////
+		
+		/**
+		 * Called when one of the top buttons is pressed. Either opens or closes the list.
+		 */
 		protected function onDropDown(event:MouseEvent):void
 		{
 			_open = !_open;
@@ -112,17 +214,19 @@ package com.bit101.components
 				}
 				point = this.localToGlobal(point);
 				_list.move(point.x, point.y);
-				stage.addChild(_list);
-				stage.addEventListener(MouseEvent.CLICK, onStageClick);
+				_stage.addChild(_list);
+				_stage.addEventListener(MouseEvent.CLICK, onStageClick);
 				_dropDownButton.label = "-";
 			}
 			else
 			{
-				if(stage.contains(_list)) stage.removeChild(_list);
-				_dropDownButton.label = "+";
+				removeList();
 			}
 		}
 		
+		/**
+		 * Called when the mouse is clicked somewhere outside of the combo box when the list is open. Closes the list.
+		 */
 		protected function onStageClick(event:MouseEvent):void
 		{
 			// ignore clicks within buttons or list
@@ -130,13 +234,12 @@ package com.bit101.components
 			if(_list.getBounds(stage).contains(event.stageX, event.stageY)) return;
 			
 			_open = false;
-			_dropDownButton.label = "+";
-			if(stage.contains(_list))
-			{
-				stage.removeChild(_list);
-			}
+			removeList();
 		}
 		
+		/**
+		 * Called when an item in the list is selected. Displays that item in the label button.
+		 */
 		protected function onSelect(event:Event):void
 		{
 			_open = false;
@@ -145,27 +248,25 @@ package com.bit101.components
 			{
 				stage.removeChild(_list);
 			}
-			
-			if(selectedItem == null)
-			{
-				_labelButton.label = "";
-			}
-			else if(selectedItem is String)
-			{
-				_labelButton.label = selectedItem as String;
-			}
-			else if(selectedItem.label is String)
-			{
-				_labelButton.label = selectedItem.label;
-			}
-			else
-			{
-				_labelButton.label = "";
-			}
+			setLabelButtonLabel();
 			dispatchEvent(event);
 		}
 		
+		/**
+		 * Called when the component is added to the stage.
+		 */
+		protected function onAddedToStage(event:Event):void
+		{
+			_stage = stage;
+		}
 		
+		/**
+		 * Called when the component is removed from the stage.
+		 */
+		protected function onRemovedFromStage(event:Event):void
+		{
+			removeList();
+		}
 		
 		///////////////////////////////////
 		// getter/setters
@@ -177,6 +278,7 @@ package com.bit101.components
 		public function set selectedIndex(value:int):void
 		{
 			_list.selectedIndex = value;
+			setLabelButtonLabel();
 		}
 		public function get selectedIndex():int
 		{
@@ -189,6 +291,7 @@ package com.bit101.components
 		public function set selectedItem(item:Object):void
 		{
 			_list.selectedItem = item;
+			setLabelButtonLabel();
 		}
 		public function get selectedItem():Object
 		{
@@ -243,6 +346,32 @@ package com.bit101.components
 		{
 			return _list.listItemHeight;
 		}
+
+		/**
+		 * Sets / gets the position the list will open on: top or bottom.
+		 */
+		public function set openPosition(value:String):void
+		{
+			_openPosition = value;
+		}
+		public function get openPosition():String
+		{
+			return _openPosition;
+		}
+
+		/**
+		 * Sets / gets the label that will be shown if no item is selected.
+		 */
+		public function set defaultLabel(value:String):void
+		{
+			_defaultLabel = value;
+			setLabelButtonLabel();
+		}
+		public function get defaultLabel():String
+		{
+			return _defaultLabel;
+		}
+
 		
 	}
 }

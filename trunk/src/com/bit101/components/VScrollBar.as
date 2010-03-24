@@ -1,7 +1,7 @@
 /**
  * VScrollBar.as
  * Keith Peters
- * version 0.9.0
+ * version 0.9.1
  * 
  * A vertical scroll bar for use in other components. 
  * 
