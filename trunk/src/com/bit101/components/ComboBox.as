@@ -372,6 +372,16 @@ package com.bit101.components
 			return _defaultLabel;
 		}
 
+		public function set numVisibleItems(value:int):void
+		{
+			_numVisibleItems = value;
+			invalidate();
+		}
+		public function get numVisibleItems():int
+		{
+			return _numVisibleItems;
+		}
+
 		
 	}
 }
