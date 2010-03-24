@@ -73,6 +73,8 @@ package com.bit101.components
 		 */
 		override public function draw() : void
 		{
+			_width = 0;
+			_height = 0;
 			var ypos:Number = 0;
 			for(var i:int = 0; i < numChildren; i++)
 			{
@@ -80,7 +82,11 @@ package com.bit101.components
 				child.y = ypos;
 				ypos += child.height;
 				ypos += _spacing;
+				_height += child.height;
+				_width = Math.max(_width, child.width);
 			}
+			_height += _spacing * (numChildren - 1);
+			dispatchEvent(new Event(Event.RESIZE));
 		}
 		
 		/**
