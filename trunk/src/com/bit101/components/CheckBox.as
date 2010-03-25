@@ -55,7 +55,7 @@ package com.bit101.components
 			super(parent, xpos, ypos);
 			if(defaultHandler != null)
 			{
-				addEventListener(MouseEvent.CLICK, defaultHandler);
+				addEventListener(MouseEvent.CLICK, defaultHandler, false, 0, true);
 			}
 		}
 		
@@ -87,7 +87,7 @@ package com.bit101.components
 			_label = new Label(this, 0, 0, _labelText);
 			draw();
 			
-			addEventListener(MouseEvent.CLICK, onClick);
+			addEventListener(MouseEvent.CLICK, onClick, false, 0, true);
 		}
 		
 		

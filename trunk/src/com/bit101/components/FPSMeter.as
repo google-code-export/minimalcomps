@@ -58,9 +58,9 @@
 			_startTime = getTimer();
 			if(stage != null)
 			{
-				addEventListener(Event.ENTER_FRAME, onEnterFrame);
+				addEventListener(Event.ENTER_FRAME, onEnterFrame, false, 0, true);
 			}
-			addEventListener(Event.REMOVED_FROM_STAGE, onRemovedFromStage);
+			addEventListener(Event.REMOVED_FROM_STAGE, onRemovedFromStage, false, 0, true);
 		}
 		
 		/**
@@ -106,7 +106,7 @@
 		 */
 		public function start():void
 		{
-			addEventListener(Event.ENTER_FRAME, onEnterFrame);
+			addEventListener(Event.ENTER_FRAME, onEnterFrame, false, 0, true);
 		}
 		
 		/**

@@ -54,7 +54,7 @@ package com.bit101.components
 		{
 			super.addChildren();
 			_scrollbar = new VScrollBar(this, 0, 0, onScrollbarScroll);
-			_tf.addEventListener(Event.SCROLL, onTextScroll);
+			_tf.addEventListener(Event.SCROLL, onTextScroll, false, 0, true);
 		}
 		
 		/**
@@ -87,7 +87,7 @@ package com.bit101.components
 			_scrollbar.x = _width - _scrollbar.width;
 			_scrollbar.height = _height;
 			_scrollbar.draw();
-			addEventListener(Event.ENTER_FRAME, onTextScrollDelay);
+			addEventListener(Event.ENTER_FRAME, onTextScrollDelay, false, 0, true);
 		}
 		
 		
