@@ -53,7 +53,7 @@ package com.bit101.components
 		 */
 		public function Text(parent:DisplayObjectContainer = null, xpos:Number = 0, ypos:Number =  0, text:String = "")
 		{
-			_text = text;
+			this.text = text;
 			super(parent, xpos, ypos);
 			setSize(200, 100);
 		}
@@ -155,6 +155,7 @@ package com.bit101.components
 		public function set text(t:String):void
 		{
 			_text = t;
+			if(_text == null) _text = "";
 			invalidate();
 		}
 		public function get text():String
