@@ -236,7 +236,7 @@ package com.bit101.components
 			_value = Math.max(_value, _minimum);
 			_value = Math.min(_value, _maximum);
 			_targetRotation = -50 + _value / (_maximum - _minimum) * 100;
-			addEventListener(Event.ENTER_FRAME, onEnterFrame);
+			addEventListener(Event.ENTER_FRAME, onEnterFrame, false, 0, true);
 		}
 		
 		///////////////////////////////////

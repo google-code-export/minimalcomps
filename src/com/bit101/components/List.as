@@ -110,7 +110,7 @@ package com.bit101.components
 				item.defaultColor = _defaultColor;
 				item.selectedColor = _selectedColor;
 				item.rolloverColor = _rolloverColor;
-				item.addEventListener(MouseEvent.CLICK, onSelect);
+				item.addEventListener(MouseEvent.CLICK, onSelect, false, 0, true);
 				if(i == _selectedIndex)
 				{
 					item.selected = true;

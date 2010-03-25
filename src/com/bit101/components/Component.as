@@ -110,7 +110,7 @@ package com.bit101.components
 		protected function invalidate():void
 		{
 //			draw();
-			addEventListener(Event.ENTER_FRAME, onInvalidate);
+			addEventListener(Event.ENTER_FRAME, onInvalidate, false, 0, true);
 		}
 		
 		

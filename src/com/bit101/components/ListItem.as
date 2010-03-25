@@ -61,7 +61,7 @@ package com.bit101.components
 		protected override function init() : void
 		{
 			super.init();
-			addEventListener(MouseEvent.MOUSE_OVER, onMouseOver);
+			addEventListener(MouseEvent.MOUSE_OVER, onMouseOver, false, 0, true);
 			setSize(100, 20);
 		}
 		
@@ -115,7 +115,7 @@ package com.bit101.components
 		 */
 		protected function onMouseOver(event:MouseEvent):void
 		{
-			addEventListener(MouseEvent.MOUSE_OUT, onMouseOut);
+			addEventListener(MouseEvent.MOUSE_OUT, onMouseOut, false, 0, true);
 			_mouseOver = true;
 			invalidate();
 		}
