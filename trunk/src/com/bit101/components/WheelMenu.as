@@ -68,12 +68,12 @@ package com.bit101.components
 			_outerRadius = outerRadius;
 			_iconRadius = iconRadius;
 			_innerRadius = innerRadius;
-			addEventListener(Event.ADDED_TO_STAGE, onAddedToStage, false, 0, true);
+			addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 			super(parent);
 			
 			if(defaultHandler != null)
 			{
-				addEventListener(Event.SELECT, defaultHandler, false, 0, true);
+				addEventListener(Event.SELECT, defaultHandler);
 			}
 		}
 			
@@ -104,7 +104,7 @@ package com.bit101.components
 				var btn:ArcButton = new ArcButton(Math.PI * 2 / _numButtons, _outerRadius, _iconRadius, _innerRadius);
 				btn.id = i;
 				btn.rotation = _startingAngle + 360 / _numButtons * i;
-				btn.addEventListener(Event.SELECT, onSelect, false, 0, true);
+				btn.addEventListener(Event.SELECT, onSelect);
 				addChild(btn);
 				_buttons.push(btn);
 			}
@@ -145,7 +145,7 @@ package com.bit101.components
 			y = Math.round(parent.mouseY);
 			_selectedIndex = -1;
 			visible = true;
-			stage.addEventListener(MouseEvent.MOUSE_UP, onStageMouseUp, true, 0, true);
+			stage.addEventListener(MouseEvent.MOUSE_UP, onStageMouseUp, true);
 		}
 		
 		///////////////////////////////////
@@ -158,7 +158,7 @@ package com.bit101.components
 		protected function onAddedToStage(event:Event):void
 		{
 			hide();
-			addEventListener(Event.REMOVED_FROM_STAGE, onRemovedFromStage, false, 0, true);
+			addEventListener(Event.REMOVED_FROM_STAGE, onRemovedFromStage);
 		}
 		
 		/**
@@ -307,9 +307,9 @@ class ArcButton extends Sprite
 		addChild(_iconHolder);
 		
 		drawArc(0xffffff);
-		addEventListener(MouseEvent.MOUSE_OVER, onMouseOver, false, 0, true);
-		addEventListener(MouseEvent.MOUSE_OUT, onMouseOut, false, 0, true);
-		addEventListener(MouseEvent.MOUSE_UP, onMouseUp, false, 0, true);
+		addEventListener(MouseEvent.MOUSE_OVER, onMouseOver);
+		addEventListener(MouseEvent.MOUSE_OUT, onMouseOut);
+		addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
 	}
 	
 	///////////////////////////////////

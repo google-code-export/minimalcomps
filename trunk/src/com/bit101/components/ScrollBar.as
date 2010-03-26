@@ -54,7 +54,7 @@ package com.bit101.components
 			super(parent, xpos, ypos);
 			if(defaultHandler != null)
 			{
-				addEventListener(Event.CHANGE, defaultHandler, false, 0, true);
+				addEventListener(Event.CHANGE, defaultHandler);
 			}
 		}
 		
@@ -244,7 +244,7 @@ class ScrollSlider extends Slider
 		super(orientation, parent, xpos, ypos);
 		if(defaultHandler != null)
 		{
-			addEventListener(Event.CHANGE, defaultHandler, false, 0, true);
+			addEventListener(Event.CHANGE, defaultHandler);
 		}
 	}
 	
@@ -403,8 +403,8 @@ class ScrollSlider extends Slider
 	 */
 	protected override function onDrag(event:MouseEvent):void
 	{
-		stage.addEventListener(MouseEvent.MOUSE_UP, onDrop, false, 0, true);
-		stage.addEventListener(MouseEvent.MOUSE_MOVE, onSlide, false, 0, true);
+		stage.addEventListener(MouseEvent.MOUSE_UP, onDrop);
+		stage.addEventListener(MouseEvent.MOUSE_MOVE, onSlide);
 		if(_orientation == HORIZONTAL)
 		{
 			_handle.startDrag(false, new Rectangle(0, 0, _width - _handle.width, 0));

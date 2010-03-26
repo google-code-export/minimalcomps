@@ -56,7 +56,7 @@ package com.bit101.components
 			super(parent, x, y);
 			if(defaultEventHandler != null)
 			{
-				addEventListener(Event.CHANGE, defaultEventHandler, false, 0, true);
+				addEventListener(Event.CHANGE, defaultEventHandler);
 			}
 			formatValueLabel();
 		}

@@ -63,8 +63,8 @@ package com.bit101.components
 		{
 			_defaultLabel = defaultLabel;
 			_items = items;
-			addEventListener(Event.ADDED_TO_STAGE, onAddedToStage, false, 0, true);
-			addEventListener(Event.REMOVED_FROM_STAGE, onRemovedFromStage, false, 0, true);
+			addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
+			addEventListener(Event.REMOVED_FROM_STAGE, onRemovedFromStage);
 			super(parent, xpos, ypos);
 		}
 		
@@ -85,7 +85,7 @@ package com.bit101.components
 		{
 			super.addChildren();
 			_list = new List(null, 0, 0, _items);
-			_list.addEventListener(Event.SELECT, onSelect, false, 0, true);
+			_list.addEventListener(Event.SELECT, onSelect);
 			
 			_labelButton = new PushButton(this, 0, 0, "", onDropDown);
 			_dropDownButton = new PushButton(this, 0, 0, "+", onDropDown);
@@ -216,7 +216,7 @@ package com.bit101.components
 				point = this.localToGlobal(point);
 				_list.move(point.x, point.y);
 				_stage.addChild(_list);
-				_stage.addEventListener(MouseEvent.CLICK, onStageClick, false, 0, true);
+				_stage.addEventListener(MouseEvent.CLICK, onStageClick);
 				_dropDownButton.label = "-";
 			}
 			else

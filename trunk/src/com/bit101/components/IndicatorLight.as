@@ -68,7 +68,7 @@ package com.bit101.components
 		{
 			super.init();
 			_timer = new Timer(500);
-			_timer.addEventListener(TimerEvent.TIMER, onTimer, false, 0, true);
+			_timer.addEventListener(TimerEvent.TIMER, onTimer);
 		}
 		
 		/**

@@ -68,7 +68,7 @@
 			super(parent, xpos, ypos);
 			if(defaultHandler != null)
 			{
-				addEventListener(Event.CHANGE, defaultHandler, false, 0, true);
+				addEventListener(Event.CHANGE, defaultHandler);
 			}
 		}
 
@@ -88,7 +88,7 @@
 			_knob = new Sprite();
 			_knob.buttonMode = true;
 			_knob.useHandCursor = true;
-			_knob.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown, false, 0, true);
+			_knob.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
 			addChild(_knob);
 			
 			_label = new Label();
@@ -219,8 +219,8 @@
 		{
 			_startX = mouseX;
 			_startY = mouseY;
-			stage.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove, false, 0, true);
-			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp, false, 0, true);
+			stage.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
 		}
 		
 		/**

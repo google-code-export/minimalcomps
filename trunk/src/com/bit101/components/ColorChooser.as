@@ -82,7 +82,7 @@ package com.bit101.components
 			
 			if(defaultHandler != null)
 			{
-				addEventListener(Event.CHANGE, defaultHandler, false, 0, true);
+				addEventListener(Event.CHANGE, defaultHandler);
 			}
 				
 		}		
@@ -107,7 +107,7 @@ package com.bit101.components
 			_input.restrict = "0123456789ABCDEFabcdef";
 			_input.maxChars = 6;
 			addChild(_input);
-			_input.addEventListener(Event.CHANGE, onChange, false, 0, true);
+			_input.addEventListener(Event.CHANGE, onChange);
 			
 			_swatch = new Sprite();
 			_swatch.x = 50;
@@ -115,8 +115,8 @@ package com.bit101.components
 			addChild(_swatch);
 			
 			_colorsContainer = new Sprite();
-			_colorsContainer.addEventListener(Event.ADDED_TO_STAGE, onColorsAddedToStage, false, 0, true);
-			_colorsContainer.addEventListener(Event.REMOVED_FROM_STAGE, onColorsRemovedFromStage, false, 0, true);
+			_colorsContainer.addEventListener(Event.ADDED_TO_STAGE, onColorsAddedToStage);
+			_colorsContainer.addEventListener(Event.REMOVED_FROM_STAGE, onColorsRemovedFromStage);
 			_model = getDefaultModel();
 			drawColors(_model);
 		}
@@ -218,10 +218,10 @@ package com.bit101.components
 			
 			_swatch.buttonMode = true;
 			_colorsContainer.buttonMode = true;
-			_colorsContainer.addEventListener(MouseEvent.MOUSE_MOVE, browseColorChoice, false, 0, true);
-			_colorsContainer.addEventListener(MouseEvent.MOUSE_OUT, backToColorChoice, false, 0, true);
-			_colorsContainer.addEventListener(MouseEvent.CLICK, setColorChoice, false, 0, true);
-			_swatch.addEventListener(MouseEvent.CLICK, onSwatchClick, false, 0, true);
+			_colorsContainer.addEventListener(MouseEvent.MOUSE_MOVE, browseColorChoice);
+			_colorsContainer.addEventListener(MouseEvent.MOUSE_OUT, backToColorChoice);
+			_colorsContainer.addEventListener(MouseEvent.CLICK, setColorChoice);
+			_swatch.addEventListener(MouseEvent.CLICK, onSwatchClick);
 			
 			if (!_usePopup) {
 				_swatch.buttonMode = false;
@@ -243,7 +243,7 @@ package com.bit101.components
 		
 		private function onColorsAddedToStage(e:Event):void {
 			_stage = stage;
-			_stage.addEventListener(MouseEvent.CLICK, onStageClick, false, 0, true);
+			_stage.addEventListener(MouseEvent.CLICK, onStageClick);
 		}
 		
 		private function onStageClick(e:MouseEvent):void {

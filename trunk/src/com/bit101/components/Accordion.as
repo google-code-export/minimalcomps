@@ -73,7 +73,7 @@ package com.bit101.components
 				var window:Window = new Window(_vbox, 0, 0, "Section " + (i + 1));
 				window.hasMinimizeButton = true;
 				window.draggable = false;
-				window.addEventListener(Event.RESIZE, onWindowResize, false, 0, true);
+				window.addEventListener(Event.RESIZE, onWindowResize);
 				if(i != 0) window.minimized = true;
 				_windows.push(window);
 			}
@@ -93,7 +93,7 @@ package com.bit101.components
 			window.hasMinimizeButton = true;
 			window.minimized = true;
 			window.draggable = false;
-			window.addEventListener(Event.RESIZE, onWindowResize, false, 0, true);
+			window.addEventListener(Event.RESIZE, onWindowResize);
 			_windows.push(window);
 			setSize(_width, _height);
 		}

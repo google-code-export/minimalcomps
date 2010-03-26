@@ -77,7 +77,7 @@ package com.bit101.components
 			_titleBar = new Panel(this);
 			_titleBar.buttonMode = true;
 			_titleBar.useHandCursor = true;
-			_titleBar.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown, false, 0, true);
+			_titleBar.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
 			_titleBar.height = 20;
 			_titleLabel = new Label(_titleBar.content, 5, 1, _title);
 			
@@ -98,7 +98,7 @@ package com.bit101.components
 			_minimizeButton.y = 10;
 			_minimizeButton.useHandCursor = true;
 			_minimizeButton.buttonMode = true;
-			_minimizeButton.addEventListener(MouseEvent.CLICK, onMinimize, false, 0, true);
+			_minimizeButton.addEventListener(MouseEvent.CLICK, onMinimize);
 			
 			filters = [getShadow(4, false)];
 		}
@@ -137,7 +137,7 @@ package com.bit101.components
 		protected function onMouseDown(event:MouseEvent):void
 		{
 			this.startDrag();
-			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp, false, 0, true);
+			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
 			parent.addChild(this);
 		}
 		
@@ -224,7 +224,7 @@ package com.bit101.components
 			_titleBar.useHandCursor = _draggable;
 			if(_draggable)
 			{
-				_titleBar.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown, false, 0, true);
+				_titleBar.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
 			}
 			else
 			{
