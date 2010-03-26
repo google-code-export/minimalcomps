@@ -82,7 +82,7 @@ package com.bit101.components
 				{
 					var btn:PushButton = new PushButton(this.content, j * 20, 20 + i * 20);
 					btn.setSize(19, 19);
-					btn.addEventListener(MouseEvent.CLICK, onDayClick, false, 0, true);
+					btn.addEventListener(MouseEvent.CLICK, onDayClick);
 					_dayButtons.push(btn);
 				}
 			}

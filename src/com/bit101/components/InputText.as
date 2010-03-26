@@ -54,7 +54,7 @@ package com.bit101.components
 			super(parent, xpos, ypos);
 			if(defaultHandler != null)
 			{
-				addEventListener(Event.CHANGE, defaultHandler, false, 0, true);
+				addEventListener(Event.CHANGE, defaultHandler);
 			}
 		}
 		
@@ -82,7 +82,7 @@ package com.bit101.components
 			_tf.type = TextFieldType.INPUT;
 			_tf.defaultTextFormat = new TextFormat(Style.fontName, Style.fontSize, Style.INPUT_TEXT);
 			addChild(_tf);
-			_tf.addEventListener(Event.CHANGE, onChange, false, 0, true);
+			_tf.addEventListener(Event.CHANGE, onChange);
 			
 		}
 		

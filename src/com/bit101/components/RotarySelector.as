@@ -64,7 +64,7 @@ package com.bit101.components
 			super(parent, xpos, ypos);
 			if(defaultHandler != null)
 			{
-				addEventListener(Event.CHANGE, defaultHandler, false, 0, true);
+				addEventListener(Event.CHANGE, defaultHandler);
 			}
 		}
 		
@@ -94,7 +94,7 @@ package com.bit101.components
 			_labels = new Sprite();
 			addChild(_labels);
 			
-			_knob.addEventListener(MouseEvent.CLICK, onClick, false, 0, true);
+			_knob.addEventListener(MouseEvent.CLICK, onClick);
 		}
 		
 		/**
@@ -187,7 +187,7 @@ package com.bit101.components
 				lab.mouseEnabled = true;
 				lab.buttonMode = true;
 				lab.useHandCursor = true;
-				lab.addEventListener(MouseEvent.CLICK, onLabelClick, false, 0, true);
+				lab.addEventListener(MouseEvent.CLICK, onLabelClick);
 				if(_labelMode == ALPHABETIC)
 				{
 					lab.text = String.fromCharCode(65 + i);

@@ -61,7 +61,7 @@ package com.bit101.components
 			super(parent, xpos, ypos);
 			if(defaultHandler != null)
 			{
-				addEventListener(MouseEvent.CLICK, defaultHandler, false, 0, true);
+				addEventListener(MouseEvent.CLICK, defaultHandler);
 			}
 		}
 		
@@ -104,7 +104,7 @@ package com.bit101.components
 			buttonMode = true;
 			useHandCursor = true;
 			
-			addEventListener(MouseEvent.CLICK, onClick, false, 1, true);
+			addEventListener(MouseEvent.CLICK, onClick, false, 1);
 			selected = _selected;
 		}
 		

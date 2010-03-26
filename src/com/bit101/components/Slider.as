@@ -61,7 +61,7 @@ package com.bit101.components
 			super(parent, xpos, ypos);
 			if(defaultHandler != null)
 			{
-				addEventListener(Event.CHANGE, defaultHandler, false, 0, true);
+				addEventListener(Event.CHANGE, defaultHandler);
 			}
 		}
 		
@@ -93,7 +93,7 @@ package com.bit101.components
 			
 			_handle = new Sprite();
 			_handle.filters = [getShadow(1)];
-			_handle.addEventListener(MouseEvent.MOUSE_DOWN, onDrag, false, 0, true);
+			_handle.addEventListener(MouseEvent.MOUSE_DOWN, onDrag);
 			_handle.buttonMode = true;
 			_handle.useHandCursor = true;
 			addChild(_handle);
@@ -111,7 +111,7 @@ package com.bit101.components
 
 			if(_backClick)
 			{
-				_back.addEventListener(MouseEvent.MOUSE_DOWN, onBackClick, false, 0, true);
+				_back.addEventListener(MouseEvent.MOUSE_DOWN, onBackClick);
 			}
 			else
 			{
@@ -241,8 +241,8 @@ package com.bit101.components
 		 */
 		protected function onDrag(event:MouseEvent):void
 		{
-			stage.addEventListener(MouseEvent.MOUSE_UP, onDrop, false, 0, true);
-			stage.addEventListener(MouseEvent.MOUSE_MOVE, onSlide, false, 0, true);
+			stage.addEventListener(MouseEvent.MOUSE_UP, onDrop);
+			stage.addEventListener(MouseEvent.MOUSE_MOVE, onSlide);
 			if(_orientation == HORIZONTAL)
 			{
 				_handle.startDrag(false, new Rectangle(0, 0, width - height, 0));
