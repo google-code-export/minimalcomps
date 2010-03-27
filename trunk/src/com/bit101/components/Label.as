@@ -29,6 +29,7 @@
 package com.bit101.components
 {
 	import flash.display.DisplayObjectContainer;
+	import flash.events.Event;
 	import flash.text.TextField;
 	import flash.text.TextFieldAutoSize;
 	import flash.text.TextFormat;
@@ -97,6 +98,7 @@ package com.bit101.components
 			{
 				_tf.autoSize = TextFieldAutoSize.LEFT;
 				_width = _tf.width;
+				dispatchEvent(new Event(Event.RESIZE));
 			}
 			else
 			{

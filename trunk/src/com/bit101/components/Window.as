@@ -35,16 +35,16 @@ package com.bit101.components
 
 	public class Window extends Component
 	{
-		private var _title:String;
-		private var _titleBar:Panel;
-		private var _titleLabel:Label;
-		private var _panel:Panel;
-		private var _color:int = -1;
-		private var _shadow:Boolean = true;
-		private var _draggable:Boolean = true;
-		private var _minimizeButton:Sprite;
-		private var _hasMinimizeButton:Boolean = false;
-		private var _minimized:Boolean = false;
+		protected var _title:String;
+		protected var _titleBar:Panel;
+		protected var _titleLabel:Label;
+		protected var _panel:Panel;
+		protected var _color:int = -1;
+		protected var _shadow:Boolean = true;
+		protected var _draggable:Boolean = true;
+		protected var _minimizeButton:Sprite;
+		protected var _hasMinimizeButton:Boolean = false;
+		protected var _minimized:Boolean = false;
 		
 		
 		/**
