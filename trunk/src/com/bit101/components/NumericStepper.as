@@ -75,7 +75,7 @@ package com.bit101.components
 		protected override function addChildren():void
 		{
 			_valueText = new InputText(this, 0, 0, "0", onValueTextChange);
-			_valueText.restrict = "0123456789."
+			_valueText.restrict = "-0123456789."
 			_minusBtn = new PushButton(this, 0, 0, "-", onMinus);
 			_minusBtn.setSize(16, 16);
 			_plusBtn = new PushButton(this, 0, 0, "+", onPlus);
