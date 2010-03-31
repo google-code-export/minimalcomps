@@ -29,6 +29,7 @@
 package com.bit101.components
 {
 	import flash.display.DisplayObjectContainer;
+	import flash.display.Shape;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.events.TimerEvent;
@@ -77,9 +78,25 @@ package com.bit101.components
 			_upButton = new PushButton(this, 0, 0, "");
 			_upButton.addEventListener(MouseEvent.MOUSE_DOWN, onUpClick);
 			_upButton.setSize(10, 10);
+			var upArrow:Shape = new Shape();
+			upArrow.graphics.beginFill(Style.DROPSHADOW, 0.5);
+			upArrow.graphics.moveTo(5, 3);
+			upArrow.graphics.lineTo(7, 6);
+			upArrow.graphics.lineTo(3, 6);
+			upArrow.graphics.endFill();
+			_upButton.addChild(upArrow);
+			
 			_downButton = new PushButton(this, 0, 0, "");
 			_downButton.addEventListener(MouseEvent.MOUSE_DOWN, onDownClick);
 			_downButton.setSize(10, 10);
+			var downArrow:Shape = new Shape();
+			downArrow.graphics.beginFill(Style.DROPSHADOW, 0.5);
+			downArrow.graphics.moveTo(5, 7);
+			downArrow.graphics.lineTo(7, 4);
+			downArrow.graphics.lineTo(3, 4);
+			downArrow.graphics.endFill();
+			_downButton.addChild(downArrow);
+			
 		}
 		
 		/**
