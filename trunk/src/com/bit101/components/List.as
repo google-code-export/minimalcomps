@@ -293,6 +293,7 @@ package com.bit101.components
 			{
 				_selectedIndex = index;
 				invalidate();
+				dispatchEvent(new Event(Event.SELECT));
 			}
 		}
 		public function get selectedItem():Object
