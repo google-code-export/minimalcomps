@@ -40,8 +40,10 @@ package com.bit101.components
 	
 	public class NumericStepper extends Component
 	{
-		protected var DELAY_TIME:int = 500;
-		protected var REPEAT_TIME:int = 100; 
+		protected const DELAY_TIME:int = 500;
+		protected const REPEAT_TIME:int = 100; 
+		protected const UP:String = "up";
+		protected const DOWN:String = "down";
 		
 		protected var _minusBtn:PushButton;
 		protected var _plusBtn:PushButton;
@@ -53,7 +55,7 @@ package com.bit101.components
 		protected var _min:Number = Number.NEGATIVE_INFINITY;
 		protected var _delayTimer:Timer;
 		protected var _repeatTimer:Timer;
-		protected var _stepUp:Boolean;
+		protected var _direction:String;
 		
 		/**
 		 * Constructor
@@ -152,7 +154,7 @@ package com.bit101.components
 		protected function onMinus(event:MouseEvent):void
 		{
 			decrement();
-			_stepUp = false;
+			_direction = DOWN;
 			_delayTimer.start();
 			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
 		}
@@ -163,7 +165,7 @@ package com.bit101.components
 		protected function onPlus(event:MouseEvent):void
 		{
 			increment();
-			_stepUp = true;
+			_direction = UP;
 			_delayTimer.start();
 			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
 		}
@@ -195,7 +197,7 @@ package com.bit101.components
 
 		protected function onRepeat(event:TimerEvent):void
 		{
-			if(_stepUp)
+			if(_direction == UP)
 			{
 				increment();
 			}
