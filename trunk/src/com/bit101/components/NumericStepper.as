@@ -32,9 +32,17 @@ package com.bit101.components
 	import flash.display.DisplayObjectContainer;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
+	import flash.utils.setTimeout;
+	
+	import org.osmf.events.TimeEvent;
 	
 	public class NumericStepper extends Component
 	{
+		protected var DELAY_TIME:int = 500;
+		protected var REPEAT_TIME:int = 100; 
+		
 		protected var _minusBtn:PushButton;
 		protected var _plusBtn:PushButton;
 		protected var _valueText:InputText;
@@ -43,6 +51,9 @@ package com.bit101.components
 		protected var _labelPrecision:int = 1;
 		protected var _max:Number = Number.POSITIVE_INFINITY;
 		protected var _min:Number = Number.NEGATIVE_INFINITY;
+		protected var _delayTimer:Timer;
+		protected var _repeatTimer:Timer;
+		protected var _stepUp:Boolean;
 		
 		/**
 		 * Constructor
@@ -67,6 +78,10 @@ package com.bit101.components
 		{
 			super.init();
 			setSize(80, 16);
+			_delayTimer = new Timer(DELAY_TIME, 1);
+			_delayTimer.addEventListener(TimerEvent.TIMER_COMPLETE, onDelayComplete);
+			_repeatTimer = new Timer(REPEAT_TIME);
+			_repeatTimer.addEventListener(TimerEvent.TIMER, onRepeat);
 		}
 		
 		/**
@@ -76,12 +91,33 @@ package com.bit101.components
 		{
 			_valueText = new InputText(this, 0, 0, "0", onValueTextChange);
 			_valueText.restrict = "-0123456789."
-			_minusBtn = new PushButton(this, 0, 0, "-", onMinus);
+			_minusBtn = new PushButton(this, 0, 0, "-");
+			_minusBtn.addEventListener(MouseEvent.MOUSE_DOWN, onMinus);
 			_minusBtn.setSize(16, 16);
-			_plusBtn = new PushButton(this, 0, 0, "+", onPlus);
+			_plusBtn = new PushButton(this, 0, 0, "+");
+			_plusBtn.addEventListener(MouseEvent.MOUSE_DOWN, onPlus);
 			_plusBtn.setSize(16, 16);
 		}
 		
+		protected function increment():void
+		{
+			if(_value + _step <= _max)
+			{
+				_value += _step;
+				invalidate();
+				dispatchEvent(new Event(Event.CHANGE));
+			}
+		}
+		
+		protected function decrement():void
+		{
+			if(_value - _step >= _min)
+			{
+				_value -= _step;
+				invalidate();
+				dispatchEvent(new Event(Event.CHANGE));
+			}
+		}
 		
 		
 		
@@ -115,12 +151,10 @@ package com.bit101.components
 		 */
 		protected function onMinus(event:MouseEvent):void
 		{
-			if(_value - _step >= _min)
-			{
-				_value -= _step;
-				invalidate();
-				dispatchEvent(new Event(Event.CHANGE));
-			}
+			decrement();
+			_stepUp = false;
+			_delayTimer.start();
+			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
 		}
 		
 		/**
@@ -128,12 +162,16 @@ package com.bit101.components
 		 */
 		protected function onPlus(event:MouseEvent):void
 		{
-			if(_value + _step <= _max)
-			{
-				_value += _step;
-				invalidate();
-				dispatchEvent(new Event(Event.CHANGE));
-			}
+			increment();
+			_stepUp = true;
+			_delayTimer.start();
+			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+		}
+		
+		protected function onMouseUp(event:MouseEvent):void
+		{
+			_delayTimer.stop();
+			_repeatTimer.stop();
 		}
 		
 		/**
@@ -150,6 +188,22 @@ package com.bit101.components
 			}
 		}
 
+		protected function onDelayComplete(event:TimerEvent):void
+		{
+			_repeatTimer.start();
+		}
+
+		protected function onRepeat(event:TimerEvent):void
+		{
+			if(_stepUp)
+			{
+				increment();
+			}
+			else
+			{
+				decrement();
+			}
+		}
 		
 		
 		
