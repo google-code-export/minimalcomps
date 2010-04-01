@@ -141,5 +141,13 @@ package com.bit101.components
 		{
 			return _autoSize;
 		}
+		
+		/**
+		 * Gets the internal TextField of the label if you need to do further customization of it.
+		 */
+		public function get textField():TextField
+		{
+			return _tf;
+		}
 	}
 }
