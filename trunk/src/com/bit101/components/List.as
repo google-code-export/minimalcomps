@@ -55,7 +55,7 @@ package com.bit101.components
 		 */
 		public function List(parent:DisplayObjectContainer=null, xpos:Number=0, ypos:Number=0, items:Array=null)
 		{
-			if(_items != null)
+			if(items != null)
 			{
 				_items = items;
 			}
