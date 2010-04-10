@@ -1,7 +1,7 @@
 /**
  * HScrollBar.as
  * Keith Peters
- * version 0.9.1
+ * version 0.9.2
  * 
  * A horizontal scroll bar for use in other components. 
  * 

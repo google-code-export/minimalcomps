@@ -1,7 +1,7 @@
 /**
  * VBox.as
  * Keith Peters
- * version 0.9.1
+ * version 0.9.2
  * 
  * A layout container for vertically aligning other components.
  * 

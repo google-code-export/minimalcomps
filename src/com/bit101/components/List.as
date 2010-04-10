@@ -1,7 +1,7 @@
 /**
  * List.as
  * Keith Peters
- * version 0.9.1
+ * version 0.9.2
  * 
  * A scrolling list of selectable items. 
  * 

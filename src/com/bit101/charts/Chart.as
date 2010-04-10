@@ -1,7 +1,7 @@
 /**
  * Chart.as
  * Keith Peters
- * version 0.9.1
+ * version 0.9.2
  * 
  * A base chart component for graphing an array of numeric data.
  * 
