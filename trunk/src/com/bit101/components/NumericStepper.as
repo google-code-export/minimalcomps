@@ -36,8 +36,6 @@ package com.bit101.components
 	import flash.utils.Timer;
 	import flash.utils.setTimeout;
 	
-	import org.osmf.events.TimeEvent;
-	
 	public class NumericStepper extends Component
 	{
 		protected const DELAY_TIME:int = 500;
