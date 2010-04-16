@@ -411,5 +411,28 @@ package com.bit101.components
 		}
 		
 		
+		/**
+		 * Sets / gets the color for alternate rows if alternateRows is set to true.
+		 */
+		public function set alternateColor(value:uint):void
+		{
+			_list.alternateColor = value;
+		}
+		public function get alternateColor():uint
+		{
+			return _list.alternateColor;
+		}
+		
+		/**
+		 * Sets / gets whether or not every other row will be colored with the alternate color.
+		 */
+		public function set alternateRows(value:Boolean):void
+		{
+			_list.alternateRows = value;
+		}
+		public function get alternateRows():Boolean
+		{
+			return _list.alternateRows;
+		}
 	}
 }
