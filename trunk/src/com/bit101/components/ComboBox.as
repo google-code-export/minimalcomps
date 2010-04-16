@@ -245,7 +245,7 @@ package com.bit101.components
 		{
 			_open = false;
 			_dropDownButton.label = "+";
-			if(stage.contains(_list))
+			if(stage != null && stage.contains(_list))
 			{
 				stage.removeChild(_list);
 			}
