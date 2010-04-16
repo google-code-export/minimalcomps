@@ -43,8 +43,10 @@ package com.bit101.components
 		protected var _scrollbar:VScrollBar;
 		protected var _selectedIndex:int = -1;
 		protected var _defaultColor:uint = 0xffffff;
-		protected var _selectedColor:uint = 0xdddddd;
-		protected var _rolloverColor:uint = 0xeeeeee;
+		protected var _alternateColor:uint = 0xf3f3f3;
+		protected var _selectedColor:uint = 0xcccccc;
+		protected var _rolloverColor:uint = 0xdddddd;
+		protected var _alternateRows:Boolean = false;
 		
 		/**
 		 * Constructor
@@ -109,6 +111,14 @@ package com.bit101.components
 				var item:ListItem = new _listItemClass(_itemHolder, 0, i * _listItemHeight, _items[i]);
 				item.setSize(width, _listItemHeight);
 				item.defaultColor = _defaultColor;
+				if(_alternateRows)
+				{
+					item.defaultColor = (i % 2 == 0) ? _defaultColor : _alternateColor;
+				}
+				else
+				{
+					item.defaultColor = _defaultColor;
+				}
 				item.selectedColor = _selectedColor;
 				item.rolloverColor = _rolloverColor;
 				item.addEventListener(MouseEvent.CLICK, onSelect);
@@ -381,6 +391,30 @@ package com.bit101.components
 		public function get listItemClass():Class
 		{
 			return _listItemClass;
+		}
+
+		/**
+		 * Sets / gets the color for alternate rows if alternateRows is set to true.
+		 */
+		public function set alternateColor(value:uint):void
+		{
+			_alternateColor = value;
+		}
+		public function get alternateColor():uint
+		{
+			return _alternateColor;
+		}
+		
+		/**
+		 * Sets / gets whether or not every other row will be colored with the alternate color.
+		 */
+		public function set alternateRows(value:Boolean):void
+		{
+			_alternateRows = value;
+		}
+		public function get alternateRows():Boolean
+		{
+			return _alternateRows;
 		}
 
 		

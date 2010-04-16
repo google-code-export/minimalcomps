@@ -29,6 +29,7 @@
 package com.bit101.components
 {
 	import flash.display.DisplayObjectContainer;
+	import flash.display.Shape;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
@@ -47,6 +48,7 @@ package com.bit101.components
 		protected var _minimized:Boolean = false;
 		protected var _hasCloseButton:Boolean;
 		protected var _closeButton:PushButton;
+		protected var _grips:Shape;
 		
 		
 		/**
@@ -77,11 +79,24 @@ package com.bit101.components
 		override protected function addChildren():void
 		{
 			_titleBar = new Panel(this);
+			_titleBar.filters = [];
 			_titleBar.buttonMode = true;
 			_titleBar.useHandCursor = true;
 			_titleBar.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
 			_titleBar.height = 20;
 			_titleLabel = new Label(_titleBar.content, 5, 1, _title);
+			
+			_grips = new Shape();
+			for(var i:int = 0; i < 4; i++)
+			{
+				_grips.graphics.lineStyle(1, 0xffffff, .55);
+				_grips.graphics.moveTo(0, 3 + i * 4);
+				_grips.graphics.lineTo(100, 3 + i * 4);
+				_grips.graphics.lineStyle(1, 0, .125);
+				_grips.graphics.moveTo(0, 4 + i * 4);
+				_grips.graphics.lineTo(100, 4 + i * 4);
+			}
+			_titleBar.content.addChild(_grips);
 			
 			_panel = new Panel(this, 0, 20);
 			_panel.visible = !_minimized;
@@ -127,6 +142,15 @@ package com.bit101.components
 			_titleBar.draw();
 			_titleLabel.x = _hasMinimizeButton ? 20 : 5;
 			_closeButton.x = _width - 14;
+			_grips.x = _titleLabel.x + _titleLabel.width;
+			if(_hasCloseButton)
+			{
+				_grips.width = _closeButton.x - _grips.x - 2;
+			}
+			else
+			{
+				_grips.width = _width - _grips.x - 2;
+			}
 			_panel.setSize(_width, _height - 20);
 			_panel.draw();
 		}
@@ -301,6 +325,10 @@ package com.bit101.components
 			}
 		}
 
+		/**
+		 * Sets / gets whether or not the window will display a close button.
+		 * Close button merely dispatches a CLOSE event when clicked. It is up to the developer to handle this event.
+		 */
 		public function set hasCloseButton(value:Boolean):void
 		{
 			_hasCloseButton = value;
@@ -319,6 +347,9 @@ package com.bit101.components
 			return _hasCloseButton;
 		}
 
+		/**
+		 * Returns a reference to the title bar for customization.
+		 */
 		public function get titleBar():Panel
 		{
 			return _titleBar;
@@ -326,6 +357,14 @@ package com.bit101.components
 		public function set titleBar(value:Panel):void
 		{
 			_titleBar = value;
+		}
+
+		/**
+		 * Returns a reference to the shape showing the grips on the title bar. Can be used to do custom drawing or turn them invisible.
+		 */		
+		public function get grips():Shape
+		{
+			return _grips;
 		}
 
 
