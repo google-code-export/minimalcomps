@@ -43,7 +43,6 @@ package com.bit101.components
 
 	public class Component extends Sprite
 	{
-		
 		// NOTE: Flex 4 introduces DefineFont4, which is used by default and does not work in native text fields.
 		// Use the embedAsCFF="false" param to switch back to DefineFont4. In earlier Flex 4 SDKs this was cff="false".
 		// So if you are using the Flex 3.x sdk compiler, switch the embed statment below to expose the correct version.
