@@ -50,6 +50,7 @@ package com.bit101.components
 		protected var _delayTimer:Timer;
 		protected var _repeatTimer:Timer;
 		protected var _direction:String;
+		protected var _shouldRepeat:Boolean = false;
 		
 		/**
 		 * Constructor
@@ -228,6 +229,7 @@ package com.bit101.components
 		protected function onUpClick(event:MouseEvent):void
 		{
 			goUp();
+			_shouldRepeat = true;
 			_direction = UP;
 			_delayTimer.start();
 			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
@@ -242,8 +244,10 @@ package com.bit101.components
 		protected function onDownClick(event:MouseEvent):void
 		{
 			goDown();
+			_shouldRepeat = true;
 			_direction = DOWN;
 			_delayTimer.start();
+			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
 		}
 		
 		protected function goDown():void
@@ -256,6 +260,7 @@ package com.bit101.components
 		{
 			_delayTimer.stop();
 			_repeatTimer.stop();
+			_shouldRepeat = false;
 		}
 		
 		protected function onChange(event:Event):void
@@ -265,7 +270,10 @@ package com.bit101.components
 		
 		protected function onDelayComplete(event:TimerEvent):void
 		{
-			_repeatTimer.start();
+			if(_shouldRepeat)
+			{
+				_repeatTimer.start();
+			}
 		}
 		
 		protected function onRepeat(event:TimerEvent):void
