@@ -71,6 +71,7 @@ package com.bit101.components
 			for(var i:int = 0; i < 2; i++)
 			{
 				var window:Window = new Window(_vbox, 0, 0, "Section " + (i + 1));
+				window.grips.visible = false;
 				window.draggable = false;
 				window.addEventListener(Event.SELECT, onWindowSelect);
 				if(i != 0) window.minimized = true;
@@ -91,6 +92,7 @@ package com.bit101.components
 			var window:Window = new Window(_vbox, 0, 0, title);
 			window.minimized = true;
 			window.draggable = false;
+			window.grips.visible = false;
 			window.addEventListener(Event.SELECT, onWindowSelect);
 			_windows.push(window);
 			_winHeight = _height - (_windows.length - 1) * 20;

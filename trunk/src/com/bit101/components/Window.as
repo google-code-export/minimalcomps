@@ -97,6 +97,7 @@ package com.bit101.components
 				_grips.graphics.lineTo(100, 4 + i * 4);
 			}
 			_titleBar.content.addChild(_grips);
+			_grips.visible = false;
 			
 			_panel = new Panel(this, 0, 20);
 			_panel.visible = !_minimized;
