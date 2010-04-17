@@ -1,7 +1,7 @@
 /**
  * Knob.as
  * Keith Peters
- * version 0.9.2
+ * version 0.9.4
  * 
  * A knob component for choosing a numerical value.
  * 

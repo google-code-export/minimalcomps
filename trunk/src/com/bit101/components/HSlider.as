@@ -1,7 +1,7 @@
 /**
  * HSlider.as
  * Keith Peters
- * version 0.9.2
+ * version 0.9.4
  * 
  * A Horizontal Slider component for choosing values.
  * 

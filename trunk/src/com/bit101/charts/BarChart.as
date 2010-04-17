@@ -1,7 +1,7 @@
 /**
  * BarChart.as
  * Keith Peters
- * version 0.9.2
+ * version 0.9.4
  * 
  * A chart component for graphing an array of numeric data as a bar graph.
  * 
