@@ -1,7 +1,7 @@
 /**
  * ComboBox.as
  * Keith Peters
- * version 0.9.2
+ * version 0.9.4
  * 
  * A button that exposes a list of choices and displays the chosen item. 
  * 

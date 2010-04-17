@@ -1,7 +1,7 @@
 /**
  * Component.as
  * Keith Peters
- * version 0.9.2
+ * version 0.9.4
  * 
  * Base class for all components
  * 
