@@ -38,6 +38,9 @@ package com.bit101.components
 		private var _background:Shape;
 		private var _color:int = -1;
 		private var _shadow:Boolean = true;
+		private var _gridSize:int = 10;
+		private var _showGrid:Boolean = false;
+		private var _gridColor:uint = 0xd0d0d0;
 		
 		
 		/**
@@ -112,12 +115,30 @@ package com.bit101.components
 			_background.graphics.drawRect(0, 0, _width, _height);
 			_background.graphics.endFill();
 			
+			drawGrid();
+			
 			_mask.graphics.clear();
 			_mask.graphics.beginFill(0xff0000);
 			_mask.graphics.drawRect(0, 0, _width, _height);
 			_mask.graphics.endFill();
 		}
 		
+		protected function drawGrid():void
+		{
+			if(!_showGrid) return;
+			
+			_background.graphics.lineStyle(0, _gridColor);
+			for(var i:int = 0; i < _width; i += _gridSize)
+			{
+				_background.graphics.moveTo(i, 0);
+				_background.graphics.lineTo(i, _height);
+			}
+			for(i = 0; i < _height; i += _gridSize)
+			{
+				_background.graphics.moveTo(0, i);
+				_background.graphics.lineTo(_width, i);
+			}
+		}
 		
 		
 		
@@ -160,6 +181,45 @@ package com.bit101.components
 		public function get color():int
 		{
 			return _color;
+		}
+
+		/**
+		 * Sets / gets the size of the grid.
+		 */
+		public function set gridSize(value:int):void
+		{
+			_gridSize = value;
+			invalidate();
+		}
+		public function get gridSize():int
+		{
+			return _gridSize;
+		}
+
+		/**
+		 * Sets / gets whether or not the grid will be shown.
+		 */
+		public function set showGrid(value:Boolean):void
+		{
+			_showGrid = value;
+			invalidate();
+		}
+		public function get showGrid():Boolean
+		{
+			return _showGrid;
+		}
+
+		/**
+		 * Sets / gets the color of the grid lines.
+		 */
+		public function set gridColor(value:uint):void
+		{
+			_gridColor = value;
+			invalidate();
+		}
+		public function get gridColor():uint
+		{
+			return _gridColor;
 		}
 	}
 }
