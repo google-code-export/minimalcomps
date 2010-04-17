@@ -399,6 +399,7 @@ package com.bit101.components
 		public function set alternateColor(value:uint):void
 		{
 			_alternateColor = value;
+			invalidate();
 		}
 		public function get alternateColor():uint
 		{
@@ -411,6 +412,7 @@ package com.bit101.components
 		public function set alternateRows(value:Boolean):void
 		{
 			_alternateRows = value;
+			invalidate();
 		}
 		public function get alternateRows():Boolean
 		{
