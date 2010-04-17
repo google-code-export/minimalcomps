@@ -253,6 +253,45 @@ package com.bit101.charts
 			return _labelPrecision;
 		}
 
+		/**
+		 * Sets / gets the size of the grid.
+		 */
+		public function set gridSize(value:int):void
+		{
+			_panel.gridSize = value;
+			invalidate();
+		}
+		public function get gridSize():int
+		{
+			return _panel.gridSize;
+		}
+		
+		/**
+		 * Sets / gets whether or not the grid will be shown.
+		 */
+		public function set showGrid(value:Boolean):void
+		{
+			_panel.showGrid = value;
+			invalidate();
+		}
+		public function get showGrid():Boolean
+		{
+			return _panel.showGrid;
+		}
+		
+		/**
+		 * Sets / gets the color of the grid lines.
+		 */
+		public function set gridColor(value:uint):void
+		{
+			_panel.gridColor = value;
+			invalidate();
+		}
+		public function get gridColor():uint
+		{
+			return _panel.gridColor;
+		}
+		
 
 	}
 }
