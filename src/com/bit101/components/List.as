@@ -293,6 +293,7 @@ package com.bit101.components
 			if(value >= 0 && value < _items.length)
 			{
 				_selectedIndex = value;
+				_scrollbar.value = _selectedIndex;
 				invalidate();
 				dispatchEvent(new Event(Event.SELECT));
 			}
@@ -310,7 +311,7 @@ package com.bit101.components
 			var index:int = _items.indexOf(item);
 			if(index != -1)
 			{
-				_selectedIndex = index;
+				selectedIndex = index;
 				invalidate();
 				dispatchEvent(new Event(Event.SELECT));
 			}
