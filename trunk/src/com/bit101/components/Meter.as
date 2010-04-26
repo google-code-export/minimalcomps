@@ -333,5 +333,18 @@ package com.bit101.components
 		{
 			return _showValues;
 		}
+
+		/**
+		 * Gets / sets the damping value for the meter.
+		 */
+		public function set damp(value:Number):void
+		{
+			_damp = value;
+		}
+		public function get damp():Number
+		{
+			return _damp;
+		}
+
 	}
 }
