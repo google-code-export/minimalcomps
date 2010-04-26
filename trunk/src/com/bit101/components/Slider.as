@@ -315,9 +315,6 @@ package com.bit101.components
 			correctValue();
 			positionHandle();
 			
-			// This has the potential to set up an infinite loop if two sliders are listening to each other's change
-			// events to sync to each other. Tentitively trying it out... 
-			dispatchEvent(new Event(Event.CHANGE));
 		}
 		public function get value():Number
 		{
