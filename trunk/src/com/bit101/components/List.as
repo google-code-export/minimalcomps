@@ -75,6 +75,7 @@ package com.bit101.components
 		{
 			super.init();
 			setSize(100, 100);
+			addEventListener(MouseEvent.MOUSE_WHEEL, onMouseWheel);
 		}
 		
 		/**
@@ -270,6 +271,14 @@ package com.bit101.components
 		protected function onScroll(event:Event):void
 		{
 			_itemHolder.y = -_scrollbar.value * _listItemHeight;
+		}
+		
+		/**
+		 * Called when the mouse wheel is scrolled over the component.
+		 */
+		protected function onMouseWheel(event:MouseEvent):void
+		{
+			_scrollbar.value -= event.delta;
 		}
 		
 		///////////////////////////////////

@@ -30,6 +30,7 @@ package com.bit101.components
 {
 	import flash.display.DisplayObjectContainer;
 	import flash.events.Event;
+	import flash.events.MouseEvent;
 	
 	public class TextArea extends Text
 	{
@@ -47,6 +48,14 @@ package com.bit101.components
 			super(parent, xpos, ypos, text);
 		}
 		
+		/**
+		 * Initilizes the component.
+		 */
+		protected override function init() : void
+		{
+			super.init();
+			addEventListener(MouseEvent.MOUSE_WHEEL, onMouseWheel);
+		}
 		/**
 		 * Creates and adds the child display objects of this component.
 		 */
@@ -130,6 +139,14 @@ package com.bit101.components
 		{
 			_scrollbar.value = _tf.scrollV;
 			updateScrollbar();
+		}
+		
+		/**
+		 * Called when the mouse wheel is scrolled over the component.
+		 */
+		protected function onMouseWheel(event:MouseEvent):void
+		{
+			_scrollbar.value -= event.delta;
 		}
 	}
 }
