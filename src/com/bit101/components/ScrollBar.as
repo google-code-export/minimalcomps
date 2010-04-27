@@ -80,23 +80,43 @@ package com.bit101.components
 			_upButton.addEventListener(MouseEvent.MOUSE_DOWN, onUpClick);
 			_upButton.setSize(10, 10);
 			var upArrow:Shape = new Shape();
-			upArrow.graphics.beginFill(Style.DROPSHADOW, 0.5);
-			upArrow.graphics.moveTo(5, 3);
-			upArrow.graphics.lineTo(7, 6);
-			upArrow.graphics.lineTo(3, 6);
-			upArrow.graphics.endFill();
 			_upButton.addChild(upArrow);
 			
 			_downButton = new PushButton(this, 0, 0, "");
 			_downButton.addEventListener(MouseEvent.MOUSE_DOWN, onDownClick);
 			_downButton.setSize(10, 10);
 			var downArrow:Shape = new Shape();
-			downArrow.graphics.beginFill(Style.DROPSHADOW, 0.5);
-			downArrow.graphics.moveTo(5, 7);
-			downArrow.graphics.lineTo(7, 4);
-			downArrow.graphics.lineTo(3, 4);
-			downArrow.graphics.endFill();
 			_downButton.addChild(downArrow);
+			
+			if(_orientation == Slider.VERTICAL)
+			{
+				upArrow.graphics.beginFill(Style.DROPSHADOW, 0.5);
+				upArrow.graphics.moveTo(5, 3);
+				upArrow.graphics.lineTo(7, 6);
+				upArrow.graphics.lineTo(3, 6);
+				upArrow.graphics.endFill();
+				
+				downArrow.graphics.beginFill(Style.DROPSHADOW, 0.5);
+				downArrow.graphics.moveTo(5, 7);
+				downArrow.graphics.lineTo(7, 4);
+				downArrow.graphics.lineTo(3, 4);
+				downArrow.graphics.endFill();
+			}
+			else
+			{
+				upArrow.graphics.beginFill(Style.DROPSHADOW, 0.5);
+				upArrow.graphics.moveTo(3, 5);
+				upArrow.graphics.lineTo(6, 7);
+				upArrow.graphics.lineTo(6, 3);
+				upArrow.graphics.endFill();
+				
+				downArrow.graphics.beginFill(Style.DROPSHADOW, 0.5);
+				downArrow.graphics.moveTo(7, 5);
+				downArrow.graphics.lineTo(4, 7);
+				downArrow.graphics.lineTo(4, 3);
+				downArrow.graphics.endFill();
+			}
+
 			
 		}
 		
@@ -347,8 +367,8 @@ class ScrollSlider extends Slider
 		_handle.graphics.clear();
 		if(_orientation == HORIZONTAL)
 		{
-			size = Math.round(_height * _thumbPercent);
-			size = Math.max(_width, size);
+			size = Math.round(_width * _thumbPercent);
+			size = Math.max(_height, size);
 			_handle.graphics.beginFill(0, 0);
 			_handle.graphics.drawRect(0, 0, size, _height);
 			_handle.graphics.endFill();
@@ -504,11 +524,25 @@ class ScrollSlider extends Slider
 		var oldValue:Number = _value;
 		if(_orientation == HORIZONTAL)
 		{
-			_value = _handle.x / (_width - _handle.width) * (_max - _min) + _min;
+			if(_width == _handle.width)
+			{
+				_value = _min;
+			}
+			else
+			{
+				_value = _handle.x / (_width - _handle.width) * (_max - _min) + _min;
+			}
 		}
 		else
 		{
-			_value = _handle.y / (_height - _handle.height) * (_max - _min) + _min;
+			if(_height == _handle.height)
+			{
+				_value = _min;
+			}
+			else
+			{
+				_value = _handle.y / (_height - _handle.height) * (_max - _min) + _min;
+			}
 		}
 		if(_value != oldValue)
 		{
