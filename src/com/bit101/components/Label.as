@@ -36,9 +36,9 @@ package com.bit101.components
 	
 	public class Label extends Component
 	{
-		private var _autoSize:Boolean = true;
-		private var _text:String = "";
-		private var _tf:TextField;
+		protected var _autoSize:Boolean = true;
+		protected var _text:String = "";
+		protected var _tf:TextField;
 		
 		/**
 		 * Constructor

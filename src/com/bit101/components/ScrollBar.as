@@ -213,6 +213,30 @@ package com.bit101.components
 		}
 		
 		/**
+		 * Sets / gets the minimum value of this scroll bar.
+		 */
+		public function set minimum(v:Number):void
+		{
+			_scrollSlider.minimum = v;
+		}
+		public function get minimum():Number
+		{
+			return _scrollSlider.minimum;
+		}
+		
+		/**
+		 * Sets / gets the maximum value of this scroll bar.
+		 */
+		public function set maximum(v:Number):void
+		{
+			_scrollSlider.maximum = v;
+		}
+		public function get maximum():Number
+		{
+			return _scrollSlider.maximum;
+		}
+		
+		/**
 		 * Sets / gets the amount the value will change when up or down buttons are pressed.
 		 */
 		public function set lineSize(value:int):void
@@ -329,7 +353,7 @@ import com.bit101.components.Style;
 class ScrollSlider extends Slider
 {
 	protected var _thumbPercent:Number = 1.0;
-	private var _pageSize:int = 1;
+	protected var _pageSize:int = 1;
 	
 	/**
 	 * Constructor

@@ -33,7 +33,7 @@ package com.bit101.charts
 	public class LineChart extends Chart
 	{
 		protected var _lineWidth:Number = 1;
-		private var _lineColor:uint = 0x999999;
+		protected var _lineColor:uint = 0x999999;
 		
 		/**
 		 * Constructor

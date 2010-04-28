@@ -33,7 +33,7 @@ package com.bit101.charts
 	public class BarChart extends Chart
 	{
 		protected var _spacing:Number = 2;
-		private var _barColor:uint = 0x999999;
+		protected var _barColor:uint = 0x999999;
 		
 		/**
 		 * Constructor

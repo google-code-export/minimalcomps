@@ -34,10 +34,10 @@ package com.bit101.components
 	
 	public class Accordion extends Component
 	{
-		private var _windows:Array;
-		private var _winWidth:Number = 100;
-		private var _winHeight:Number = 100;
-		private var _vbox:VBox;
+		protected var _windows:Array;
+		protected var _winWidth:Number = 100;
+		protected var _winHeight:Number = 100;
+		protected var _vbox:VBox;
 		
 		/**
 		 * Constructor

@@ -51,7 +51,7 @@ package com.bit101.components
 		[Embed(source="/assets/pf_ronda_seven.ttf", embedAsCFF="false", fontName="PF Ronda Seven", mimeType="application/x-font")]
 		// Flex 3.x sdk:
 //		[Embed(source="/assets/pf_ronda_seven.ttf", fontName="PF Ronda Seven", mimeType="application/x-font")]
-		private var Ronda:Class;
+		protected var Ronda:Class;
 		
 		protected var _width:Number = 0;
 		protected var _height:Number = 0;

@@ -26,16 +26,13 @@
  * THE SOFTWARE.
  */
 
-package com.bit101
+package com.bit101.components
 {
-	import com.bit101.components.HScrollBar;
-	import com.bit101.components.Panel;
-	import com.bit101.components.Style;
-	import com.bit101.components.VScrollBar;
 	
 	import flash.display.DisplayObjectContainer;
 	import flash.display.Shape;
 	import flash.events.Event;
+	import flash.events.MouseEvent;
 	import flash.geom.Rectangle;
 	
 	public class ScrollPane extends Panel
@@ -43,6 +40,7 @@ package com.bit101
 		protected var _vScrollbar:VScrollBar;
 		protected var _hScrollbar:HScrollBar;
 		protected var _corner:Shape;
+		protected var _dragContent:Boolean = true;
 		
 		/**
 		 * Constructor
@@ -61,6 +59,10 @@ package com.bit101
 		override protected function init():void
 		{
 			super.init();
+			addEventListener(Event.RESIZE, onResize);
+			_background.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+			_background.useHandCursor = true;
+			_background.buttonMode = true;
 			setSize(100, 100);
 		}
 		
@@ -78,6 +80,7 @@ package com.bit101
 			_corner.graphics.endFill();
 			addChild(_corner);
 		}
+		
 		
 
 		
@@ -98,14 +101,17 @@ package com.bit101
 			_hScrollbar.width = width - 10;
 			
 			_vScrollbar.setThumbPercent((_height - 10) / content.height);
-			_vScrollbar.setSliderParams(0, content.height - _height + 10, _vScrollbar.value);
+			_vScrollbar.maximum = Math.max(0, content.height - _height + 10);
 			_vScrollbar.pageSize = _height - 10;
+			
 			_hScrollbar.setThumbPercent((_width - 10) / content.width);
-			_hScrollbar.setSliderParams(0, content.width - _width + 10, _hScrollbar.value);
+			_hScrollbar.maximum = Math.max(0, content.width - _width + 10);
 			_hScrollbar.pageSize = _width - 10;
 			
 			_corner.x = width - 10;
 			_corner.y = height - 10;
+			content.x = -_hScrollbar.value;
+			content.y = -_vScrollbar.value;
 		}
 		
 		/**
@@ -126,7 +132,56 @@ package com.bit101
 		 */
 		protected function onScroll(event:Event):void
 		{
-			content.scrollRect = new Rectangle(_hScrollbar.value, _vScrollbar.value, _width, _height);
+			content.x = -_hScrollbar.value;
+			content.y = -_vScrollbar.value;
 		}
+		
+		protected function onResize(event:Event):void
+		{
+			invalidate();
+		}
+		
+		protected function onMouseDown(event:MouseEvent):void
+		{
+			content.startDrag(false, new Rectangle(0, 0, Math.min(0, _width - content.width - 10), Math.min(0, _height - content.height - 10)));
+			stage.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+		}
+		
+		protected function onMouseMove(event:MouseEvent):void
+		{
+			_hScrollbar.value = -content.x;
+			_vScrollbar.value = -content.y;
+		}
+		
+		protected function onMouseUp(event:MouseEvent):void
+		{
+			content.stopDrag();
+			stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+			stage.removeEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+		}
+
+		public function set dragContent(value:Boolean):void
+		{
+			_dragContent = value;
+			if(_dragContent)
+			{
+				_background.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+				_background.useHandCursor = true;
+				_background.buttonMode = true;
+			}
+			else
+			{
+				_background.removeEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+				_background.useHandCursor = false;
+				_background.buttonMode = false;
+			}
+		}
+		public function get dragContent():Boolean
+		{
+			return _dragContent;
+		}
+
+		
 	}
 }

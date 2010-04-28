@@ -39,19 +39,19 @@
 		public static const HORIZONTAL:String = "horizontal";
 		public static const ROTATE:String = "rotate";
 		
-		private var _knob:Sprite;
-		private var _label:Label;
-		private var _labelText:String = "";
-		private var _max:Number = 100;
-		private var _min:Number = 0;
-		private var _mode:String = VERTICAL;
-		private var _mouseRange:Number = 100;
-		private var _precision:int = 1;
-		private var _radius:Number = 20;
-		private var _startX:Number;
-		private var _startY:Number;
-		private var _value:Number = 0;
-		private var _valueLabel:Label;
+		protected var _knob:Sprite;
+		protected var _label:Label;
+		protected var _labelText:String = "";
+		protected var _max:Number = 100;
+		protected var _min:Number = 0;
+		protected var _mode:String = VERTICAL;
+		protected var _mouseRange:Number = 100;
+		protected var _precision:int = 1;
+		protected var _radius:Number = 20;
+		protected var _startX:Number;
+		protected var _startY:Number;
+		protected var _value:Number = 0;
+		protected var _valueLabel:Label;
 		
 		
 		/**

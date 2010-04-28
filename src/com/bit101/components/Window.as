@@ -295,13 +295,15 @@ package com.bit101.components
 		public function set minimized(value:Boolean):void
 		{
 			_minimized = value;
-			_panel.visible = !_minimized;
+//			_panel.visible = !_minimized;
 			if(_minimized)
 			{
+				if(contains(_panel)) removeChild(_panel);
 				_minimizeButton.rotation = -90;
 			}
 			else
 			{
+				if(!contains(_panel)) addChild(_panel);
 				_minimizeButton.rotation = 0;
 			}
 			dispatchEvent(new Event(Event.RESIZE));
@@ -316,7 +318,7 @@ package com.bit101.components
 		 */
 		override public function get height():Number
 		{
-			if(_panel.visible)
+			if(contains(_panel))
 			{
 				return super.height;
 			}

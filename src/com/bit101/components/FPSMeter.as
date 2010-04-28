@@ -35,11 +35,11 @@
 	
 	public class FPSMeter extends Component
 	{
-		private var _label:Label;
-		private var _startTime:int;
-		private var _frames:int;
-		private var _prefix:String = "";
-		private var _fps:int = 0;
+		protected var _label:Label;
+		protected var _startTime:int;
+		protected var _frames:int;
+		protected var _prefix:String = "";
+		protected var _fps:int = 0;
 		
 		/**
 		 * Constructor

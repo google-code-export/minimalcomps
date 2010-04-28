@@ -40,13 +40,13 @@ package com.bit101.components
 	
 	public class Calendar extends Panel
 	{
-		private var _dateLabel:Label;
-		private var _day:int;
-		private var _dayButtons:Array = new Array();
-		private var _month:int;
-		private var _monthNames:Array = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-		private var _selection:Shape;
-		private var _year:int;
+		protected var _dateLabel:Label;
+		protected var _day:int;
+		protected var _dayButtons:Array = new Array();
+		protected var _month:int;
+		protected var _monthNames:Array = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+		protected var _selection:Shape;
+		protected var _year:int;
 		
 		/**
 		 * Constructor

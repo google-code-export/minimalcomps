@@ -35,20 +35,20 @@ package com.bit101.components
 	
 	public class Meter extends Component
 	{
-		private var _damp:Number = .8;
-		private var _dial:Sprite;
-		private var _label:Label;
-		private var _labelText:String;
-		private var _maximum:Number = 1.0;
-		private var _maxLabel:Label;
-		private var _minimum:Number = 0.0;
-		private var _minLabel:Label;
-		private var _needle:Sprite;
-		private var _needleMask:Sprite;
-		private var _showValues:Boolean = true;
-		private var _targetRotation:Number = 0;
-		private var _value:Number = 0.0;
-		private var _velocity:Number = 0;
+		protected var _damp:Number = .8;
+		protected var _dial:Sprite;
+		protected var _label:Label;
+		protected var _labelText:String;
+		protected var _maximum:Number = 1.0;
+		protected var _maxLabel:Label;
+		protected var _minimum:Number = 0.0;
+		protected var _minLabel:Label;
+		protected var _needle:Sprite;
+		protected var _needleMask:Sprite;
+		protected var _showValues:Boolean = true;
+		protected var _targetRotation:Number = 0;
+		protected var _value:Number = 0.0;
+		protected var _velocity:Number = 0;
 		
 		
 		
