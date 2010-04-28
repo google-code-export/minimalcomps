@@ -37,8 +37,8 @@ package com.bit101.components
 	public class Slider extends Component
 	{
 		protected var _handle:Sprite;
-		private var _back:Sprite;
-		private var _backClick:Boolean = true;
+		protected var _back:Sprite;
+		protected var _backClick:Boolean = true;
 		protected var _value:Number = 0;
 		protected var _max:Number = 100;
 		protected var _min:Number = 0;

@@ -34,13 +34,13 @@ package com.bit101.components
 	
 	public class Panel extends Component
 	{
-		private var _mask:Sprite;
-		private var _background:Shape;
-		private var _color:int = -1;
-		private var _shadow:Boolean = true;
-		private var _gridSize:int = 10;
-		private var _showGrid:Boolean = false;
-		private var _gridColor:uint = 0xd0d0d0;
+		protected var _mask:Sprite;
+		protected var _background:Sprite;
+		protected var _color:int = -1;
+		protected var _shadow:Boolean = true;
+		protected var _gridSize:int = 10;
+		protected var _showGrid:Boolean = false;
+		protected var _gridColor:uint = 0xd0d0d0;
 		
 		
 		/**
@@ -75,7 +75,7 @@ package com.bit101.components
 		 */
 		override protected function addChildren():void
 		{
-			_background = new Shape();
+			_background = new Sprite();
 			addChild(_background);
 			
 			_mask = new Sprite();

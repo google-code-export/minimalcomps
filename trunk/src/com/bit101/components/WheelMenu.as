@@ -41,17 +41,17 @@ package com.bit101.components
 
 	public class WheelMenu extends Component
 	{
-		private var _borderColor:uint = 0xcccccc;
-		private var _buttons:Array;
-		private var _color:uint = 0xffffff;
-		private var _highlightColor:uint = 0xeeeeee;
-		private var _iconRadius:Number;
-		private var _innerRadius:Number;
-		private var _items:Array;
-		private var _numButtons:int;
-		private var _outerRadius:Number;
-		private var _selectedIndex:int = -1;
-		private var _startingAngle:Number = -90;
+		protected var _borderColor:uint = 0xcccccc;
+		protected var _buttons:Array;
+		protected var _color:uint = 0xffffff;
+		protected var _highlightColor:uint = 0xeeeeee;
+		protected var _iconRadius:Number;
+		protected var _innerRadius:Number;
+		protected var _items:Array;
+		protected var _numButtons:int;
+		protected var _outerRadius:Number;
+		protected var _selectedIndex:int = -1;
+		protected var _startingAngle:Number = -90;
 		
 		
 		/**
@@ -279,16 +279,16 @@ class ArcButton extends Sprite
 {
 	public var id:int;
 	
-	private var _arc:Number;
-	private var _bg:Shape;
-	private var _borderColor:uint = 0xcccccc;
-	private var _color:uint = 0xffffff;
-	private var _highlightColor:uint = 0xeeeeee;
-	private var _icon:DisplayObject;
-	private var _iconHolder:Sprite;
-	private var _iconRadius:Number;
-	private var _innerRadius:Number;
-	private var _outerRadius:Number;
+	protected var _arc:Number;
+	protected var _bg:Shape;
+	protected var _borderColor:uint = 0xcccccc;
+	protected var _color:uint = 0xffffff;
+	protected var _highlightColor:uint = 0xeeeeee;
+	protected var _icon:DisplayObject;
+	protected var _iconHolder:Sprite;
+	protected var _iconRadius:Number;
+	protected var _innerRadius:Number;
+	protected var _outerRadius:Number;
 	
 	/**
 	 * Constructor.
@@ -316,7 +316,7 @@ class ArcButton extends Sprite
 	}
 	
 	///////////////////////////////////
-	// private methods
+	// protected methods
 	///////////////////////////////////
 	
 	/**

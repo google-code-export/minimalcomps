@@ -35,7 +35,7 @@ package com.bit101.components
 
 	public class HBox extends Component
 	{
-		private var _spacing:Number = 5;
+		protected var _spacing:Number = 5;
 		
 		
 		/**

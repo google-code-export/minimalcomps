@@ -35,10 +35,10 @@ package com.bit101.components
 	
 	public class InputText extends Component
 	{
-		private var _back:Sprite;
-		private var _password:Boolean = false;
-		private var _text:String = "";
-		private var _tf:TextField;
+		protected var _back:Sprite;
+		protected var _password:Boolean = false;
+		protected var _text:String = "";
+		protected var _tf:TextField;
 		
 		/**
 		 * Constructor
