@@ -245,6 +245,7 @@ package com.bit101.components
 		{
 			_enabled = value;
 			mouseEnabled = mouseChildren = _enabled;
+            tabEnabled = value;
 			alpha = _enabled ? 1.0 : 0.5;
 		}
 		public function get enabled():Boolean
