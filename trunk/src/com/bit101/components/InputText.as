@@ -210,5 +210,15 @@ package com.bit101.components
 		{
 			return _password;
 		}
+
+        /**
+         * Sets/gets whether this component is enabled or not.
+         */
+        public override function set enabled(value:Boolean):void
+        {
+            super.enabled = value;
+            _tf.tabEnabled = value;
+        }
+
 	}
 }
