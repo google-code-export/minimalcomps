@@ -34,17 +34,16 @@ package com.bit101.components
 	import flash.events.MouseEvent;
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
-	import flash.utils.setTimeout;
 	
 	public class NumericStepper extends Component
 	{
 		protected const DELAY_TIME:int = 500;
-		protected const REPEAT_TIME:int = 100; 
 		protected const UP:String = "up";
-		protected const DOWN:String = "down";
-		
+        protected const DOWN:String = "down";
 		protected var _minusBtn:PushButton;
-		protected var _plusBtn:PushButton;
+
+        protected var _repeatTime:int = 100;
+        protected var _plusBtn:PushButton;
 		protected var _valueText:InputText;
 		protected var _value:Number = 0;
 		protected var _step:Number = 1;
@@ -80,7 +79,7 @@ package com.bit101.components
 			setSize(80, 16);
 			_delayTimer = new Timer(DELAY_TIME, 1);
 			_delayTimer.addEventListener(TimerEvent.TIMER_COMPLETE, onDelayComplete);
-			_repeatTimer = new Timer(REPEAT_TIME);
+			_repeatTimer = new Timer(_repeatTime);
 			_repeatTimer.addEventListener(TimerEvent.TIMER, onRepeat);
 		}
 		
@@ -90,7 +89,7 @@ package com.bit101.components
 		protected override function addChildren():void
 		{
 			_valueText = new InputText(this, 0, 0, "0", onValueTextChange);
-			_valueText.restrict = "-0123456789."
+			_valueText.restrict = "-0123456789.";
 			_minusBtn = new PushButton(this, 0, 0, "-");
 			_minusBtn.addEventListener(MouseEvent.MOUSE_DOWN, onMinus);
 			_minusBtn.setSize(16, 16);
@@ -214,11 +213,11 @@ package com.bit101.components
 		/**
 		 * Sets / gets the current value of this component.
 		 */
-		public function set value(value:Number):void
+		public function set value(val:Number):void
 		{
-			if(value <= _maximum && value >= _minimum)
+			if(val <= _maximum && val >= _minimum)
 			{
-				_value = value;
+				_value = val;
 				invalidate();
 			}
 		}
@@ -290,6 +289,19 @@ package com.bit101.components
 			return _minimum;
 		}
 
+        /**
+         * Gets/sets the update rate that the stepper will change its value if a button is held down.
+         */
+        public function get repeatTime():int
+        {
+            return _repeatTime;
+        }
 
-	}
+        public function set repeatTime(value:int):void
+        {
+            // shouldn't be any need to set it faster than 10 ms. guard against negative.
+            _repeatTime = Math.max(value, 10);
+            _repeatTimer.delay = _repeatTime;
+        }
+    }
 }
