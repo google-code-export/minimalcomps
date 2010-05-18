@@ -49,8 +49,8 @@ package com.bit101.components
 		protected var _value:Number = 0;
 		protected var _step:Number = 1;
 		protected var _labelPrecision:int = 1;
-		protected var _max:Number = Number.POSITIVE_INFINITY;
-		protected var _min:Number = Number.NEGATIVE_INFINITY;
+		protected var _maximum:Number = Number.POSITIVE_INFINITY;
+		protected var _minimum:Number = Number.NEGATIVE_INFINITY;
 		protected var _delayTimer:Timer;
 		protected var _repeatTimer:Timer;
 		protected var _direction:String;
@@ -101,7 +101,7 @@ package com.bit101.components
 		
 		protected function increment():void
 		{
-			if(_value + _step <= _max)
+			if(_value + _step <= _maximum)
 			{
 				_value += _step;
 				invalidate();
@@ -111,7 +111,7 @@ package com.bit101.components
 		
 		protected function decrement():void
 		{
-			if(_value - _step >= _min)
+			if(_value - _step >= _minimum)
 			{
 				_value -= _step;
 				invalidate();
@@ -180,7 +180,7 @@ package com.bit101.components
 		protected function onValueTextChange(event:Event):void
 		{
 			var newVal:Number = Number(_valueText.text);
-			if(newVal <= _max && newVal >= _min)
+			if(newVal <= _maximum && newVal >= _minimum)
 			{
 				_value = newVal;
 				invalidate();
@@ -216,7 +216,7 @@ package com.bit101.components
 		 */
 		public function set value(value:Number):void
 		{
-			if(value <= _max && value >= _min)
+			if(value <= _maximum && value >= _minimum)
 			{
 				_value = value;
 				invalidate();
@@ -259,35 +259,35 @@ package com.bit101.components
 		/**
 		 * Sets / gets the maximum value for this component.
 		 */
-		public function set max(value:Number):void
+		public function set maximum(value:Number):void
 		{
-			_max = value;
-			if(_value > _max)
+			_maximum = value;
+			if(_value > _maximum)
 			{
-				_value = _max;
+				_value = _maximum;
 				invalidate();
 			}
 		}
-		public function get max():Number
+		public function get maximum():Number
 		{
-			return _max;
+			return _maximum;
 		}
 
 		/**
 		 * Sets / gets the maximum value for this component.
 		 */
-		public function set min(value:Number):void
+		public function set minimum(value:Number):void
 		{
-			_min = value;
-			if(_value < _min)
+			_minimum = value;
+			if(_value < _minimum)
 			{
-				_value = _min;
+				_value = _minimum;
 				invalidate();
 			}
 		}
-		public function get min():Number
+		public function get minimum():Number
 		{
-			return _min;
+			return _minimum;
 		}
 
 
