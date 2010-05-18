@@ -102,7 +102,6 @@
 		
 		/**
 		 * Draw the knob at the specified radius.
-		 * @param radius The radius with which said knob will be drawn.
 		 */
 		protected function drawKnob():void
 		{
@@ -240,7 +239,6 @@
 				
 				_knob.rotation = rot + 135;
 				formatValueLabel();
-				return;
 			}
 			else if(_mode == VERTICAL)
 			{
@@ -388,5 +386,15 @@
 			return _mode;
 		}
 
-	}
+        public function get radius():Number
+        {
+            return _radius;
+        }
+
+        public function set radius(value:Number):void
+        {
+            _radius = value;
+            invalidate();
+        }
+    }
 }
