@@ -29,7 +29,8 @@
  
 package com.bit101.components
 {
-	import flash.display.DisplayObject;
+    import flash.display.DisplayObject;
+    import flash.display.DisplayObject;
 	import flash.display.DisplayObjectContainer;
 	import flash.events.Event;
 
@@ -52,14 +53,36 @@ package com.bit101.components
 		/**
 		 * Override of addChild to force layout;
 		 */
-		override public function addChild(child:DisplayObject) : DisplayObject
+		override public function addChildAt(child:DisplayObject, index:int) : DisplayObject
 		{
-			super.addChild(child);
+			super.addChildAt(child, index);
 			child.addEventListener(Event.RESIZE, onResize);
 			invalidate();
 			return child;
 		}
+
+        /**
+         * Override of removeChild to force layout;
+         */
+        override public function removeChild(child:DisplayObject):DisplayObject
+        {
+            super.removeChild(child);            
+            child.removeEventListener(Event.RESIZE, onResize);
+            invalidate();
+            return child;
+        }
 		
+        /**
+         * Override of removeChild to force layout;
+         */
+        override public function removeChildAt(index:int):DisplayObject
+        {
+            var child:DisplayObject = super.removeChildAt(index);
+            child.removeEventListener(Event.RESIZE, onResize);
+            invalidate();
+            return child;
+        }
+
 		/**
 		 * Internal handler for resize event of any attached component. Will redo the layout based on new size.
 		 */
