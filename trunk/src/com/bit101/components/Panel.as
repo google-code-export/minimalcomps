@@ -29,7 +29,6 @@
 package com.bit101.components
 {
 	import flash.display.DisplayObjectContainer;
-	import flash.display.Shape;
 	import flash.display.Sprite;
 	
 	public class Panel extends Component

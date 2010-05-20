@@ -47,7 +47,7 @@ package com.bit101.components
 		 * @param parent The parent DisplayObjectContainer on which to add this ListItem.
 		 * @param xpos The x position to place this component.
 		 * @param ypos The y position to place this component.
-		 * @param label The text to show in this item.
+		 * @param data The string to display as a label or object with a label property.
 		 */
 		public function ListItem(parent:DisplayObjectContainer=null, xpos:Number=0, ypos:Number=0, data:Object = null)
 		{

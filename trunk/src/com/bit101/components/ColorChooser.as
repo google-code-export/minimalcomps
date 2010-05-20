@@ -336,9 +336,8 @@ package com.bit101.components
 			return(s);
 		}
 		
-		protected function getGradientSprite(w:Number, h:Number, ca:Array):Sprite 
+		protected function getGradientSprite(w:Number, h:Number, gc:Array):Sprite 
 		{
-			var gc:Array = ca;
 			var gs:Sprite = new Sprite();
 			var g:Graphics = gs.graphics;
 			var gn:int = gc.length;
