@@ -88,7 +88,7 @@
 			_knob = new Sprite();
 			_knob.buttonMode = true;
 			_knob.useHandCursor = true;
-			_knob.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+			_knob.addEventListener(MouseEvent.MOUSE_DOWN, onMouseGoDown);
 			addChild(_knob);
 			
 			_label = new Label();
@@ -214,18 +214,18 @@
 		/**
 		 * Internal handler for when user clicks on the knob. Starts tracking up/down motion of the mouse.
 		 */
-		protected function onMouseDown(event:MouseEvent):void
+		protected function onMouseGoDown(event:MouseEvent):void
 		{
 			_startX = mouseX;
 			_startY = mouseY;
-			stage.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
-			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+			stage.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMoved);
+			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseGoUp);
 		}
 		
 		/**
 		 * Internal handler for mouse move event. Updates value based on how far mouse has moved up or down.
 		 */
-		protected function onMouseMove(event:MouseEvent):void
+		protected function onMouseMoved(event:MouseEvent):void
 		{
 			if(_mode == ROTATE)
 			{
@@ -275,10 +275,10 @@
 		/**
 		 * Internal handler for mouse up event. Stops mouse tracking.
 		 */
-		protected function onMouseUp(event:MouseEvent):void
+		protected function onMouseGoUp(event:MouseEvent):void
 		{
-			stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
-			stage.removeEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+			stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMoved);
+			stage.removeEventListener(MouseEvent.MOUSE_UP, onMouseGoUp);
 		}
 		
 		

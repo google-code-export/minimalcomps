@@ -60,7 +60,7 @@ package com.bit101.components
 		{
 			super.init();
 			addEventListener(Event.RESIZE, onResize);
-			_background.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+			_background.addEventListener(MouseEvent.MOUSE_DOWN, onMouseGoDown);
 			_background.useHandCursor = true;
 			_background.buttonMode = true;
 			setSize(100, 100);
@@ -141,11 +141,11 @@ package com.bit101.components
 			invalidate();
 		}
 		
-		protected function onMouseDown(event:MouseEvent):void
+		protected function onMouseGoDown(event:MouseEvent):void
 		{
 			content.startDrag(false, new Rectangle(0, 0, Math.min(0, _width - content.width - 10), Math.min(0, _height - content.height - 10)));
 			stage.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
-			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseGoUp);
 		}
 		
 		protected function onMouseMove(event:MouseEvent):void
@@ -154,11 +154,11 @@ package com.bit101.components
 			_vScrollbar.value = -content.y;
 		}
 		
-		protected function onMouseUp(event:MouseEvent):void
+		protected function onMouseGoUp(event:MouseEvent):void
 		{
 			content.stopDrag();
 			stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
-			stage.removeEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+			stage.removeEventListener(MouseEvent.MOUSE_UP, onMouseGoUp);
 		}
 
 		public function set dragContent(value:Boolean):void
@@ -166,13 +166,13 @@ package com.bit101.components
 			_dragContent = value;
 			if(_dragContent)
 			{
-				_background.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+				_background.addEventListener(MouseEvent.MOUSE_DOWN, onMouseGoDown);
 				_background.useHandCursor = true;
 				_background.buttonMode = true;
 			}
 			else
 			{
-				_background.removeEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+				_background.removeEventListener(MouseEvent.MOUSE_DOWN, onMouseGoDown);
 				_background.useHandCursor = false;
 				_background.buttonMode = false;
 			}

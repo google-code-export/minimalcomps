@@ -144,7 +144,7 @@ package com.bit101.components
 		public function show():void
 		{
 			parent.addChild(this);
-			x = Math.round(parent.mouseX)
+			x = Math.round(parent.mouseX);
 			y = Math.round(parent.mouseY);
 			_selectedIndex = -1;
 			visible = true;
@@ -312,7 +312,7 @@ class ArcButton extends Sprite
 		drawArc(0xffffff);
 		addEventListener(MouseEvent.MOUSE_OVER, onMouseOver);
 		addEventListener(MouseEvent.MOUSE_OUT, onMouseOut);
-		addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+		addEventListener(MouseEvent.MOUSE_UP, onMouseGoUp);
 	}
 	
 	///////////////////////////////////
@@ -359,7 +359,7 @@ class ArcButton extends Sprite
 		while(_iconHolder.numChildren > 0) _iconHolder.removeChildAt(0);
 		if(iconOrLabel is Class)
 		{
-			_icon = new iconOrLabel() as DisplayObject;
+			_icon = new (iconOrLabel as Class)() as DisplayObject;
 		}
 		else if(iconOrLabel is DisplayObject)
 		{
@@ -405,7 +405,7 @@ class ArcButton extends Sprite
 	/**
 	 * Called when mouse is released over this button. Dispatches select event.
 	 */
-	protected function onMouseUp(event:MouseEvent):void
+	protected function onMouseGoUp(event:MouseEvent):void
 	{
 		dispatchEvent(new Event(Event.SELECT));
 	}

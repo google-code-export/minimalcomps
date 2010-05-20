@@ -82,7 +82,7 @@ package com.bit101.components
 			_titleBar.filters = [];
 			_titleBar.buttonMode = true;
 			_titleBar.useHandCursor = true;
-			_titleBar.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+			_titleBar.addEventListener(MouseEvent.MOUSE_DOWN, onMouseGoDown);
 			_titleBar.height = 20;
 			_titleLabel = new Label(_titleBar.content, 5, 1, _title);
 			
@@ -165,12 +165,12 @@ package com.bit101.components
 		 * Internal mouseDown handler. Starts a drag.
 		 * @param event The MouseEvent passed by the system.
 		 */
-		protected function onMouseDown(event:MouseEvent):void
+		protected function onMouseGoDown(event:MouseEvent):void
 		{
 			if(_draggable)
 			{
 				this.startDrag();
-				stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+				stage.addEventListener(MouseEvent.MOUSE_UP, onMouseGoUp);
 				parent.addChild(this); // move to top
 			}
 			dispatchEvent(new Event(Event.SELECT));
@@ -180,10 +180,10 @@ package com.bit101.components
 		 * Internal mouseUp handler. Stops the drag.
 		 * @param event The MouseEvent passed by the system.
 		 */
-		protected function onMouseUp(event:MouseEvent):void
+		protected function onMouseGoUp(event:MouseEvent):void
 		{
 			this.stopDrag();
-			stage.removeEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+			stage.removeEventListener(MouseEvent.MOUSE_UP, onMouseGoUp);
 		}
 		
 		protected function onMinimize(event:MouseEvent):void
