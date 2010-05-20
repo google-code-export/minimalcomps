@@ -50,13 +50,13 @@ package com.bit101.components
 		 * @param label The initial string to display as this component's label.
 		 * @param defaultHandler The event handling function to handle the default event for this component (change in this case).
 		 */
-		public function UISlider(parent:DisplayObjectContainer = null, x:Number = 0, y:Number = 0, label:String = "", defaultEventHandler:Function = null)
+		public function UISlider(parent:DisplayObjectContainer = null, xpos:Number = 0, ypos:Number = 0, label:String = "", defaultHandler:Function = null)
 		{
 			_labelText = label;
 			super(parent, x, y);
-			if(defaultEventHandler != null)
+			if(defaultHandler != null)
 			{
-				addEventListener(Event.CHANGE, defaultEventHandler);
+				addEventListener(Event.CHANGE, defaultHandler);
 			}
 			formatValueLabel();
 		}
@@ -122,7 +122,7 @@ package com.bit101.components
 		override public function draw():void
 		{
 			super.draw();
-			_label.text = _labelText
+			_label.text = _labelText;
 			_label.draw();
 			formatValueLabel();
 		}

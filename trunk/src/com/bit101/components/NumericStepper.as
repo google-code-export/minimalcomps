@@ -153,7 +153,7 @@ package com.bit101.components
 			decrement();
 			_direction = DOWN;
 			_delayTimer.start();
-			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseGoUp);
 		}
 		
 		/**
@@ -164,10 +164,10 @@ package com.bit101.components
 			increment();
 			_direction = UP;
 			_delayTimer.start();
-			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseGoUp);
 		}
 		
-		protected function onMouseUp(event:MouseEvent):void
+		protected function onMouseGoUp(event:MouseEvent):void
 		{
 			_delayTimer.stop();
 			_repeatTimer.stop();
