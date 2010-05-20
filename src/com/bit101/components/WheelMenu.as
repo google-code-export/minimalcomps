@@ -34,7 +34,6 @@
 package com.bit101.components
 {
 	import flash.display.DisplayObjectContainer;
-	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.filters.DropShadowFilter;
@@ -271,7 +270,6 @@ import flash.display.DisplayObject;
 import flash.display.Sprite;
 import flash.events.Event;
 import flash.events.MouseEvent;
-import flash.utils.getDefinitionByName;
 import flash.display.Shape;
 import com.bit101.components.Label;
 

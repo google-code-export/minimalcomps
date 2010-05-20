@@ -30,7 +30,6 @@
 package com.bit101.components
 {
     import flash.display.DisplayObject;
-    import flash.display.DisplayObject;
 	import flash.display.DisplayObjectContainer;
 	import flash.events.Event;
 
