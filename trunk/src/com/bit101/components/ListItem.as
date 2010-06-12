@@ -72,6 +72,7 @@ package com.bit101.components
 		{
 			super.addChildren();
 			_label = new Label(this, 5, 0);
+            _label.draw();
 		}
 		
 		///////////////////////////////////
@@ -85,6 +86,7 @@ package com.bit101.components
 		{
 			super.draw();
 			graphics.clear();
+
 			if(_selected)
 			{
 				graphics.beginFill(_selectedColor);
@@ -99,16 +101,19 @@ package com.bit101.components
 			}
 			graphics.drawRect(0, 0, width, height);
 			graphics.endFill();
+
+            if(_data == null) return;
+
 			if(_data is String)
 			{
-				_label.text = _data as String;
+                _label.text = _data as String;
 			}
-			else if(_data.label is String)
+			else if(_data.hasOwnProperty("label") && _data.label is String)
 			{
 				_label.text = _data.label;
 			}
 			else
-			{
+            {
 				_label.text = _data.toString();
 			}
 		}
