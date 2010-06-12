@@ -76,6 +76,9 @@ package com.bit101.components
 			super.init();
 			setSize(100, 100);
 			addEventListener(MouseEvent.MOUSE_WHEEL, onMouseWheel);
+            addEventListener(Event.RESIZE, onResize);
+            makeListItems();
+            fillItems();
 		}
 		
 		/**
@@ -89,6 +92,7 @@ package com.bit101.components
 			_itemHolder = new Sprite();
 			_panel.content.addChild(_itemHolder);
 			_scrollbar = new VScrollBar(this, 0, 0, onScroll);
+            _scrollbar.setSliderParams(0, 0, 0);
 		}
 		
 		/**
@@ -98,58 +102,66 @@ package com.bit101.components
 		{
 			while(_itemHolder.numChildren > 0) _itemHolder.removeChildAt(0);
 
-			for(var i:int = 0; i < _items.length; i++)
+            var numItems:int = Math.ceil(_height / _listItemHeight);
+			for(var i:int = 0; i < numItems; i++)
 			{
-//				var label:String = "";
-//				if(_items[i] is String)
-//				{
-//					label = _items[i];
-//				}
-//				else if(_items[i].label is String)
-//				{
-//					label = _items[i].label;
-//				}
-				var item:ListItem = new _listItemClass(_itemHolder, 0, i * _listItemHeight, _items[i]);
+
+				var item:ListItem = new _listItemClass(_itemHolder, 0, i * _listItemHeight);
 				item.setSize(width, _listItemHeight);
 				item.defaultColor = _defaultColor;
+
+				item.selectedColor = _selectedColor;
+				item.rolloverColor = _rolloverColor;
+				item.addEventListener(MouseEvent.CLICK, onSelect);
+			}
+		}
+
+        protected function fillItems():void
+        {
+            var offset:int = _scrollbar.value;
+            trace("scrollbar value", _scrollbar.value);
+            var numItems:int = Math.ceil(_height / _listItemHeight);
+
+            for(var i:int = 0; i < numItems; i++)
+            {
+                var item:ListItem = _itemHolder.getChildAt(i) as ListItem;
+                item.data = _items[offset + i];
 				if(_alternateRows)
 				{
-					item.defaultColor = (i % 2 == 0) ? _defaultColor : _alternateColor;
+					item.defaultColor = ((offset + i) % 2 == 0) ? _defaultColor : _alternateColor;
 				}
 				else
 				{
 					item.defaultColor = _defaultColor;
 				}
-				item.selectedColor = _selectedColor;
-				item.rolloverColor = _rolloverColor;
-				item.addEventListener(MouseEvent.CLICK, onSelect);
-				if(i == _selectedIndex)
-				{
-					item.selected = true;
-				}
-			}
-		}
+                if(offset + i == _selectedIndex)
+                {
+                    item.selected = true;
+                }
+                else
+                {
+                    item.selected = false;
+                }
+            }
+        }
 		
 		/**
 		 * If the selected item is not in view, scrolls the list to make the selected item appear in the view.
 		 */
 		protected function scrollToSelection():void
 		{
+            var numItems:int = Math.ceil(_height / _listItemHeight);
 			if(_selectedIndex != -1)
 			{
-				var itemTop:Number = _itemHolder.y + _selectedIndex * _listItemHeight;
-				var itemBottom:Number = itemTop + _listItemHeight;
-				// if selected item is not in view...
-				// move holder to put item in view
-				// and update scrollbar
-				if(itemTop < 0)
+				if(_scrollbar.value > _selectedIndex)
 				{
-					_itemHolder.y = -_selectedIndex * _listItemHeight;
+//                    _scrollbar.value = _selectedIndex;
 				}
-				else if(itemBottom > _height)
+				else if(_scrollbar.value + numItems < _selectedIndex)
 				{
-					_itemHolder.y = -_selectedIndex * _listItemHeight - _listItemHeight + _height;
+                    _scrollbar.value = _selectedIndex - numItems + 1;
 				}
+                fillItems();
 			}
 		}
 		
@@ -168,10 +180,7 @@ package com.bit101.components
 			
 			_selectedIndex = Math.min(_selectedIndex, _items.length - 1);
 
-			// list items
-			makeListItems();
-			scrollToSelection();
-			
+
 			// panel
 			_panel.setSize(_width, _height);
 			_panel.color = _defaultColor;
@@ -182,10 +191,11 @@ package com.bit101.components
 			var contentHeight:Number = _items.length * _listItemHeight;
 			_scrollbar.setThumbPercent(_height / contentHeight); 
 			var pageSize:Number = _height / _listItemHeight;
-			_scrollbar.setSliderParams(0, Math.max(0, _items.length - pageSize), _itemHolder.y / _listItemHeight);
+            _scrollbar.maximum = Math.max(0, _items.length - pageSize);
 			_scrollbar.pageSize = pageSize;
 			_scrollbar.height = _height;
 			_scrollbar.draw();
+            scrollToSelection();
 		}
 		
 		/**
@@ -196,6 +206,7 @@ package com.bit101.components
 		{
 			_items.push(item);
 			invalidate();
+            fillItems();
 		}
 		
 		/**
@@ -209,6 +220,7 @@ package com.bit101.components
 			index = Math.min(_items.length, index);
 			_items.splice(index, 0, item);
 			invalidate();
+            fillItems();
 		}
 		
 		/**
@@ -230,6 +242,7 @@ package com.bit101.components
 			if(index < 0 || index >= _items.length) return;
 			_items.splice(index, 1);
 			invalidate();
+            fillItems();
 		}
 		
 		/**
@@ -239,6 +252,7 @@ package com.bit101.components
 		{
 			_items.length = 0;
 			invalidate();
+            fillItems();
 		}
 		
 		
@@ -270,7 +284,7 @@ package com.bit101.components
 		 */
 		protected function onScroll(event:Event):void
 		{
-			_itemHolder.y = -_scrollbar.value * _listItemHeight;
+            fillItems();
 		}
 		
 		/**
@@ -279,8 +293,14 @@ package com.bit101.components
 		protected function onMouseWheel(event:MouseEvent):void
 		{
 			_scrollbar.value -= event.delta;
+            fillItems();
 		}
-		
+
+        protected function onResize(event:Event):void
+        {
+            makeListItems();
+            fillItems();
+        }
 		///////////////////////////////////
 		// getter/setters
 		///////////////////////////////////
@@ -293,7 +313,7 @@ package com.bit101.components
 			if(value >= 0 && value < _items.length)
 			{
 				_selectedIndex = value;
-				_scrollbar.value = _selectedIndex;
+//				_scrollbar.value = _selectedIndex;
 				invalidate();
 				dispatchEvent(new Event(Event.SELECT));
 			}
@@ -370,6 +390,7 @@ package com.bit101.components
 		public function set listItemHeight(value:Number):void
 		{
 			_listItemHeight = value;
+            makeListItems();
 			invalidate();
 		}
 		public function get listItemHeight():Number
