@@ -434,5 +434,18 @@ package com.bit101.components
 		{
 			return _list.alternateRows;
 		}
+
+        /**
+         * Sets / gets whether the scrollbar will auto hide when there is nothing to scroll.
+         */
+        public function set autoHideScrollBar(value:Boolean):void
+        {
+            _list.autoHideScrollBar = value;
+            invalidate();
+        }
+        public function get autoHideScrollBar():Boolean
+        {
+            return _list.autoHideScrollBar;
+        }
 	}
 }

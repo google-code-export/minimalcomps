@@ -182,6 +182,19 @@ package com.bit101.components
 			return _dragContent;
 		}
 
-		
+        /**
+         * Sets / gets whether the scrollbar will auto hide when there is nothing to scroll.
+         */
+        public function set autoHideScrollBar(value:Boolean):void
+        {
+            _vScrollbar.autoHide = value;
+            _hScrollbar.autoHide = value;
+        }
+        public function get autoHideScrollBar():Boolean
+        {
+            return _vScrollbar.autoHide;
+        }
+
+
 	}
 }
