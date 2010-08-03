@@ -320,6 +320,14 @@ package com.bit101.components
 		{
 			return Math.round(_value / _tick) * _tick;
 		}
+
+        /**
+         * Gets the value of the slider without rounding it per the tick value.
+         */
+        public function get rawValue():Number
+        {
+            return _value;
+        }
 		
 		/**
 		 * Gets / sets the maximum value of this slider.
