@@ -42,10 +42,10 @@ package com.bit101.components
 		 * @param label The string to use as the label for this component.
 		 * @param defaultHandler The event handling function to handle the default event for this component.
 		 */
-		public function VUISlider(parent:DisplayObjectContainer = null, x:Number = 0, y:Number = 0, label:String = "", defaultHandler:Function = null)
+		public function VUISlider(parent:DisplayObjectContainer = null, xpos:Number = 0, ypos:Number = 0, label:String = "", defaultHandler:Function = null)
 		{
 			_sliderClass = VSlider;
-			super(parent, x, y, label, defaultHandler);
+			super(parent, xpos, ypos, label, defaultHandler);
 		}
 		
 		/**
