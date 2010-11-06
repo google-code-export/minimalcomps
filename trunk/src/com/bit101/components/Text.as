@@ -1,7 +1,7 @@
 /**
  * Text.as
  * Keith Peters
- * version 0.9.5
+ * version 0.9.6
  * 
  * A Text component for displaying multiple lines of text.
  * 
@@ -34,6 +34,7 @@ package com.bit101.components
 	import flash.text.TextFieldType;
 	import flash.text.TextFormat;
 	
+	[Event(name="change", type="flash.events.Event")]
 	public class Text extends Component
 	{
 		protected var _tf:TextField;

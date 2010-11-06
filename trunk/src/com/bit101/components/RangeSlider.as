@@ -1,7 +1,7 @@
 /**
  * RangeSlider.as
  * Keith Peters
- * version 0.9.5
+ * version 0.9.6
  * 
  * Abstract base class for HRangeSlider and VRangeSlider.
  * 
@@ -34,6 +34,7 @@ package com.bit101.components
 	import flash.events.MouseEvent;
 	import flash.geom.Rectangle;
 	
+	[Event(name="change", type="flash.events.Event")]
 	public class RangeSlider extends Component
 	{
 		protected var _back:Sprite;

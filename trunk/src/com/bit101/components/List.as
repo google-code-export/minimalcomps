@@ -1,7 +1,7 @@
 /**
  * List.as
  * Keith Peters
- * version 0.9.5
+ * version 0.9.6
  * 
  * A scrolling list of selectable items. 
  * 
@@ -33,6 +33,7 @@ package com.bit101.components
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	
+	[Event(name="select", type="flash.events.Event")]
 	public class List extends Component
 	{
 		protected var _items:Array;

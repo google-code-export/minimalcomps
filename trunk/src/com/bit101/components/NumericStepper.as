@@ -1,7 +1,7 @@
 /**
  * NumericStepper.as
  * Keith Peters
- * version 0.9.5
+ * version 0.9.6
  * 
  * A component allowing for entering a numeric value with the keyboard, or by pressing up/down buttons.
  * 
@@ -35,6 +35,7 @@ package com.bit101.components
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	
+	[Event(name="change", type="flash.events.Event")]
 	public class NumericStepper extends Component
 	{
 		protected const DELAY_TIME:int = 500;

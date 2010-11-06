@@ -1,7 +1,7 @@
 /**
  * Window.as
  * Keith Peters
- * version 0.9.5
+ * version 0.9.6
  * 
  * A draggable window. Can be used as a container for other components.
  * 
@@ -34,6 +34,9 @@ package com.bit101.components
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 
+	[Event(name="select", type="flash.events.Event")]
+	[Event(name="close", type="flash.events.Event")]
+	[Event(name="resize", type="flash.events.Event")]
 	public class Window extends Component
 	{
 		protected var _title:String;

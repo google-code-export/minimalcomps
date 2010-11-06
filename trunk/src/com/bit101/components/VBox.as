@@ -1,7 +1,7 @@
 /**
  * VBox.as
  * Keith Peters
- * version 0.9.5
+ * version 0.9.6
  * 
  * A layout container for vertically aligning other components.
  * 
@@ -33,6 +33,7 @@ package com.bit101.components
 	import flash.display.DisplayObjectContainer;
 	import flash.events.Event;
 
+	[Event(name="resize", type="flash.events.Event")]
 	public class VBox extends Component
 	{
 		protected var _spacing:Number = 5;

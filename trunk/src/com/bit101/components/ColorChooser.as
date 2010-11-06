@@ -1,7 +1,7 @@
 /**
  * ColorChooser.as
  * Keith Peters
- * version 0.9.5
+ * version 0.9.6
  * 
  * A Color Chooser component, allowing textual input, a default gradient, or custom image.
  * 
@@ -46,6 +46,7 @@ package com.bit101.components
 	import flash.geom.Matrix;
 	import flash.geom.Point;
 	
+	[Event(name="change", type="flash.events.Event")]
 	public class ColorChooser extends Component
 	{
 		public static const TOP:String = "top";

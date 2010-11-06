@@ -1,7 +1,7 @@
 /**
  * Component.as
  * Keith Peters
- * version 0.9.5
+ * version 0.9.6
  * 
  * Base class for all components
  * 
@@ -41,6 +41,8 @@ package com.bit101.components
 	import flash.events.Event;
 	import flash.filters.DropShadowFilter;
 
+	[Event(name="resize", type="flash.events.Event")]
+	[Event(name="draw", type="flash.events.Event")]
 	public class Component extends Sprite
 	{
 		// NOTE: Flex 4 introduces DefineFont4, which is used by default and does not work in native text fields.

@@ -1,7 +1,7 @@
 /**
  * WheelMenu.as
  * Keith Peters
- * version 0.9.5
+ * version 0.9.6
  * 
  * A radial menu that pops up around the mouse.
  * 
@@ -38,6 +38,7 @@ package com.bit101.components
 	import flash.events.MouseEvent;
 	import flash.filters.DropShadowFilter;
 
+	[Event(name="select", type="flash.events.Event")]
 	public class WheelMenu extends Component
 	{
 		protected var _borderColor:uint = 0xcccccc;
