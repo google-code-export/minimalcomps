@@ -1,7 +1,7 @@
 /**
  * Label.as
  * Keith Peters
- * version 0.9.5
+ * version 0.9.6
  * 
  * A Label component for displaying a single line of text.
  * 
@@ -34,6 +34,7 @@ package com.bit101.components
 	import flash.text.TextFieldAutoSize;
 	import flash.text.TextFormat;
 	
+	[Event(name="resize", type="flash.events.Event")]
 	public class Label extends Component
 	{
 		protected var _autoSize:Boolean = true;

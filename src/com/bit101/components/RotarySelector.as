@@ -1,7 +1,7 @@
 /**
  * RotarySelector.as
  * Keith Peters
- * version 0.9.5
+ * version 0.9.6
  * 
  * A rotary selector component for choosing among different values.
  * 
@@ -33,6 +33,7 @@ package com.bit101.components
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	
+	[Event(name="change", type="flash.events.Event")]
 	public class RotarySelector extends Component
 	{
 		public static const ALPHABETIC:String = "alphabetic";

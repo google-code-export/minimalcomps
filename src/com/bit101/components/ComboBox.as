@@ -1,7 +1,7 @@
 /**
  * ComboBox.as
  * Keith Peters
- * version 0.9.5
+ * version 0.9.6
  * 
  * A button that exposes a list of choices and displays the chosen item. 
  * 
@@ -35,6 +35,7 @@ package com.bit101.components
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	
+	[Event(name="select", type="flash.events.Event")]
 	public class ComboBox extends Component
 	{
 		public static const TOP:String = "top";

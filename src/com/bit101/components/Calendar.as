@@ -1,7 +1,7 @@
 /**
  * Component.as
  * Keith Peters
- * version 0.9.5
+ * version 0.9.6
  * 
  * Calendar component for showing and selecting a date.
  * 
@@ -38,6 +38,7 @@ package com.bit101.components
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	
+	[Event(name="select", type="flash.events.Event")]
 	public class Calendar extends Panel
 	{
 		protected var _dateLabel:Label;

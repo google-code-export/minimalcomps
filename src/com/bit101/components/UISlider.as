@@ -1,7 +1,7 @@
 /**
  * UISlider.as
  * Keith Peters
- * version 0.9.5
+ * version 0.9.6
  * 
  * A Slider with a label and value label. Abstract base class for VUISlider and HUISlider
  * 
@@ -31,6 +31,7 @@ package com.bit101.components
 	import flash.display.DisplayObjectContainer;
 	import flash.events.Event;
 
+	[Event(name="change", type="flash.events.Event")]
 	public class UISlider extends Component
 	{
 		protected var _label:Label;

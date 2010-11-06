@@ -1,7 +1,7 @@
 /**
  * ScrollBar.as
  * Keith Peters
- * version 0.9.5
+ * version 0.9.6
  * 
  * Base class for HScrollBar and VScrollBar
  * 
@@ -35,6 +35,7 @@ package com.bit101.components
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 
+	[Event(name="change", type="flash.events.Event")]
 	public class ScrollBar extends Component
 	{
 		protected const DELAY_TIME:int = 500;
