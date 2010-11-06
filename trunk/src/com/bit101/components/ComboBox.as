@@ -104,7 +104,7 @@ package com.bit101.components
 			{
 				_labelButton.label = selectedItem as String;
 			}
-			else if(selectedItem.label is String)
+			else if(selectedItem.hasOwnProperty("label") && selectedItem.label is String)
 			{
 				_labelButton.label = selectedItem.label;
 			}
