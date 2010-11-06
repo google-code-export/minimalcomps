@@ -89,12 +89,20 @@ package com.bit101.components
 		 */
 		public function addWindow(title:String):void
 		{
-			var window:Window = new Window(_vbox, 0, 0, title);
+			addWindowAt(title, _windows.length);
+		}
+		
+		public function addWindowAt(title:String, index:int):void
+		{
+			index = Math.min(index, _windows.length);
+			index = Math.max(index, 0);
+			var window:Window = new Window(null, 0, 0, title);
+			_vbox.addChildAt(window, index);
 			window.minimized = true;
 			window.draggable = false;
 			window.grips.visible = false;
 			window.addEventListener(Event.SELECT, onWindowSelect);
-			_windows.push(window);
+			_windows.splice(index, 0, window);
 			_winHeight = _height - (_windows.length - 1) * 20;
 			setSize(_winWidth, _winHeight);
 		}
