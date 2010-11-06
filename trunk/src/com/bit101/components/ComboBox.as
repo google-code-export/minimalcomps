@@ -85,6 +85,7 @@ package com.bit101.components
 		{
 			super.addChildren();
 			_list = new List(null, 0, 0, _items);
+			_list.autoHideScrollBar = true;
 			_list.addEventListener(Event.SELECT, onSelect);
 			
 			_labelButton = new PushButton(this, 0, 0, "", onDropDown);

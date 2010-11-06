@@ -186,7 +186,7 @@ package com.bit101.components
 				_scrollSlider.x = 10;
 				_scrollSlider.y = 0;
 				_scrollSlider.width = _width - 20;
-				_scrollSlider.height = _height;
+				_scrollSlider.height = 10;
 				_downButton.x = _width - 10;
 				_downButton.y = 0;
 			}
