@@ -43,7 +43,7 @@ package com.bit101.components
 		protected var _max:Number = 100;
 		protected var _min:Number = 0;
 		protected var _orientation:String;
-		protected var _tick:Number = 1;
+		protected var _tick:Number = 0.01;
 		
 		public static const HORIZONTAL:String = "horizontal";
 		public static const VERTICAL:String = "vertical";
