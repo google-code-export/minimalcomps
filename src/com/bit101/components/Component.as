@@ -148,6 +148,7 @@ package com.bit101.components
 		{
 			_width = w;
 			_height = h;
+			dispatchEvent(new Event(Event.RESIZE));
 			invalidate();
 		}
 		

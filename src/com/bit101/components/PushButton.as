@@ -119,8 +119,9 @@ package com.bit101.components
 			_face.graphics.drawRect(0, 0, _width - 2, _height - 2);
 			_face.graphics.endFill();
 			
-			_label.autoSize = true;
 			_label.text = _labelText;
+			_label.autoSize = true;
+			_label.draw();
 			if(_label.width > _width - 4)
 			{
 				_label.autoSize = false;

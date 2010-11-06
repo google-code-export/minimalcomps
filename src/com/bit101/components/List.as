@@ -119,9 +119,8 @@ package com.bit101.components
         protected function fillItems():void
         {
             var offset:int = _scrollbar.value;
-            trace("scrollbar value", _scrollbar.value);
             var numItems:int = Math.ceil(_height / _listItemHeight);
-
+			
             for(var i:int = 0; i < numItems; i++)
             {
                 var item:ListItem = _itemHolder.getChildAt(i) as ListItem;
