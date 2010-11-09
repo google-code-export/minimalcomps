@@ -108,6 +108,7 @@ package com.bit101.components
 			{
 
 				var item:ListItem = new _listItemClass(_itemHolder, 0, i * _listItemHeight);
+				trace(item);
 				item.setSize(width, _listItemHeight);
 				item.defaultColor = _defaultColor;
 
@@ -417,6 +418,7 @@ package com.bit101.components
 		public function set listItemClass(value:Class):void
 		{
 			_listItemClass = value;
+			makeListItems();
 			invalidate();
 		}
 		public function get listItemClass():Class
