@@ -162,8 +162,12 @@ package com.bit101.components
 				{
                     _scrollbar.value = _selectedIndex - numItems + 1;
 				}
-                fillItems();
 			}
+			else
+			{
+				_scrollbar.value = 0;
+			}
+            fillItems();
 		}
 		
 		
@@ -317,9 +321,13 @@ package com.bit101.components
 			{
 				_selectedIndex = value;
 //				_scrollbar.value = _selectedIndex;
-				invalidate();
-				dispatchEvent(new Event(Event.SELECT));
 			}
+			else
+			{
+				_selectedIndex = -1;
+			}
+			invalidate();
+			dispatchEvent(new Event(Event.SELECT));
 		}
 		public function get selectedIndex():int
 		{
@@ -332,12 +340,12 @@ package com.bit101.components
 		public function set selectedItem(item:Object):void
 		{
 			var index:int = _items.indexOf(item);
-			if(index != -1)
-			{
+//			if(index != -1)
+//			{
 				selectedIndex = index;
 				invalidate();
 				dispatchEvent(new Event(Event.SELECT));
-			}
+//			}
 		}
 		public function get selectedItem():Object
 		{
