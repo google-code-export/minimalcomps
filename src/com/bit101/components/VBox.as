@@ -57,7 +57,7 @@ package com.bit101.components
 		{
 			super.addChildAt(child, index);
 			child.addEventListener(Event.RESIZE, onResize);
-			invalidate();
+			draw();
 			return child;
 		}
 
@@ -68,7 +68,7 @@ package com.bit101.components
         {
             super.removeChild(child);            
             child.removeEventListener(Event.RESIZE, onResize);
-            invalidate();
+            draw();
             return child;
         }
 		
@@ -79,7 +79,7 @@ package com.bit101.components
         {
             var child:DisplayObject = super.removeChildAt(index);
             child.removeEventListener(Event.RESIZE, onResize);
-            invalidate();
+            draw();
             return child;
         }
 
