@@ -271,9 +271,11 @@ package com.bit101.components
 		{
 			if(! (event.target is ListItem)) return;
 			
+			var offset:int = _scrollbar.value;
+			
 			for(var i:int = 0; i < _itemHolder.numChildren; i++)
 			{
-				if(_itemHolder.getChildAt(i) == event.target) _selectedIndex = i;
+				if(_itemHolder.getChildAt(i) == event.target) _selectedIndex = i + offset;
 				ListItem(_itemHolder.getChildAt(i)).selected = false;
 			}
 			ListItem(event.target).selected = true;
