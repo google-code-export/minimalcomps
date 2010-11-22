@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ComboBox.as
  * Keith Peters
  * version 0.9.6
@@ -449,5 +449,13 @@ package com.bit101.components
         {
             return _list.autoHideScrollBar;
         }
+		
+		/**
+		 * Gets whether or not the combo box is currently open.
+		 */
+		public function get isOpen():Boolean
+		{
+			return _open;
+		}
 	}
 }
