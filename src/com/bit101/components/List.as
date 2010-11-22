@@ -1,4 +1,4 @@
-/**
+﻿/**
  * List.as
  * Keith Peters
  * version 0.9.6
@@ -126,7 +126,14 @@ package com.bit101.components
             for(var i:int = 0; i < numItems; i++)
             {
                 var item:ListItem = _itemHolder.getChildAt(i) as ListItem;
-                item.data = _items[offset + i];
+				if(offset + i < _items.length)
+				{
+	                item.data = _items[offset + i];
+				}
+				else
+				{
+					item.data = "";
+				}
 				if(_alternateRows)
 				{
 					item.defaultColor = ((offset + i) % 2 == 0) ? _defaultColor : _alternateColor;
@@ -195,7 +202,7 @@ package com.bit101.components
 			_scrollbar.x = _width - 10;
 			var contentHeight:Number = _items.length * _listItemHeight;
 			_scrollbar.setThumbPercent(_height / contentHeight); 
-			var pageSize:Number = _height / _listItemHeight;
+			var pageSize:Number = Math.floor(_height / _listItemHeight);
             _scrollbar.maximum = Math.max(0, _items.length - pageSize);
 			_scrollbar.pageSize = pageSize;
 			_scrollbar.height = _height;
