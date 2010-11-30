@@ -1,7 +1,7 @@
 /**
  * ScrollBar.as
  * Keith Peters
- * version 0.9.6
+ * version 0.9.7
  * 
  * Base class for HScrollBar and VScrollBar
  * 
