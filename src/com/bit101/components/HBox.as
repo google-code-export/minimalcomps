@@ -1,4 +1,4 @@
-/**
+﻿/**
  * VBox.as
  * Keith Peters
  * version 0.9.7
@@ -52,6 +52,17 @@ package com.bit101.components
 		
         /**
          * Override of addChild to force layout;
+         */
+        override public function addChild(child:DisplayObject) : DisplayObject
+        {
+            super.addChild(child);
+            child.addEventListener(Event.RESIZE, onResize);
+            draw();
+            return child;
+        }
+
+        /**
+         * Override of addChildAt to force layout;
          */
         override public function addChildAt(child:DisplayObject, index:int) : DisplayObject
         {
