@@ -31,6 +31,7 @@ package com.bit101.components
 {
 	public class Style
 	{
+		public static var TEXT_BACKGROUND:uint = 0xFFFFFF;
 		public static var BACKGROUND:uint = 0xCCCCCC;
 		public static var BUTTON_FACE:uint = 0xFFFFFF;
 		public static var INPUT_TEXT:uint = 0x333333;

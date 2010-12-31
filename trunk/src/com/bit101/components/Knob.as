@@ -228,6 +228,7 @@
 		 */
 		protected function onMouseMoved(event:MouseEvent):void
 		{
+			var oldValue:Number = _value;
 			if(_mode == ROTATE)
 			{
 				var angle:Number = Math.atan2(mouseY - _knob.y, mouseX - _knob.x);
@@ -237,13 +238,15 @@
 				if(rot > 270 && rot < 315) rot = 270;
 				if(rot >= 315 && rot <= 360) rot = 0;
 				_value = rot / 270 * (_max - _min) + _min;
-				
+				if(_value != oldValue)
+				{
+					dispatchEvent(new Event(Event.CHANGE));
+				}				
 				_knob.rotation = rot + 135;
 				formatValueLabel();
 			}
 			else if(_mode == VERTICAL)
 			{
-				var oldValue:Number = _value;
 				var diff:Number = _startY - mouseY;
 				var range:Number = _max - _min;
 				var percent:Number = range / _mouseRange;
@@ -258,7 +261,6 @@
 			}
 			else if(_mode == HORIZONTAL)
 			{
-				oldValue = _value;
 				diff = _startX - mouseX;
 				range = _max - _min;
 				percent = range / _mouseRange;
