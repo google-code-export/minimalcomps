@@ -43,7 +43,7 @@ package com.bit101.components
 		protected var _panel:Panel;
 		protected var _selectable:Boolean = true;
 		protected var _html:Boolean = false;
-		
+		protected var _format:TextFormat;
 		
 		/**
 		 * Constructor
@@ -75,6 +75,8 @@ package com.bit101.components
 			_panel = new Panel(this);
 			_panel.color = Style.TEXT_BACKGROUND;
 			
+			_format = new TextFormat(Style.fontName, Style.fontSize, Style.LABEL_TEXT);
+			
 			_tf = new TextField();
 			_tf.x = 2;
 			_tf.y = 2;
@@ -84,7 +86,7 @@ package com.bit101.components
 			_tf.wordWrap = true;
 			_tf.selectable = true;
 			_tf.type = TextFieldType.INPUT;
-			_tf.defaultTextFormat = new TextFormat(Style.fontName, Style.fontSize, Style.LABEL_TEXT);
+			_tf.defaultTextFormat = _format;
 			_tf.addEventListener(Event.CHANGE, onChange);			
 			addChild(_tf);
 		}
@@ -128,6 +130,7 @@ package com.bit101.components
 				_tf.selectable = _selectable;
 				_tf.type = TextFieldType.DYNAMIC;
 			}
+			_tf.setTextFormat(_format);
 		}
 		
 		
