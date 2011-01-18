@@ -1,11 +1,11 @@
 /**
  * Label.as
  * Keith Peters
- * version 0.9.7
+ * version 0.9.8
  * 
  * A Label component for displaying a single line of text.
  * 
- * Copyright (c) 2010 Keith Peters
+ * Copyright (c) 2011 Keith Peters
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
