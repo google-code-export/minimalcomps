@@ -1,11 +1,11 @@
 /**
  * Slider.as
  * Keith Peters
- * version 0.9.7
+ * version 0.9.8
  * 
  * Abstract base slider class for HSlider and VSlider.
  * 
- * Copyright (c) 2010 Keith Peters
+ * Copyright (c) 2011 Keith Peters
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal

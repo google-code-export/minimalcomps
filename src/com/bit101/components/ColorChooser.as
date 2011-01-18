@@ -1,11 +1,11 @@
 /**
  * ColorChooser.as
  * Keith Peters
- * version 0.9.7
+ * version 0.9.8
  * 
  * A Color Chooser component, allowing textual input, a default gradient, or custom image.
  * 
- * Copyright (c) 2010 Keith Peters
+ * Copyright (c) 2011 Keith Peters
  * 
  * popup color choosing code by Rashid Ghassempouri
  * 
