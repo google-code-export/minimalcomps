@@ -147,6 +147,7 @@ package com.bit101.components
 		protected function onMouseWheel(event:MouseEvent):void
 		{
 			_scrollbar.value -= event.delta;
+			_tf.scrollV = Math.round(_scrollbar.value);
 		}
 
         /**
