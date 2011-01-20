@@ -52,6 +52,9 @@ package com.bit101.components
 		public static const DARK:String = "dark";
 		public static const LIGHT:String = "light";
 		
+		/**
+		 * Applies a preset style as a list of color values. Should be called before creating any components.
+		 */
 		public static function setStyle(style:String):void
 		{
 			if(style == DARK)
