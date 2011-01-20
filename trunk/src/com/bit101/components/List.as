@@ -43,10 +43,10 @@ package com.bit101.components
 		protected var _listItemClass:Class =ListItem;
 		protected var _scrollbar:VScrollBar;
 		protected var _selectedIndex:int = -1;
-		protected var _defaultColor:uint = 0xffffff;
-		protected var _alternateColor:uint = 0xf3f3f3;
-		protected var _selectedColor:uint = 0xcccccc;
-		protected var _rolloverColor:uint = 0xdddddd;
+		protected var _defaultColor:uint = Style.LIST_DEFAULT;
+		protected var _alternateColor:uint = Style.LIST_ALTERNATE;
+		protected var _selectedColor:uint = Style.LIST_SELECTED;
+		protected var _rolloverColor:uint = Style.LIST_ROLLOVER;
 		protected var _alternateRows:Boolean = false;
 		
 		/**
