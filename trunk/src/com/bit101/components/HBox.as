@@ -37,6 +37,12 @@ package com.bit101.components
 	public class HBox extends Component
 	{
 		protected var _spacing:Number = 5;
+		private var _alignment:String = NONE;
+		
+		public static const TOP:String = "top";
+		public static const BOTTOM:String = "bottom";
+		public static const MIDDLE:String = "middle";
+		public static const NONE:String = "none";
 		
 		
 		/**
@@ -99,6 +105,29 @@ package com.bit101.components
 			invalidate();
 		}
 		
+		protected function doAlignment():void
+		{
+			if(_alignment != NONE)
+			{
+				for(var i:int = 0; i < numChildren; i++)
+				{
+					var child:DisplayObject = getChildAt(i);
+					if(_alignment == TOP)
+					{
+						child.y = 0;
+					}
+					else if(_alignment == BOTTOM)
+					{
+						child.y = _height - child.height;
+					}
+					else if(_alignment == MIDDLE)
+					{
+						child.y = (_height - child.height) / 2;
+					}
+				}
+			}
+		}
+		
 		/**
 		 * Draws the visual ui of the component, in this case, laying out the sub components.
 		 */
@@ -116,6 +145,7 @@ package com.bit101.components
 				_width += child.width;
 				_height = Math.max(_height, child.height);
 			}
+			doAlignment();
 			_width += _spacing * (numChildren - 1);
 			dispatchEvent(new Event(Event.RESIZE));
 		}
@@ -131,6 +161,19 @@ package com.bit101.components
 		public function get spacing():Number
 		{
 			return _spacing;
+		}
+
+		/**
+		 * Gets / sets the vertical alignment of components in the box.
+		 */
+		public function set alignment(value:String):void
+		{
+			_alignment = value;
+			invalidate();
+		}
+		public function get alignment():String
+		{
+			return _alignment;
 		}
 	}
 }

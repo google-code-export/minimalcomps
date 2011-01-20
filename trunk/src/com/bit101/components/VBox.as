@@ -30,14 +30,19 @@
 package com.bit101.components
 {
     import flash.display.DisplayObject;
-	import flash.display.DisplayObjectContainer;
-	import flash.events.Event;
+    import flash.display.DisplayObjectContainer;
+    import flash.events.Event;
 
 	[Event(name="resize", type="flash.events.Event")]
 	public class VBox extends Component
 	{
 		protected var _spacing:Number = 5;
+		private var _alignment:String = NONE;
 		
+		public static const LEFT:String = "left";
+		public static const RIGHT:String = "right";
+		public static const CENTER:String = "center";
+		public static const NONE:String = "none";
 		
 		/**
 		 * Constructor
@@ -103,6 +108,32 @@ package com.bit101.components
 		}
 		
 		/**
+		 * Sets element's x positions based on alignment value.
+		 */
+		protected function doAlignment():void
+		{
+			if(_alignment != NONE)
+			{
+				for(var i:int = 0; i < numChildren; i++)
+				{
+					var child:DisplayObject = getChildAt(i);
+					if(_alignment == LEFT)
+					{
+						child.x = 0;
+					}
+					else if(_alignment == RIGHT)
+					{
+						child.x = _width - child.width;
+					}
+					else if(_alignment == CENTER)
+					{
+						child.x = (_width - child.width) / 2;
+					}
+				}
+			}
+		}
+		
+		/**
 		 * Draws the visual ui of the component, in this case, laying out the sub components.
 		 */
 		override public function draw() : void
@@ -119,8 +150,9 @@ package com.bit101.components
 				_height += child.height;
 				_width = Math.max(_width, child.width);
 			}
+			
+			doAlignment();
 			_height += _spacing * (numChildren - 1);
-			dispatchEvent(new Event(Event.RESIZE));
 		}
 		
 		/**
@@ -135,5 +167,19 @@ package com.bit101.components
 		{
 			return _spacing;
 		}
+
+		/**
+		 * Gets / sets the horizontal alignment of components in the box.
+		 */
+		public function set alignment(value:String):void
+		{
+			_alignment = value;
+			invalidate();
+		}
+		public function get alignment():String
+		{
+			return _alignment;
+		}
+
 	}
 }
