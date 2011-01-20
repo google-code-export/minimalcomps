@@ -29,6 +29,7 @@
  
 package com.bit101.components
 {
+
 	public class Style
 	{
 		public static var TEXT_BACKGROUND:uint = 0xFFFFFF;
@@ -39,9 +40,48 @@ package com.bit101.components
 		public static var DROPSHADOW:uint = 0x000000;
 		public static var PANEL:uint = 0xF3F3F3;
 		public static var PROGRESS_BAR:uint = 0xFFFFFF;
+		public static var LIST_DEFAULT:uint = 0xFFFFFF;
+		public static var LIST_ALTERNATE:uint = 0xF3F3F3;
+		public static var LIST_SELECTED:uint = 0xCCCCCC;
+		public static var LIST_ROLLOVER:uint = 0XDDDDDD;
 		
 		public static var embedFonts:Boolean = true;
 		public static var fontName:String = "PF Ronda Seven";
 		public static var fontSize:Number = 8;
+		
+		public static const DARK:String = "dark";
+		public static const LIGHT:String = "light";
+		
+		public static function setStyle(style:String):void
+		{
+			if(style == DARK)
+			{
+				BACKGROUND = 0x444444;
+				BUTTON_FACE = 0x666666;
+				INPUT_TEXT = 0xBBBBBB;
+				LABEL_TEXT = 0xCCCCCC;
+				PANEL = 0x666666;
+				PROGRESS_BAR = 0x666666;
+				TEXT_BACKGROUND = 0x555555;
+				LIST_DEFAULT = 0x444444;
+				LIST_ALTERNATE = 0x393939;
+				LIST_SELECTED = 0x666666;
+				LIST_ROLLOVER = 0x777777;
+			}
+			else if(style == LIGHT)
+			{
+				BACKGROUND = 0xCCCCCC;
+				BUTTON_FACE = 0xFFFFFF;
+				INPUT_TEXT = 0x333333;
+				LABEL_TEXT = 0x666666;
+				PANEL = 0xF3F3F3;
+				PROGRESS_BAR = 0xFFFFFF;
+				TEXT_BACKGROUND = 0xFFFFFF;
+				LIST_DEFAULT = 0xFFFFFF;
+				LIST_ALTERNATE = 0xF3F3F3;
+				LIST_SELECTED = 0xCCCCCC;
+				LIST_ROLLOVER = 0XDDDDDD;
+			}
+		}
 	}
 }
