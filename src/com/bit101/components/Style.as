@@ -57,34 +57,37 @@ package com.bit101.components
 		 */
 		public static function setStyle(style:String):void
 		{
-			if(style == DARK)
+			switch(style)
 			{
-				BACKGROUND = 0x444444;
-				BUTTON_FACE = 0x666666;
-				INPUT_TEXT = 0xBBBBBB;
-				LABEL_TEXT = 0xCCCCCC;
-				PANEL = 0x666666;
-				PROGRESS_BAR = 0x666666;
-				TEXT_BACKGROUND = 0x555555;
-				LIST_DEFAULT = 0x444444;
-				LIST_ALTERNATE = 0x393939;
-				LIST_SELECTED = 0x666666;
-				LIST_ROLLOVER = 0x777777;
+				case DARK:
+					BACKGROUND = 0x444444;
+					BUTTON_FACE = 0x666666;
+					INPUT_TEXT = 0xBBBBBB;
+					LABEL_TEXT = 0xCCCCCC;
+					PANEL = 0x666666;
+					PROGRESS_BAR = 0x666666;
+					TEXT_BACKGROUND = 0x555555;
+					LIST_DEFAULT = 0x444444;
+					LIST_ALTERNATE = 0x393939;
+					LIST_SELECTED = 0x666666;
+					LIST_ROLLOVER = 0x777777;
+					break;
+				case LIGHT:
+				default:
+					BACKGROUND = 0xCCCCCC;
+					BUTTON_FACE = 0xFFFFFF;
+					INPUT_TEXT = 0x333333;
+					LABEL_TEXT = 0x666666;
+					PANEL = 0xF3F3F3;
+					PROGRESS_BAR = 0xFFFFFF;
+					TEXT_BACKGROUND = 0xFFFFFF;
+					LIST_DEFAULT = 0xFFFFFF;
+					LIST_ALTERNATE = 0xF3F3F3;
+					LIST_SELECTED = 0xCCCCCC;
+					LIST_ROLLOVER = 0xDDDDDD;
+					break;
 			}
-			else if(style == LIGHT)
-			{
-				BACKGROUND = 0xCCCCCC;
-				BUTTON_FACE = 0xFFFFFF;
-				INPUT_TEXT = 0x333333;
-				LABEL_TEXT = 0x666666;
-				PANEL = 0xF3F3F3;
-				PROGRESS_BAR = 0xFFFFFF;
-				TEXT_BACKGROUND = 0xFFFFFF;
-				LIST_DEFAULT = 0xFFFFFF;
-				LIST_ALTERNATE = 0xF3F3F3;
-				LIST_SELECTED = 0xCCCCCC;
-				LIST_ROLLOVER = 0XDDDDDD;
-			}
+			
 		}
 	}
 }
