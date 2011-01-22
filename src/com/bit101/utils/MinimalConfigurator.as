@@ -44,8 +44,9 @@ package com.bit101.utils
 	 */
 	public class MinimalConfigurator extends EventDispatcher
 	{
-		private var loader:URLLoader;
-		private var parent:DisplayObjectContainer;
+		protected var loader:URLLoader;
+		protected var parent:DisplayObjectContainer;
+		protected var idMap:Object;
 		
 		/**
 		 * Constructor.
@@ -54,6 +55,7 @@ package com.bit101.utils
 		public function MinimalConfigurator(parent:DisplayObjectContainer)
 		{
 			this.parent = parent;
+			idMap = new Object();
 		}
 		
 		/**
@@ -126,9 +128,12 @@ package com.bit101.utils
 				var classRef:Class = getDefinitionByName("com.bit101.components." + xml.name()) as Class;
 				compInst = new classRef();
 				
-				// id is special case
+				// id is special case, maps to name as well.
 				if(xml.@id.toString() != "")
 				{
+					compInst.name = xml.@id.toString();
+					idMap[xml.@id.toString()] = compInst;
+					
 					// if id exists on parent as a public property, assign this component to it.
 					if(parent.hasOwnProperty(trim(xml.@id.toString())))
 					{
@@ -194,6 +199,16 @@ package com.bit101.utils
 				
 			}
 			return compInst as Component;
+		}
+		
+		/**
+		 * Returns the componet with the given id, if it exists.
+		 * @param id The id of the component you want.
+		 * @return The component with that id, if it exists.
+		 */
+		public function getCompById(id:String):Component
+		{
+			return idMap[id];
 		}
 		
 		/**
