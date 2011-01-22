@@ -87,7 +87,6 @@ package com.bit101.components
 					LIST_ROLLOVER = 0xDDDDDD;
 					break;
 			}
-			
 		}
 	}
 }
