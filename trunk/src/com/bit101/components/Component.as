@@ -71,11 +71,11 @@ package com.bit101.components
 		public function Component(parent:DisplayObjectContainer = null, xpos:Number = 0, ypos:Number =  0)
 		{
 			move(xpos, ypos);
+			init();
 			if(parent != null)
 			{
 				parent.addChild(this);
 			}
-			init();
 		}
 		
 		/**
