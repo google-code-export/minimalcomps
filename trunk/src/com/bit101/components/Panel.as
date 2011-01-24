@@ -28,6 +28,7 @@
  
 package com.bit101.components
 {
+	import flash.display.DisplayObject;
 	import flash.display.DisplayObjectContainer;
 	import flash.display.Sprite;
 	
@@ -75,14 +76,14 @@ package com.bit101.components
 		override protected function addChildren():void
 		{
 			_background = new Sprite();
-			addChild(_background);
+			super.addChild(_background);
 			
 			_mask = new Sprite();
 			_mask.mouseEnabled = false;
-			addChild(_mask);
+			super.addChild(_mask);
 			
 			content = new Sprite();
-			addChild(content);
+			super.addChild(content);
 			content.mask = _mask;
 			
 			filters = [getShadow(2, true)];
@@ -94,6 +95,16 @@ package com.bit101.components
 		///////////////////////////////////
 		// public methods
 		///////////////////////////////////
+		
+		/**
+		 * People don't seem to know about Window.content. Let's inform them.
+		 */
+		public override function addChild(child:DisplayObject):DisplayObject
+		{
+			trace("It appears you are adding a child to Panel. Consider adding it to the panel's conent property instead.");
+			super.addChild(child);
+			return child;
+		}
 		
 		/**
 		 * Draws the visual ui of the component.
