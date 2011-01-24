@@ -28,6 +28,7 @@
  
 package com.bit101.components
 {
+	import flash.display.DisplayObject;
 	import flash.display.DisplayObjectContainer;
 	import flash.display.Shape;
 	import flash.display.Sprite;
@@ -81,12 +82,13 @@ package com.bit101.components
 		 */
 		override protected function addChildren():void
 		{
-			_titleBar = new Panel(this);
+			_titleBar = new Panel();
 			_titleBar.filters = [];
 			_titleBar.buttonMode = true;
 			_titleBar.useHandCursor = true;
 			_titleBar.addEventListener(MouseEvent.MOUSE_DOWN, onMouseGoDown);
 			_titleBar.height = 20;
+			super.addChild(_titleBar);
 			_titleLabel = new Label(_titleBar.content, 5, 1, _title);
 			
 			_grips = new Shape();
@@ -102,8 +104,9 @@ package com.bit101.components
 			_titleBar.content.addChild(_grips);
 			_grips.visible = false;
 			
-			_panel = new Panel(this, 0, 20);
+			_panel = new Panel(null, 0, 20);
 			_panel.visible = !_minimized;
+			super.addChild(_panel);
 			
 			_minimizeButton = new Sprite();
 			_minimizeButton.graphics.beginFill(0, 0);
@@ -133,6 +136,16 @@ package com.bit101.components
 		///////////////////////////////////
 		// public methods
 		///////////////////////////////////
+		
+		/**
+		 * People don't seem to know about Window.content. Let's inform them.
+		 */
+		public override function addChild(child:DisplayObject):DisplayObject
+		{
+			trace("It appears you are adding a child to Window. Consider adding it to the window's conent property instead.");
+			super.addChild(child);
+			return child;
+		}
 		
 		/**
 		 * Draws the visual ui of the component.
@@ -279,7 +292,7 @@ package com.bit101.components
 			_hasMinimizeButton = b;
 			if(_hasMinimizeButton)
 			{
-				addChild(_minimizeButton);
+				super.addChild(_minimizeButton);
 			}
 			else if(contains(_minimizeButton))
 			{
@@ -306,7 +319,7 @@ package com.bit101.components
 			}
 			else
 			{
-				if(!contains(_panel)) addChild(_panel);
+				if(!contains(_panel)) super.addChild(_panel);
 				_minimizeButton.rotation = 0;
 			}
 			dispatchEvent(new Event(Event.RESIZE));
