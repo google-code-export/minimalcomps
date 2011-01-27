@@ -1,7 +1,7 @@
 /**
  * Meter.as
  * Keith Peters
- * version 0.9.8
+ * version 0.9.9
  * 
  * A meter component similar to a voltage meter, with a dial and a needle that indicates a value.
  * 

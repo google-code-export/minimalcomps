@@ -1,7 +1,7 @@
 /**
  * ListItem.as
  * Keith Peters
- * version 0.9.8
+ * version 0.9.9
  * 
  * A single item in a list. 
  * 

@@ -1,7 +1,7 @@
 /**
  * VRangeSlider.as
  * Keith Peters
- * version 0.9.8
+ * version 0.9.9
  * 
  * A vertical slider with two handles for selecting a range of values.
  * 
