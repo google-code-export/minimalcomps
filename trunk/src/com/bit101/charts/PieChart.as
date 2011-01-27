@@ -1,7 +1,7 @@
 /**
  * PieChart.as
  * Keith Peters
- * version 0.9.8
+ * version 0.9.9
  * 
  * A chart component for graphing an array of numeric data as a pie chart.
  * 
