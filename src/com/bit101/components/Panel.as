@@ -97,11 +97,19 @@ package com.bit101.components
 		///////////////////////////////////
 		
 		/**
-		 * People don't seem to know about Window.content. Let's inform them.
+		 * Overridden to add new child to content.
 		 */
 		public override function addChild(child:DisplayObject):DisplayObject
 		{
-			trace("It appears you are adding a child to Panel. Consider adding it to the panel's conent property instead.");
+			content.addChild(child);
+			return child;
+		}
+		
+		/**
+		 * Access to super.addChild
+		 */
+		public function addRawChild(child:DisplayObject):DisplayObject
+		{
 			super.addChild(child);
 			return child;
 		}
