@@ -129,15 +129,16 @@ package com.bit101.utils
 				compInst = new classRef();
 				
 				// id is special case, maps to name as well.
-				if(xml.@id.toString() != "")
+				var id:String = trim(xml.@id.toString()); 
+				if(id != "")
 				{
-					compInst.name = xml.@id.toString();
-					idMap[xml.@id.toString()] = compInst;
+					compInst.name = id;
+					idMap[id] = compInst;
 					
 					// if id exists on parent as a public property, assign this component to it.
-					if(parent.hasOwnProperty(trim(xml.@id.toString())))
+					if(parent.hasOwnProperty(id))
 					{
-						parent[trim(xml.@id)] = compInst;
+						parent[id] = compInst;
 					}
 				}
 				
@@ -181,16 +182,7 @@ package com.bit101.utils
 					var child:Component = parseComp(xml.children()[j]);
 					if(child != null)
 					{
-						if(compInst.hasOwnProperty("content"))
-						{
-							// some components (window, panel, scrollpane) need childen added to the content property
-							compInst.content.addChild(child);
-						}
-						else
-						{
-							// otherwise, just add them normally.
-							compInst.addChild(child);
-						}
+						compInst.addChild(child);
 					}
 				}
 			}
