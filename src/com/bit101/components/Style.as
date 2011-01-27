@@ -35,6 +35,7 @@ package com.bit101.components
 		public static var TEXT_BACKGROUND:uint = 0xFFFFFF;
 		public static var BACKGROUND:uint = 0xCCCCCC;
 		public static var BUTTON_FACE:uint = 0xFFFFFF;
+		public static var BUTTON_DOWN:uint = 0xEEEEEE;
 		public static var INPUT_TEXT:uint = 0x333333;
 		public static var LABEL_TEXT:uint = 0x666666;
 		public static var DROPSHADOW:uint = 0x000000;
@@ -62,6 +63,7 @@ package com.bit101.components
 				case DARK:
 					BACKGROUND = 0x444444;
 					BUTTON_FACE = 0x666666;
+					BUTTON_DOWN = 0x222222;
 					INPUT_TEXT = 0xBBBBBB;
 					LABEL_TEXT = 0xCCCCCC;
 					PANEL = 0x666666;

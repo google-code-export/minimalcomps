@@ -31,6 +31,8 @@ package com.bit101.components
 	import flash.display.DisplayObjectContainer;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
+	import flash.filters.GlowFilter;
+	import flash.geom.ColorTransform;
 
 	public class PushButton extends Component
 	{
@@ -96,7 +98,23 @@ package com.bit101.components
 			addEventListener(MouseEvent.ROLL_OVER, onMouseOver);
 		}
 		
-		
+		/**
+		 * Draws the face of the button, color based on state.
+		 */
+		protected function drawFace():void
+		{
+			_face.graphics.clear();
+			if(_down)
+			{
+				_face.graphics.beginFill(Style.BUTTON_DOWN);
+			}
+			else
+			{
+				_face.graphics.beginFill(Style.BUTTON_FACE);
+			}
+			_face.graphics.drawRect(0, 0, _width - 2, _height - 2);
+			_face.graphics.endFill();
+		}
 		
 		
 		///////////////////////////////////
@@ -114,10 +132,7 @@ package com.bit101.components
 			_back.graphics.drawRect(0, 0, _width, _height);
 			_back.graphics.endFill();
 			
-			_face.graphics.clear();
-			_face.graphics.beginFill(Style.BUTTON_FACE);
-			_face.graphics.drawRect(0, 0, _width - 2, _height - 2);
-			_face.graphics.endFill();
+			drawFace();
 			
 			_label.text = _labelText;
 			_label.autoSize = true;
@@ -174,6 +189,7 @@ package com.bit101.components
 		protected function onMouseGoDown(event:MouseEvent):void
 		{
 			_down = true;
+			drawFace();
 			_face.filters = [getShadow(1, true)];
 			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseGoUp);
 		}
@@ -189,6 +205,7 @@ package com.bit101.components
 				_selected = !_selected;
 			}
 			_down = _selected;
+			drawFace();
 			_face.filters = [getShadow(1, _selected)];
 			stage.removeEventListener(MouseEvent.MOUSE_UP, onMouseGoUp);
 		}
