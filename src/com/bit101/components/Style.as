@@ -78,6 +78,7 @@ package com.bit101.components
 				default:
 					BACKGROUND = 0xCCCCCC;
 					BUTTON_FACE = 0xFFFFFF;
+					BUTTON_DOWN = 0xEEEEEE;
 					INPUT_TEXT = 0x333333;
 					LABEL_TEXT = 0x666666;
 					PANEL = 0xF3F3F3;
