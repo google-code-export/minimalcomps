@@ -31,7 +31,6 @@ package com.bit101.utils
 	// usually don't use * but we really are importing everything here.
 	import com.bit101.components.*;
 	
-	import flash.display.DisplayObject;
 	import flash.display.DisplayObjectContainer;
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
@@ -215,49 +214,46 @@ package com.bit101.utils
 		}
 		
 		/**
-		 * This method merely serves to include all component classes in the swf.
+		 * We need to include all component classes in the swf.
 		 */
-		private function comprefs():void
-		{
-			Accordion;
-			Calendar;
-			CheckBox;
-			ColorChooser;
-			ComboBox;
-			FPSMeter;
-			HBox;
-			HRangeSlider;
-			HScrollBar;
-			HSlider;
-			HUISlider;
-			IndicatorLight;
-			InputText;
-			Knob;
-			Label;
-			List;
-			ListItem;
-			Meter;
-			NumericStepper;
-			Panel;
-			ProgressBar;
-			PushButton;
-			RadioButton;
-			RangeSlider;
-			RotarySelector;
-			ScrollBar;
-			ScrollPane;
-			Slider;
-			Style;
-			Text;
-			TextArea;
-			UISlider;
-			VBox;
-			VRangeSlider;
-			VScrollBar;
-			VSlider;
-			VUISlider;
-			WheelMenu;
-			Window;
-		}
+		Accordion;
+		Calendar;
+		CheckBox;
+		ColorChooser;
+		ComboBox;
+		FPSMeter;
+		HBox;
+		HRangeSlider;
+		HScrollBar;
+		HSlider;
+		HUISlider;
+		IndicatorLight;
+		InputText;
+		Knob;
+		Label;
+		List;
+		ListItem;
+		Meter;
+		NumericStepper;
+		Panel;
+		ProgressBar;
+		PushButton;
+		RadioButton;
+		RangeSlider;
+		RotarySelector;
+		ScrollBar;
+		ScrollPane;
+		Slider;
+		Style;
+		Text;
+		TextArea;
+		UISlider;
+		VBox;
+		VRangeSlider;
+		VScrollBar;
+		VSlider;
+		VUISlider;
+		WheelMenu;
+		Window;
 	}
 }
