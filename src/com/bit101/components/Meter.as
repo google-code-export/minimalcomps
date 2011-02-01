@@ -136,7 +136,8 @@ package com.bit101.components
 		 */
 		override public function setSize(w:Number, h:Number):void
 		{
-			super.setSize(w, w / 2);
+			h = w / 2;
+			super.setSize(w, h);
 		}
 		
 		///////////////////////////////////

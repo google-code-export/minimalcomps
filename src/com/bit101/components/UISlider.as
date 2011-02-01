@@ -84,7 +84,7 @@ package com.bit101.components
 			{ 
 				if(_precision > 0)
 				{
-					val += "."
+					val += ".";
 				}
 				for(var i:uint = 0; i < _precision; i++)
 				{
