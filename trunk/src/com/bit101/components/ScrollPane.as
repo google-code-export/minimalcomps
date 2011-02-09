@@ -72,13 +72,15 @@ package com.bit101.components
 		override protected function addChildren():void
 		{
 			super.addChildren();
-			_vScrollbar = new VScrollBar(this, width - 10, 0, onScroll);
-			_hScrollbar = new HScrollBar(this, 0, height - 10, onScroll);
+			_vScrollbar = new VScrollBar(null, width - 10, 0, onScroll);
+			_hScrollbar = new HScrollBar(null, 0, height - 10, onScroll);
+			addRawChild(_vScrollbar);
+			addRawChild(_hScrollbar);
 			_corner = new Shape();
 			_corner.graphics.beginFill(Style.BUTTON_FACE);
 			_corner.graphics.drawRect(0, 0, 10, 10);
 			_corner.graphics.endFill();
-			addChild(_corner);
+			addRawChild(_corner);
 		}
 		
 		
