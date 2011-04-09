@@ -122,6 +122,7 @@ package com.bit101.utils
 		private function parseComp(xml:XML):Component
 		{
 			var compInst:Object;
+			var specialProps:Object = {};
 			try
 			{
 				var classRef:Class = getDefinitionByName("com.bit101.components." + xml.name()) as Class;
@@ -168,11 +169,22 @@ package com.bit101.utils
 						{
 							compInst[prop] = attrib == "true";
 						}
+						// special handling - these values should be set last.
+						else if(prop == "value" || prop == "lowValue" || prop == "highValue" || prop == "choice")
+						{
+							specialProps[prop] = attrib;
+						}
 						else
 						{
 							compInst[prop] = attrib;
 						}
 					}
+				}
+				
+				// now handle special props
+				for(prop in specialProps)
+				{
+					compInst[prop] = specialProps[prop];
 				}
 				
 				// child nodes will be added as children to the instance just created.
