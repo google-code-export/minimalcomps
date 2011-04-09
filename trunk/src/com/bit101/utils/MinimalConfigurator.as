@@ -1,7 +1,7 @@
 /**
  * MinimalConfigurator.as
  * Keith Peters
- * version 0.9.9
+ * version 0.9.10
  * 
  * A class for parsing xml layout code to create minimal components declaratively.
  * 

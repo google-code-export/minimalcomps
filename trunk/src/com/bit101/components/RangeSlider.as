@@ -1,7 +1,7 @@
 /**
  * RangeSlider.as
  * Keith Peters
- * version 0.9.9
+ * version 0.9.10
  * 
  * Abstract base class for HRangeSlider and VRangeSlider.
  * 

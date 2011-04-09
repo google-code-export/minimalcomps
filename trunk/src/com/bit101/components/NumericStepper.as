@@ -1,7 +1,7 @@
 /**
  * NumericStepper.as
  * Keith Peters
- * version 0.9.9
+ * version 0.9.10
  * 
  * A component allowing for entering a numeric value with the keyboard, or by pressing up/down buttons.
  * 
