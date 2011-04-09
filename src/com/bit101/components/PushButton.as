@@ -238,6 +238,7 @@ package com.bit101.components
 			_selected = value;
 			_down = _selected;
 			_face.filters = [getShadow(1, _selected)];
+			drawFace();
 		}
 		public function get selected():Boolean
 		{
