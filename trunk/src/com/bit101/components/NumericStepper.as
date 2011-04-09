@@ -179,6 +179,7 @@ package com.bit101.components
 		 */
 		protected function onValueTextChange(event:Event):void
 		{
+			event.stopImmediatePropagation();
 			var newVal:Number = Number(_valueText.text);
 			if(newVal <= _maximum && newVal >= _minimum)
 			{
