@@ -1,7 +1,7 @@
 /**
  * HRangeSlider.as
  * Keith Peters
- * version 0.9.9
+ * version 0.9.10
  * 
  * A horizontal slider with two handles for selecting a range of values.
  * 

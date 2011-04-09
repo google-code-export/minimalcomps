@@ -1,7 +1,7 @@
 /**
  * LineChart.as
  * Keith Peters
- * version 0.9.9
+ * version 0.9.10
  * 
  * A chart component for graphing an array of numeric data as a line graph.
  * 

@@ -1,7 +1,7 @@
 /**
  * VUISlider.as
  * Keith Peters
- * version 0.9.9
+ * version 0.9.10
  * 
  * A vertical Slider with a label and value label.
  * 
