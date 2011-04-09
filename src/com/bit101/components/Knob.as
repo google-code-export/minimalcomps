@@ -99,7 +99,9 @@
 			_valueLabel = new Label();
 			_valueLabel.autoSize = true;
 			addChild(_valueLabel);
-		}
+			
+			_width = _radius * 2;
+			_height = _radius * 2 + 40;		}
 		
 		/**
 		 * Draw the knob at the specified radius.
@@ -397,6 +399,8 @@
         public function set radius(value:Number):void
         {
             _radius = value;
+ 			_width = _radius * 2;
+			_height = _radius * 2 + 40;
             invalidate();
         }
     }
