@@ -101,7 +101,13 @@ package com.bit101.components
 		 */
 		protected function makeListItems():void
 		{
-			while(_itemHolder.numChildren > 0) _itemHolder.removeChildAt(0);
+			var item:ListItem;
+			while(_itemHolder.numChildren > 0)
+			{
+				item = ListItem(_itemHolder.getChildAt(0));
+				item.removeEventListener(MouseEvent.CLICK, onSelect);
+				_itemHolder.removeChildAt(0);
+			}
 
             var numItems:int = Math.ceil(_height / _listItemHeight);
 			numItems = Math.min(numItems, _items.length);
@@ -109,7 +115,7 @@ package com.bit101.components
 			for(var i:int = 0; i < numItems; i++)
 			{
 
-				var item:ListItem = new _listItemClass(_itemHolder, 0, i * _listItemHeight);
+				item = new _listItemClass(_itemHolder, 0, i * _listItemHeight);
 				item.setSize(width, _listItemHeight);
 				item.defaultColor = _defaultColor;
 
