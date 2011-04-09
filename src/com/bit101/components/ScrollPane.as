@@ -97,21 +97,44 @@ package com.bit101.components
 		override public function draw():void
 		{
 			super.draw();
-			_vScrollbar.x = width - 10;
-			_vScrollbar.height = height - 10;
-			_hScrollbar.y = height - 10;
-			_hScrollbar.width = width - 10;
 			
-			_vScrollbar.setThumbPercent((_height - 10) / content.height);
+			var vPercent:Number = (_height - 10) / content.height;
+			var hPercent:Number = (_width - 10) / content.width; 
+			
+			_vScrollbar.x = width - 10;
+			_hScrollbar.y = height - 10;
+			
+			if(hPercent >= 1)
+			{
+				_vScrollbar.height = height;
+				_mask.height = height;
+			}
+			else
+			{
+				_vScrollbar.height = height - 10;
+				_mask.height = height - 10;
+			}
+			if(vPercent >= 1)
+			{
+				_hScrollbar.width = width;
+				_mask.width = width;
+			}
+			else
+			{
+				_hScrollbar.width = width - 10;
+				_mask.width = width - 10;
+			}
+			_vScrollbar.setThumbPercent(vPercent);
 			_vScrollbar.maximum = Math.max(0, content.height - _height + 10);
 			_vScrollbar.pageSize = _height - 10;
 			
-			_hScrollbar.setThumbPercent((_width - 10) / content.width);
+			_hScrollbar.setThumbPercent(hPercent);
 			_hScrollbar.maximum = Math.max(0, content.width - _width + 10);
 			_hScrollbar.pageSize = _width - 10;
 			
 			_corner.x = width - 10;
 			_corner.y = height - 10;
+			_corner.visible = (hPercent < 1) && (vPercent < 1);
 			content.x = -_hScrollbar.value;
 			content.y = -_vScrollbar.value;
 		}
