@@ -77,6 +77,11 @@ package com.bit101.components
 		 */
 		protected function formatValueLabel():void
 		{
+			if(isNaN(_slider.value))
+			{
+				_valueLabel.text = "NaN";
+				return;
+			}
 			var mult:Number = Math.pow(10, _precision);
 			var val:String = (Math.round(_slider.value * mult) / mult).toString();
 			var parts:Array = val.split(".");
